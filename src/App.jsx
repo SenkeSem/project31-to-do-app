@@ -1,10 +1,15 @@
+import SignUpPage from './pages/SignUpPage';
+
+import { Routes, Route } from 'react-router-dom';
+
 import './App.css';
 
 function App() {
   return (
     <>
-      <h1>ToDo приложение</h1>
-      <h2>!!!</h2>
+      <Routes>
+        <Route path="/" element={<SignUpPage />} />
+      </Routes>
     </>
   );
 }
