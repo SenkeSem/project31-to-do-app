@@ -1,10 +1,14 @@
 import HeadingStartPages from '../components/HeadingStartPages';
 
+import { Link } from 'react-router-dom';
+
 const ForgotPasswordPage = () => {
   return (
     <div>
       <div className="flex flex-col h-full mt-4 pl-7 pr-5 pb-3">
-        <img width={25} height={17} src="/arrowLeft.svg" alt="arrow" />
+        <Link to="/login">
+          <img width={25} height={17} src="/arrowLeft.svg" alt="arrow" />
+        </Link>
 
         <HeadingStartPages
           head={'Forgot Password'}
@@ -20,7 +24,7 @@ const ForgotPasswordPage = () => {
           />
 
           <button className="bg-btnRed w-full h-12 mt-16 italic text-lg font-thin text-signUpWhite rounded">
-            Send Request
+            <Link to="/reset">Send Request</Link>
           </button>
         </form>
       </div>
