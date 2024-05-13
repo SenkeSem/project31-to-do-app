@@ -1,11 +1,13 @@
+import HeadingStartPages from '../components/HeadingStartPages';
+
+import { Link } from 'react-router-dom';
+
 const SignUpPage = () => {
   return (
     <div className="flex flex-col mt-4 pl-7 pr-5 pb-3">
       <img width={25} height={17} src="/public/arrowLeft.svg" alt="arrow" />
 
-      <h1 className="mt-16 text-3xl italic font-thin">Welcome</h1>
-      <p className="mt-3 text-base font-medium text-signUpGray">Sign up to continue</p>
-
+      <HeadingStartPages head={'Welcome'} text={'Sign up to continue'} />
       <img
         className="mx-auto mt-7"
         width={107}
@@ -32,9 +34,10 @@ const SignUpPage = () => {
         <button className="bg-btnRed w-full h-12 mt-16 italic text-lg font-thin text-signUpWhite rounded">
           Sign Up
         </button>
-        <button className="mt-12 text-lg italic font-bold text-btnRed">Sign In</button>
+        <button className="mt-12 text-lg italic font-bold text-btnRed">
+          <Link to="/login">Sign In</Link>
+        </button>
       </form>
-      <div className="mt-14 mx-auto w-24 h-1 bg-homeLineBlack"></div>
     </div>
   );
 };
