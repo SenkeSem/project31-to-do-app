@@ -1,8 +1,9 @@
-import SignUpPage from './pages/SignUpPage';
+// import SignUpPage from './pages/SignUpPage';
 import SignInPage from './pages/SignInPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 import SuccesfulPage from './pages/SuccesfulPage';
+import StartPage1 from './pages/StartPage1';
 
 import { Routes, Route } from 'react-router-dom';
 
@@ -12,7 +13,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<SignUpPage />} />
+        <Route path="/" element={<StartPage1 />} />
+        {/* <Route path="/" element={<SignUpPage />} /> */}
         <Route path="/login" element={<SignInPage />} />
         <Route path="/forgot" element={<ForgotPasswordPage />} />
         <Route path="/reset" element={<ResetPasswordPage />} />
