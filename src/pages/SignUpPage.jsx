@@ -1,13 +1,13 @@
 import HeadingStartPages from '../components/HeadingStartPages';
 import Input from '../components/shared/Input';
+import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 
 import { Link } from 'react-router-dom';
 
 const SignUpPage = () => {
   return (
     <div className="flex flex-col mt-4 pl-7 pr-5 pb-3">
-      <img width={25} height={17} src="/arrowLeft.svg" alt="arrow" />
-
+      <ArrowLeft />
       <HeadingStartPages head={'Welcome'} text={'Sign up to continue'} />
       <img className="mx-auto mt-7" width={107} height={104} src="/circle.png" alt="circle" />
 

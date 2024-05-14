@@ -1,5 +1,6 @@
 import HeadingStartPages from '../components/HeadingStartPages';
 import Input from '../components/shared/Input';
+import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 
 import { Link } from 'react-router-dom';
 
@@ -8,7 +9,7 @@ const ForgotPasswordPage = () => {
     <div>
       <div className="flex flex-col h-full mt-4 pl-7 pr-5 pb-3">
         <Link to="/login">
-          <img width={25} height={17} src="/arrowLeft.svg" alt="arrow" />
+          <ArrowLeft />
         </Link>
 
         <HeadingStartPages
