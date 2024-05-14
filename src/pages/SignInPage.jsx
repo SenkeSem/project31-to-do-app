@@ -1,4 +1,5 @@
 import HeadingStartPages from '../components/HeadingStartPages';
+import Input from '../components/shared/Input';
 
 import { Link } from 'react-router-dom';
 
@@ -11,19 +12,8 @@ const SignInPage = () => {
         <HeadingStartPages head={'Welcome back'} text={'Sign in to continue'} />
 
         <form className="flex flex-col mt-7">
-          <p className="text-2xl font-medium">Username</p>
-          <input
-            className="h-9 mt-3 border-b-2 border-b-inputGray"
-            type="email"
-            placeholder="Enter your email"
-          />
-
-          <p className="mt-8 text-2xl font-medium">Password</p>
-          <input
-            className="h-9 mt-3 border-b-2 border-b-inputGray"
-            type="password"
-            placeholder="Enter your password"
-          />
+          <Input label={'Username'} type={'email'} placeholder={'Enter your email'} />
+          <Input label={'Password'} type={'password'} placeholder={'Enter your password'} />
 
           <button className="text-right mt-3 font-thin italic text-lg">
             <Link to="/forgot">Forgot password</Link>

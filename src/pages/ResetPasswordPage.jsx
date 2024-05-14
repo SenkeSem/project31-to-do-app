@@ -1,4 +1,5 @@
 import HeadingStartPages from '../components/HeadingStartPages';
+import Input from '../components/shared/Input';
 
 import { Link } from 'react-router-dom';
 
@@ -19,25 +20,12 @@ const ResetPasswordPage = () => {
           />
 
           <form className="flex flex-col mt-7">
-            <p className="text-2xl font-medium">Reset code</p>
-            <input
-              className="h-9 mt-3 border-b-2 border-b-inputGray"
-              type="email"
-              placeholder="Enter your number"
-            />
-
-            <p className="mt-8 text-2xl font-medium">New password</p>
-            <input
-              className="h-9 mt-3 border-b-2 border-b-inputGray"
-              type="password"
-              placeholder="Enter your password"
-            />
-
-            <p className="mt-8 text-2xl font-medium">Confirm password</p>
-            <input
-              className="h-9 mt-3 border-b-2 border-b-inputGray"
-              type="password"
-              placeholder="Enter your confirm password"
+            <Input label={'Reset code'} type={'email'} placeholder={'Enter your number'} />
+            <Input label={'New password'} type={'password'} placeholder={'Enter your password'} />
+            <Input
+              label={'Confirm password'}
+              type={'password'}
+              placeholder={'Enter your confirm password'}
             />
 
             <button className="bg-btnRed w-full h-12 mt-16 italic text-lg font-thin text-signUpWhite rounded">

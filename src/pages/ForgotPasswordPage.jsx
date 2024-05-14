@@ -1,4 +1,5 @@
 import HeadingStartPages from '../components/HeadingStartPages';
+import Input from '../components/shared/Input';
 
 import { Link } from 'react-router-dom';
 
@@ -16,12 +17,7 @@ const ForgotPasswordPage = () => {
         />
 
         <form className="flex flex-col mt-7">
-          <p className="text-2xl font-medium">Username</p>
-          <input
-            className="h-9 mt-3 border-b-2 border-b-inputGray"
-            type="email"
-            placeholder="Enter your email"
-          />
+          <Input label={'Username'} type={'email'} placeholder={'Enter your email'} />
 
           <button className="bg-btnRed w-full h-12 mt-16 italic text-lg font-thin text-signUpWhite rounded">
             <Link to="/reset">Send Request</Link>
