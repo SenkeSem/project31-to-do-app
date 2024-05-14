@@ -1,6 +1,7 @@
 import HeadingStartPages from '../components/HeadingStartPages';
 import Input from '../components/shared/Input';
 import ArrowLeft from '../components/icons/ArrowLeft.jsx';
+import Button from '../components/shared/Button.jsx';
 
 import { Link } from 'react-router-dom';
 
@@ -15,16 +16,20 @@ const SignInPage = () => {
           <Input label={'Username'} type={'email'} placeholder={'Enter your email'} />
           <Input label={'Password'} type={'password'} placeholder={'Enter your password'} />
 
-          <button className="text-right mt-3 font-thin italic text-lg">
-            <Link to="/forgot">Forgot password</Link>
-          </button>
+          <Link to="/forgot" className="text-end">
+            <Button className={'text-right mt-3 font-thin italic text-lg'}>Forgot password</Button>
+          </Link>
 
-          <button className="bg-btnRed w-full h-12 mt-16 italic text-lg font-thin text-signUpWhite rounded">
+          <Button
+            className={
+              'bg-btnRed w-full h-12 mt-16 italic text-lg font-thin text-signUpWhite rounded'
+            }>
             Sign In
-          </button>
-          <button className="mt-12 text-lg italic font-bold text-btnRed">
-            <Link to="/">Sign Up</Link>
-          </button>
+          </Button>
+
+          <Link to="/" className="text-center">
+            <Button className={'mt-12 text-lg italic font-bold text-btnRed'}>Sign Up</Button>
+          </Link>
         </form>
       </div>
     </div>

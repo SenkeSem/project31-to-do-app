@@ -1,6 +1,7 @@
 import HeadingStartPages from '../components/HeadingStartPages';
 import Input from '../components/shared/Input';
 import ArrowLeft from '../components/icons/ArrowLeft.jsx';
+import Button from '../components/shared/Button.jsx';
 
 import { Link } from 'react-router-dom';
 
@@ -29,9 +30,9 @@ const ResetPasswordPage = () => {
               placeholder={'Enter your confirm password'}
             />
 
-            <button className="bg-btnRed w-full h-12 mt-16 italic text-lg font-thin text-signUpWhite rounded">
+            <Button className="bg-btnRed w-full h-12 mt-16 italic text-lg font-thin text-signUpWhite rounded">
               Change password
-            </button>
+            </Button>
           </form>
         </div>
       </div>
