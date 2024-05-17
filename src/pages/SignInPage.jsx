@@ -4,17 +4,44 @@ import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 import Button from '../components/shared/Button.jsx';
 
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 const SignInPage = () => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm({
+    mode: 'onBlur',
+  });
+
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data));
+    reset();
+  };
+
   return (
     <div>
       <div className="flex flex-col h-full mt-4 pl-7 pr-5 pb-3">
         <ArrowLeft />
         <HeadingStartPages head={'Welcome back'} text={'Sign in to continue'} />
 
-        <form className="flex flex-col mt-7">
-          <Input label={'Username'} type={'email'} placeholder={'Enter your email'} />
-          <Input label={'Password'} type={'password'} placeholder={'Enter your password'} />
+        <form className="flex flex-col mt-7" onSubmit={handleSubmit(onSubmit)}>
+          <Input
+            register={register}
+            errors={errors}
+            label={'Username'}
+            type={'email'}
+            placeholder={'Enter your email'}
+          />
+          <Input
+            register={register}
+            errors={errors}
+            label={'Password'}
+            type={'password'}
+            placeholder={'Enter your password'}
+          />
 
           <Link to="/forgot" className="text-end">
             <Button className={'text-right mt-3 font-thin italic text-lg'}>Forgot password</Button>

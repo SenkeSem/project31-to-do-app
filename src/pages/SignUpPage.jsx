@@ -11,10 +11,14 @@ const SignUpPage = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm();
+    reset,
+  } = useForm({
+    mode: 'onBlur',
+  });
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
+    reset();
   };
 
   return (
