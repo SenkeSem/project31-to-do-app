@@ -1,20 +1,21 @@
+import { Link } from 'react-router-dom';
+import { useForm, FormProvider } from 'react-hook-form';
 import HeadingStartPages from '../components/HeadingStartPages';
 import Input from '../components/shared/Input';
 import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 import Button from '../components/shared/Button.jsx';
 
-import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
 
 const SignInPage = () => {
+  const methods = useForm({
+    mode: 'onBlur',
+  });
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm({
-    mode: 'onBlur',
-  });
+  } = methods
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
@@ -27,7 +28,7 @@ const SignInPage = () => {
         <ArrowLeft />
         <HeadingStartPages head={'Welcome back'} text={'Sign in to continue'} />
 
-        <form className="flex flex-col mt-7" onSubmit={handleSubmit(onSubmit)}>
+        <FormProvider {...methods} className="flex flex-col mt-7" onSubmit={handleSubmit(onSubmit)}>
           <Input
             register={register}
             errors={errors}
@@ -44,7 +45,10 @@ const SignInPage = () => {
           />
 
           <Link to="/forgot" className="text-end">
-            <Button className={'text-right mt-3 font-thin italic text-lg'}>Forgot password</Button>
+            <Button
+              className={'text-right mt-3 font-thin italic text-lg'}
+              htmlType="submit"
+            >Forgot password</Button>
           </Link>
 
           <Button
@@ -57,7 +61,7 @@ const SignInPage = () => {
           <Link to="/" className="text-center">
             <Button className={'mt-12 text-lg italic font-bold text-btnRed'}>Sign Up</Button>
           </Link>
-        </form>
+        </FormProvider>
       </div>
     </div>
   );

@@ -4,17 +4,16 @@ import Input from '../components/shared/Input';
 import Button from '../components/shared/Button.jsx';
 
 import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import { useForm, FormProvider } from 'react-hook-form';
 
 const SignUpPage = () => {
+  const methods = useForm({
+    mode: 'onSubmit',
+  });
   const {
-    register,
-    formState: { errors },
     handleSubmit,
     reset,
-  } = useForm({
-    mode: 'onBlur',
-  });
+  } = methods
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
@@ -27,21 +26,37 @@ const SignUpPage = () => {
       <HeadingStartPages head={'Welcome'} text={'Sign up to continue'} />
       <img className="mx-auto mt-7" width={107} height={104} src="/circle.png" alt="circle" />
 
-      <form className="flex flex-col mt-7" onSubmit={handleSubmit(onSubmit)}>
+      <FormProvider
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col mt-7"
+        {...methods}
+      >
         <Input
-          register={register}
-          errors={errors}
+          id={'username'}
           label={'Username'}
           type={'email'}
           placeholder={'Enter your email'}
+          validation={{
+            required: 'Поле обязательно к заполнению!',
+            minLength: {
+              value: 5,
+              message: 'Минимум 5 символов!',
+            },
+          }}
         />
 
         <Input
-          register={register}
-          errors={errors}
+          id={'password'}
           label={'Password'}
           type={'password'}
           placeholder={'Enter your password'}
+          validation={{
+            required: 'Поле обязательно к заполнению!',
+            minLength: {
+              value: 5,
+              message: 'Минимум 5 символов!',
+            },
+          }}
         />
         <Button
           className={
@@ -52,7 +67,7 @@ const SignUpPage = () => {
         <Link to="/login" className="text-center">
           <Button className={'mt-12 text-lg italic font-bold text-btnRed'}>Sign In</Button>
         </Link>
-      </form>
+      </FormProvider>
     </div>
   );
 };

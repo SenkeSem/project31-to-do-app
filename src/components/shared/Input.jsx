@@ -1,23 +1,24 @@
-const Input = ({ register, errors, label, type, placeholder }) => {
+import {useFormContext} from "react-hook-form";
+
+const Input = ({ label, type, placeholder, id, validation }) => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext()
+
   return (
     <div className="mt-8">
       <label className="text-2xl font-medium">
         {label}
         <input
-          {...register(`${label}`, {
-            required: 'Поле обязательно к заполнению!',
-            minLength: {
-              value: 5,
-              message: 'Минимум 5 символов!',
-            },
-          })}
+          {...register(id, validation)}
           type={type}
-          className="w-full h-9 mt-3 border-b-2 border-b-inputGray font-normal text-base"
+          className="w-full h-9 mt-3 border-b-2 border-b-inputGray font-normal text-base outline-none"
           placeholder={placeholder}
         />
 
-        {errors[`${label}`] && (
-          <p className="h-4 mt-2 text-sm text-btnRed">{errors[`${label}`].message || 'Error!'}</p>
+        {errors?.[id] && (
+          <p className="h-4 mt-2 text-sm text-btnRed">{errors[id]?.message || 'Error!'}</p>
         )}
       </label>
     </div>
