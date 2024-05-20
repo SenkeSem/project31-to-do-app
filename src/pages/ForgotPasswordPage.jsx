@@ -4,8 +4,20 @@ import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 import Button from '../components/shared/Button.jsx';
 
 import { Link } from 'react-router-dom';
+import { useForm, FormProvider } from 'react-hook-form';
 
 const ForgotPasswordPage = () => {
+  const methods = useForm({
+    mode: 'onChange',
+  });
+
+  const { handleSubmit, reset } = methods;
+
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data));
+    reset();
+  };
+
   return (
     <div>
       <div className="flex flex-col h-full mt-4 pl-7 pr-5 pb-3">
@@ -18,14 +30,27 @@ const ForgotPasswordPage = () => {
           text={'Please enter your email below to recevie your password reset instructions'}
         />
 
-        <form className="flex flex-col mt-7">
-          <Input label={'Username'} type={'email'} placeholder={'Enter your email'} />
-          <Link to="/reset" className="text-center">
-            <Button className="bg-btnRed w-full h-12 mt-16 italic text-lg font-thin text-signUpWhite rounded">
+        <FormProvider {...methods} className="flex flex-col mt-7">
+          <Input
+            id={'username'}
+            label={'Username'}
+            type={'email'}
+            placeholder={'Enter your email'}
+            validation={{
+              required: 'Поле обязательно к заполнению!',
+              pattern: {
+                value:
+                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                message: 'Вы ввели некорректный email',
+              },
+            }}
+          />
+          <Button onClick={handleSubmit(onSubmit)} type={'primary'}>
+            <Link to="/reset" className="flex justify-center">
               Send Request
-            </Button>
-          </Link>
-        </form>
+            </Link>
+          </Button>
+        </FormProvider>
       </div>
     </div>
   );
