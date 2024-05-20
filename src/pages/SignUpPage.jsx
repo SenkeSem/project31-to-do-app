@@ -10,10 +10,7 @@ const SignUpPage = () => {
   const methods = useForm({
     mode: 'onSubmit',
   });
-  const {
-    handleSubmit,
-    reset,
-  } = methods
+  const { handleSubmit, reset } = methods;
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
@@ -26,11 +23,7 @@ const SignUpPage = () => {
       <HeadingStartPages head={'Welcome'} text={'Sign up to continue'} />
       <img className="mx-auto mt-7" width={107} height={104} src="/circle.png" alt="circle" />
 
-      <FormProvider
-        onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col mt-7"
-        {...methods}
-      >
+      <FormProvider onSubmit={handleSubmit(onSubmit)} className="flex flex-col mt-7" {...methods}>
         <Input
           id={'username'}
           label={'Username'}
@@ -58,14 +51,9 @@ const SignUpPage = () => {
             },
           }}
         />
-        <Button
-          className={
-            'bg-btnRed w-full h-12 mt-16 italic text-lg font-thin text-signUpWhite rounded'
-          }>
-          Sign Up
-        </Button>
+        <Button type={'primary'}>Sign Up</Button>
         <Link to="/login" className="text-center">
-          <Button className={'mt-12 text-lg italic font-bold text-btnRed'}>Sign In</Button>
+          <Button type={'secondary'}>Sign In</Button>
         </Link>
       </FormProvider>
     </div>
