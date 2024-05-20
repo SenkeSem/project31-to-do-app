@@ -5,17 +5,12 @@ import Input from '../components/shared/Input';
 import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 import Button from '../components/shared/Button.jsx';
 
-
 const SignInPage = () => {
   const methods = useForm({
     mode: 'onBlur',
   });
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    reset,
-  } = methods
+
+  const { handleSubmit, reset } = methods;
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
@@ -28,33 +23,41 @@ const SignInPage = () => {
         <ArrowLeft />
         <HeadingStartPages head={'Welcome back'} text={'Sign in to continue'} />
 
-        <FormProvider {...methods} className="flex flex-col mt-7" onSubmit={handleSubmit(onSubmit)}>
+        <FormProvider {...methods} className="flex flex-col mt-7">
           <Input
-            register={register}
-            errors={errors}
+            id={'username'}
             label={'Username'}
             type={'email'}
             placeholder={'Enter your email'}
+            validation={{
+              required: 'Поле обязательно к заполнению!',
+              minLength: {
+                value: 5,
+                message: 'Минимум 5 символов!',
+              },
+            }}
           />
           <Input
-            register={register}
-            errors={errors}
+            id={'password'}
             label={'Password'}
             type={'password'}
             placeholder={'Enter your password'}
+            validation={{
+              required: 'Поле обязательно к заполнению!',
+              minLength: {
+                value: 5,
+                message: 'Минимум 5 символов!',
+              },
+            }}
           />
 
           <Link to="/forgot" className="text-end">
-            <Button
-              className={'text-right mt-3 font-thin italic text-lg'}
-              htmlType="submit"
-            >Forgot password</Button>
+            <Button className={'text-right mt-3 font-thin italic text-lg'} htmlType="submit">
+              Forgot password
+            </Button>
           </Link>
 
-          <Button
-            className={
-              'bg-btnRed w-full h-12 mt-16 italic text-lg font-thin text-signUpWhite rounded'
-            }>
+          <Button onClick={handleSubmit(onSubmit)} type={'primary'}>
             Sign In
           </Button>
 

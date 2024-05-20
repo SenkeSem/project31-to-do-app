@@ -23,7 +23,7 @@ const SignUpPage = () => {
       <HeadingStartPages head={'Welcome'} text={'Sign up to continue'} />
       <img className="mx-auto mt-7" width={107} height={104} src="/circle.png" alt="circle" />
 
-      <FormProvider onSubmit={handleSubmit(onSubmit)} className="flex flex-col mt-7" {...methods}>
+      <FormProvider className="flex flex-col mt-7" {...methods}>
         <Input
           id={'username'}
           label={'Username'}
@@ -51,7 +51,9 @@ const SignUpPage = () => {
             },
           }}
         />
-        <Button type={'primary'}>Sign Up</Button>
+        <Button onClick={handleSubmit(onSubmit)} type={'primary'}>
+          Sign Up
+        </Button>
         <Link to="/login" className="text-center">
           <Button type={'secondary'}>Sign In</Button>
         </Link>
