@@ -4,8 +4,18 @@ import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 import Button from '../components/shared/Button.jsx';
 
 import { Link } from 'react-router-dom';
+import { useForm, FormProvider } from 'react-hook-form';
 
 const ResetPasswordPage = () => {
+  const methods = useForm({ mode: 'onChange' });
+
+  const { handleSubmit, reset } = methods;
+
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data));
+    reset();
+  };
+
   return (
     <div>
       <div>
@@ -21,19 +31,52 @@ const ResetPasswordPage = () => {
             }
           />
 
-          <form className="flex flex-col mt-7">
-            <Input label={'Reset code'} type={'email'} placeholder={'Enter your number'} />
-            <Input label={'New password'} type={'password'} placeholder={'Enter your password'} />
+          <FormProvider {...methods} className="flex flex-col mt-7">
             <Input
-              label={'Confirm password'}
+              id={'username'}
+              label={'Reset code'}
+              type={'email'}
+              placeholder={'Enter your email'}
+              validation={{
+                required: 'Поле обязательно к заполнению!',
+                pattern: {
+                  value:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  message: 'Вы ввели некорректный email',
+                },
+              }}
+            />
+            <Input
+              id={'newPassword'}
               type={'password'}
+              label={'New password'}
+              placeholder={'Enter your password'}
+              validation={{
+                required: 'Поле обязательно к заполнению!',
+                minLength: {
+                  value: 5,
+                  message: 'Минимум 5 символов!',
+                },
+              }}
+            />
+            <Input
+              id={'password'}
+              type={'password'}
+              label={'Confirm password'}
               placeholder={'Enter your confirm password'}
+              validation={{
+                required: 'Поле обязательно к заполнению!',
+                minLength: {
+                  value: 5,
+                  message: 'Минимум 5 символов!',
+                },
+              }}
             />
 
-            <Button className="bg-btnRed w-full h-12 mt-16 italic text-lg font-thin text-signUpWhite rounded">
+            <Button onClick={handleSubmit(onSubmit)} type={'primary'}>
               Change password
             </Button>
-          </form>
+          </FormProvider>
         </div>
       </div>
     </div>
