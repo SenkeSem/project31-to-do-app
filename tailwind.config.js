@@ -8,6 +8,7 @@ export default {
       signUpWhite: '#FFFFFF',
       inputGray: '#EDEDED',
       homeLineBlack: '#313131',
+      workMenuDarkBlue: '#292E4E',
     },
     fontFamily: {
       main: ['Roboto'],

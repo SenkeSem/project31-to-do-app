@@ -6,6 +6,7 @@ import SuccesfulPage from './pages/SuccesfulPage';
 import StartPage1 from './pages/StartPage1';
 import StartPage2 from './pages/StartPage2';
 import StartPage3 from './pages/StartPage3';
+import WorkList from './pages/WorkList';
 
 export {
   SignUpPage,
@@ -16,4 +17,5 @@ export {
   StartPage1,
   StartPage2,
   StartPage3,
+  WorkList,
 };
