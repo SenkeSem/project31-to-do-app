@@ -13,3 +13,14 @@ export const getToDo = async () => {
     console.log(error);
   }
 };
+
+instance.interceptors.response.use(
+  (res) => {
+    console.log(res.status, '<-- статус запроса');
+    return res;
+  },
+  (error) => {
+    console.log(error, '<-- интерцептор отловил ошибку');
+    return error;
+  },
+);
