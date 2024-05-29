@@ -1,5 +1,6 @@
 import WorkHeader from '../components/WorkHeader';
-// import WorkFooter from '../components/WorkFooter';
+import WorkFooter from '../components/WorkFooter';
+import ToDo from '../components/ToDo';
 
 import { getToDo } from '../axios';
 import { useEffect, useState } from 'react';
@@ -17,14 +18,17 @@ const WorkList = () => {
         <WorkHeader />
       </header>
       <main className="w-full">
-        <h1 className=" text-5xl">CONTENT!!!</h1>
+        <h4 className="mt-6 ml-5 mb-5 font-thin italic text-sm uppercase text-textGray">
+          Today, Aug 4/2018
+        </h4>
+
         {toDo.map((item) => (
-          <p className="mt-3 ml-3" key={item.id}>
-            {item.title}
-          </p>
+          <ToDo key={item.id} title={item.title} />
         ))}
       </main>
-      <footer className="w-full absolute bottom-0">{/* <WorkFooter /> */}</footer>
+      <footer className="w-full sticky bottom-0">
+        <WorkFooter />
+      </footer>
     </div>
   );
 };
