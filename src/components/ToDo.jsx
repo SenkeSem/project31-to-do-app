@@ -22,7 +22,10 @@ const ToDo = ({ title }) => {
       )}
 
       <main>
-        <h5 className={`text-base font-medium ${isReady && 'line-through text-signUpGray'}`}>
+        <h5
+          className={`w-72 text-base font-medium ${
+            isReady && 'line-through text-signUpGray'
+          } truncate`}>
           {title}
         </h5>
         <p className={`text-signUpGray font-medium text-base ${isReady && 'line-through'}`}>

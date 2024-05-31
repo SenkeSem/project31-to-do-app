@@ -10,6 +10,7 @@ export default {
       homeLineBlack: '#313131',
       workMenuDarkBlue: '#292E4E',
       textGray: '#9A9A9A',
+      textMenuGray: '#8E8E93',
       todoBlue: '#6074F9',
       shadowGray: '#E0E0E080',
     },
