@@ -1,6 +1,6 @@
 import Filter from '../components/icons/Filter';
 
-const WorkHeader = () => {
+const WorkHeader = ({ handler }) => {
   return (
     <div className="w-full h-28 bg-btnRed flex justify-between pt-4 pr-4">
       <section className="w-full flex flex-col justify-between items-center">
@@ -15,7 +15,7 @@ const WorkHeader = () => {
         </div>
       </section>
       <section>
-        <Filter fill={'#FFFFFF'} />
+        <Filter handler={handler} fill={'#FFFFFF'} />
       </section>
     </div>
   );

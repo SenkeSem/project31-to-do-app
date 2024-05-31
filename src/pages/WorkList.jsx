@@ -1,12 +1,19 @@
 import WorkHeader from '../components/WorkHeader';
 import WorkFooter from '../components/WorkFooter';
 import ToDo from '../components/ToDo';
+import Modal from '../components/shared/Modal';
 
 import { getToDo } from '../axios';
 import { useEffect, useState } from 'react';
 
 const WorkList = () => {
   const [toDo, setToDo] = useState([]);
+  const [isOpenFilter, setIsOpenFilter] = useState(false);
+
+  const handleFilter = () => {
+    setIsOpenFilter(!isOpenFilter);
+    console.log('Кнопка работает!');
+  };
 
   useEffect(() => {
     getToDo().then((value) => setToDo(value));
@@ -15,7 +22,7 @@ const WorkList = () => {
   return (
     <div className="flex flex-col">
       <header>
-        <WorkHeader />
+        <WorkHeader handler={handleFilter} />
       </header>
       <main className="w-full">
         <h4 className="mt-6 ml-5 mb-5 font-thin italic text-sm uppercase text-textGray">
@@ -29,6 +36,16 @@ const WorkList = () => {
       <footer className="w-full sticky bottom-0">
         <WorkFooter />
       </footer>
+      {isOpenFilter && (
+        <Modal setActive={setIsOpenFilter}>
+          <p className="flex justify-between">
+            Incomplete Tasks
+            <img src="/public/greenCheck.svg" alt="greenCheck" />
+          </p>
+          <p>Completed Tasks</p>
+          <p>All Tasks</p>
+        </Modal>
+      )}
     </div>
   );
 };

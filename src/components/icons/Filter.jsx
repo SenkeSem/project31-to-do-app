@@ -1,6 +1,13 @@
-const Filter = ({ fill }) => {
+const Filter = ({ fill, handler }) => {
   return (
-    <svg width={21} height={21} fill={fill} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className="cursor-pointer"
+      onClick={handler}
+      width={21}
+      height={21}
+      fill={fill}
+      viewBox="0 0 32 32"
+      xmlns="http://www.w3.org/2000/svg">
       <title />
       <g data-name="Layer 2" id="Layer_2">
         <path d="M28,9H11a1,1,0,0,1,0-2H28a1,1,0,0,1,0,2Z" />
