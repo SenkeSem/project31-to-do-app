@@ -1,18 +1,23 @@
 import WorkHeader from '../components/WorkHeader';
 import WorkFooter from '../components/WorkFooter';
 import ToDo from '../components/ToDo';
-import Modal from '../components/shared/Modal';
+import ModalFilter from '../components/shared/ModalFilter';
 
 import { getToDo } from '../axios';
 import { useEffect, useState } from 'react';
+import ModalCreate from '../components/shared/ModalCreate';
 
 const WorkList = () => {
   const [toDo, setToDo] = useState([]);
   const [isOpenFilter, setIsOpenFilter] = useState(false);
+  const [isCreateMenuOpen, setIsCreateMenuOpen] = useState(false);
 
   const handleFilter = () => {
     setIsOpenFilter(!isOpenFilter);
-    console.log('Кнопка работает!');
+  };
+
+  const handleOpenMenu = () => {
+    setIsCreateMenuOpen(!isCreateMenuOpen);
   };
 
   useEffect(() => {
@@ -34,17 +39,31 @@ const WorkList = () => {
         ))}
       </main>
       <footer className="w-full sticky bottom-0">
-        <WorkFooter />
+        <WorkFooter handleOpenMenu={handleOpenMenu} />
       </footer>
       {isOpenFilter && (
-        <Modal setActive={setIsOpenFilter}>
+        <ModalFilter setActive={setIsOpenFilter}>
           <p className="flex justify-between">
             Incomplete Tasks
             <img src="/public/greenCheck.svg" alt="greenCheck" />
           </p>
           <p>Completed Tasks</p>
           <p>All Tasks</p>
-        </Modal>
+        </ModalFilter>
+      )}
+
+      {isCreateMenuOpen && (
+        <ModalCreate setActive={setIsCreateMenuOpen}>
+          <p className="w-full h-full flex items-center justify-center border-b-lightGray border-b-2 cursor-pointer">
+            Add Task
+          </p>
+          <p className="w-full h-full flex items-center justify-center border-b-lightGray border-b-2 cursor-pointer">
+            Add Quick Note
+          </p>
+          <p className="w-full h-full flex items-center justify-center cursor-pointer">
+            Add Check List
+          </p>
+        </ModalCreate>
       )}
     </div>
   );

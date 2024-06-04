@@ -1,4 +1,4 @@
-const WorkFooter = () => {
+const WorkFooter = ({ handleOpenMenu }) => {
   return (
     <div className="w-full h-24 bg-workMenuDarkBlue">
       <nav>
@@ -13,6 +13,7 @@ const WorkFooter = () => {
           </li>
           <li>
             <img
+              onClick={handleOpenMenu}
               className="relative -top-7 cursor-pointer"
               src="/public/bigPlus.svg"
               alt="bigPlus"

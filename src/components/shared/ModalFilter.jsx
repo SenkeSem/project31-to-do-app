@@ -1,4 +1,4 @@
-const Modal = ({ children, setActive }) => {
+const ModalFilter = ({ children, setActive }) => {
   return (
     <div
       onClick={() => setActive(false)}
@@ -12,4 +12,4 @@ const Modal = ({ children, setActive }) => {
   );
 };
 
-export default Modal;
+export default ModalFilter;

@@ -13,6 +13,7 @@ export default {
       textMenuGray: '#8E8E93',
       todoBlue: '#6074F9',
       shadowGray: '#E0E0E080',
+      lightGray: '#E4E4E4',
     },
     fontFamily: {
       main: ['Roboto'],
