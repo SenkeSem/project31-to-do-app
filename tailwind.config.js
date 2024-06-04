@@ -14,6 +14,10 @@ export default {
       todoBlue: '#6074F9',
       shadowGray: '#E0E0E080',
       lightGray: '#E4E4E4',
+      backColorMenu: '#FDFDFD',
+      projectRed: '#E42B6A',
+      projectGreen: '#5ABB56',
+      projectPurple: '#BC79C3',
     },
     fontFamily: {
       main: ['Roboto'],

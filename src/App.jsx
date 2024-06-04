@@ -5,6 +5,7 @@ import {
   ResetPasswordPage,
   SuccesfulPage,
   WorkList,
+  ProjectsPage,
 } from './index';
 
 import { Routes, Route } from 'react-router-dom';
@@ -16,6 +17,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<WorkList />} />
+        <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/register" element={<SignUpPage />} />
         <Route path="/login" element={<SignInPage />} />
         <Route path="/forgot" element={<ForgotPasswordPage />} />

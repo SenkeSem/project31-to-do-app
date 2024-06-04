@@ -7,6 +7,7 @@ import StartPage1 from './pages/StartPage1';
 import StartPage2 from './pages/StartPage2';
 import StartPage3 from './pages/StartPage3';
 import WorkList from './pages/WorkList';
+import ProjectsPage from './pages/ProjectsPage';
 
 export {
   SignUpPage,
@@ -18,4 +19,5 @@ export {
   StartPage2,
   StartPage3,
   WorkList,
+  ProjectsPage,
 };

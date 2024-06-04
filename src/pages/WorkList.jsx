@@ -2,10 +2,10 @@ import WorkHeader from '../components/WorkHeader';
 import WorkFooter from '../components/WorkFooter';
 import ToDo from '../components/ToDo';
 import ModalFilter from '../components/shared/ModalFilter';
+import ModalCreate from '../components/shared/ModalCreate';
 
 import { getToDo } from '../axios';
 import { useEffect, useState } from 'react';
-import ModalCreate from '../components/shared/ModalCreate';
 
 const WorkList = () => {
   const [toDo, setToDo] = useState([]);
