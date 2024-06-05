@@ -6,6 +6,7 @@ import {
   SuccesfulPage,
   WorkList,
   ProjectsPage,
+  QuickPage,
 } from './index';
 
 import { Routes, Route } from 'react-router-dom';
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<WorkList />} />
         <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/quick" element={<QuickPage />} />
         <Route path="/register" element={<SignUpPage />} />
         <Route path="/login" element={<SignInPage />} />
         <Route path="/forgot" element={<ForgotPasswordPage />} />
