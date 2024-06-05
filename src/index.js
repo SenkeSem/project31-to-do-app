@@ -9,6 +9,7 @@ import StartPage3 from './pages/StartPage3';
 import WorkList from './pages/WorkList';
 import ProjectsPage from './pages/ProjectsPage';
 import QuickPage from './pages/QuickPage';
+import ProfilePage from './pages/ProfilePage';
 
 export {
   SignUpPage,
@@ -22,4 +23,5 @@ export {
   WorkList,
   ProjectsPage,
   QuickPage,
+  ProfilePage,
 };

@@ -31,10 +31,12 @@ const WorkFooter = ({ handleOpenMenu }) => {
               <p className="text-xs italic font-thin">Quick</p>
             </li>
           </Link>
-          <li className="h-11 flex flex-col items-center justify-between cursor-pointer text-textMenuGray">
-            <img width={19} src="/public/profile.svg" alt="profile" />
-            <p className="text-xs italic font-thin">Profile</p>
-          </li>
+          <Link to="/profile">
+            <li className="h-11 flex flex-col items-center justify-between cursor-pointer text-textMenuGray">
+              <img width={19} src="/public/profile.svg" alt="profile" />
+              <p className="text-xs italic font-thin">Profile</p>
+            </li>
+          </Link>
         </ul>
       </nav>
     </div>
