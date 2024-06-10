@@ -2,7 +2,6 @@ import WorkHeader from '../components/WorkHeader';
 import WorkFooter from '../components/WorkFooter';
 import ToDo from '../components/ToDo';
 import ModalFilter from '../components/shared/ModalFilter';
-import ModalCreate from '../components/shared/ModalCreate';
 
 import { getToDo } from '../axios';
 import { useEffect, useState } from 'react';
@@ -10,14 +9,9 @@ import { useEffect, useState } from 'react';
 const WorkList = () => {
   const [toDo, setToDo] = useState([]);
   const [isOpenFilter, setIsOpenFilter] = useState(false);
-  const [isCreateMenuOpen, setIsCreateMenuOpen] = useState(false);
 
   const handleFilter = () => {
     setIsOpenFilter(!isOpenFilter);
-  };
-
-  const handleOpenMenu = () => {
-    setIsCreateMenuOpen(!isCreateMenuOpen);
   };
 
   useEffect(() => {
@@ -39,7 +33,7 @@ const WorkList = () => {
         ))}
       </main>
       <footer className="w-full sticky bottom-0">
-        <WorkFooter handleOpenMenu={handleOpenMenu} />
+        <WorkFooter />
       </footer>
       {isOpenFilter && (
         <ModalFilter setActive={setIsOpenFilter}>
@@ -50,20 +44,6 @@ const WorkList = () => {
           <p>Completed Tasks</p>
           <p>All Tasks</p>
         </ModalFilter>
-      )}
-
-      {isCreateMenuOpen && (
-        <ModalCreate setActive={setIsCreateMenuOpen}>
-          <p className="w-full h-full flex items-center justify-center border-b-lightGray border-b-2 cursor-pointer">
-            Add Task
-          </p>
-          <p className="w-full h-full flex items-center justify-center border-b-lightGray border-b-2 cursor-pointer">
-            Add Quick Note
-          </p>
-          <p className="w-full h-full flex items-center justify-center cursor-pointer">
-            Add Check List
-          </p>
-        </ModalCreate>
       )}
     </div>
   );

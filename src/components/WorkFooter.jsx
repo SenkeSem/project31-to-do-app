@@ -1,6 +1,15 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
-const WorkFooter = ({ handleOpenMenu }) => {
+import ModalCreate from './shared/ModalCreate';
+
+const WorkFooter = () => {
+  const [isCreateMenuOpen, setIsCreateMenuOpen] = useState(false);
+
+  const handleOpenMenu = () => {
+    setIsCreateMenuOpen(!isCreateMenuOpen);
+  };
+
   return (
     <div className="w-full h-24 bg-workMenuDarkBlue">
       <nav>
@@ -39,6 +48,20 @@ const WorkFooter = ({ handleOpenMenu }) => {
           </Link>
         </ul>
       </nav>
+
+      {isCreateMenuOpen && (
+        <ModalCreate setActive={setIsCreateMenuOpen}>
+          <p className="w-full h-full flex items-center justify-center border-b-lightGray border-b-2 cursor-pointer">
+            Add Task
+          </p>
+          <p className="w-full h-full flex items-center justify-center border-b-lightGray border-b-2 cursor-pointer">
+            Add Quick Note
+          </p>
+          <p className="w-full h-full flex items-center justify-center cursor-pointer">
+            Add Check List
+          </p>
+        </ModalCreate>
+      )}
     </div>
   );
 };
