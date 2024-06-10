@@ -1,8 +1,13 @@
 import WorkFooter from '../components/WorkFooter';
 import ProjectItem from '../components/shared/ProjectItem';
 import Button from '../components/shared/Button';
+import ModalCreateProject from '../components/shared/ModalCreateProject';
+
+import { useState } from 'react';
 
 const ProjectsPage = () => {
+  const [isOpenCreateMenu, setIsOpenCreateMenu] = useState(false);
+
   return (
     <div className="flex flex-col bg-backColorMenu">
       <header className="w-full h-20 flex items-end justify-center pb-3  italic font-thin text-xl bg-signUpWhite">
@@ -15,7 +20,34 @@ const ProjectsPage = () => {
           <ProjectItem title={'Home'} tasks={7} color={'green'} />
           <ProjectItem title={'Meet'} tasks={2} color={'purple'} />
         </div>
-        <Button type={'bigBlue'}>+</Button>
+        <Button isActive={() => setIsOpenCreateMenu(!isOpenCreateMenu)} type={'bigBlue'}>
+          +
+        </Button>
+
+        {isOpenCreateMenu && (
+          <ModalCreateProject setActive={setIsOpenCreateMenu}>
+            <section>
+              <p className="italic font-thin text-xl">Title</p>
+              <textarea
+                className="w-full resize-none font-medium text-base text-homeLineBlack"
+                placeholder="My new awesome project..."
+                name="createProject"
+                id="createProject"></textarea>
+            </section>
+            <section className="mt-8">
+              <h4 className="text-lg italic font-thin">Choose Color</h4>
+              <div className="flex gap-3 mt-4">
+                <div className="w-12 h-12 bg-todoBlue cursor-pointer rounded-lg flex items-center justify-center">
+                  <img width={18} src="/public/whiteCheck.svg" alt="whiteCheck" />
+                </div>
+                <div className="w-12 h-12 bg-projectRed cursor-pointer rounded-lg"></div>
+                <div className="w-12 h-12 bg-projectGreen cursor-pointer rounded-lg"></div>
+                <div className="w-12 h-12 bg-ChooseColor4 cursor-pointer rounded-lg"></div>
+                <div className="w-12 h-12 bg-ChooseColor5 cursor-pointer rounded-lg"></div>
+              </div>
+            </section>
+          </ModalCreateProject>
+        )}
       </main>
       <footer className="w-full sticky bottom-0">
         <WorkFooter />

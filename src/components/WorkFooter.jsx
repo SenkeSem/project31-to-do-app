@@ -11,7 +11,7 @@ const WorkFooter = () => {
   };
 
   return (
-    <div className="w-full h-24 bg-workMenuDarkBlue">
+    <div className="w-full h-20 bg-workMenuDarkBlue">
       <nav>
         <ul className="flex justify-between p-4 text-signUpWhite">
           <Link to="/">
