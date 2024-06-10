@@ -10,6 +10,7 @@ import WorkList from './pages/WorkList';
 import ProjectsPage from './pages/ProjectsPage';
 import QuickPage from './pages/QuickPage';
 import ProfilePage from './pages/ProfilePage';
+import CreateNotePage from './pages/CreateNotePage';
 
 export {
   SignUpPage,
@@ -24,4 +25,5 @@ export {
   ProjectsPage,
   QuickPage,
   ProfilePage,
+  CreateNotePage,
 };

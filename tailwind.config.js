@@ -20,6 +20,8 @@ export default {
       projectGreen: '#5ABB56',
       projectPurple: '#BC79C3',
       sliderPurple: '#8560F9',
+      ChooseColor4: '#3D3A62',
+      ChooseColor5: '#F4CA8F',
     },
     fontFamily: {
       main: ['Roboto'],

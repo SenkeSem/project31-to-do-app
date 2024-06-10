@@ -8,6 +8,7 @@ import {
   ProjectsPage,
   QuickPage,
   ProfilePage,
+  CreateNotePage,
 } from './index';
 
 import { Routes, Route } from 'react-router-dom';
@@ -27,6 +28,7 @@ function App() {
         <Route path="/forgot" element={<ForgotPasswordPage />} />
         <Route path="/reset" element={<ResetPasswordPage />} />
         <Route path="/succesful" element={<SuccesfulPage />} />
+        <Route path="/note" element={<CreateNotePage />} />
       </Routes>
     </>
   );
