@@ -58,7 +58,7 @@ const WorkFooter = () => {
             <Link to="/note">Add Quick Note</Link>
           </p>
           <p className="w-full h-full flex items-center justify-center cursor-pointer">
-            Add Check List
+            <Link to="/checklist">Add Check List</Link>
           </p>
         </ModalCreate>
       )}

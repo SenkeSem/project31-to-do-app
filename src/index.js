@@ -11,6 +11,7 @@ import ProjectsPage from './pages/ProjectsPage';
 import QuickPage from './pages/QuickPage';
 import ProfilePage from './pages/ProfilePage';
 import CreateNotePage from './pages/CreateNotePage';
+import CreateCheckList from './pages/CreateCheckList';
 
 export {
   SignUpPage,
@@ -26,4 +27,5 @@ export {
   QuickPage,
   ProfilePage,
   CreateNotePage,
+  CreateCheckList,
 };

@@ -22,6 +22,7 @@ export default {
       sliderPurple: '#8560F9',
       ChooseColor4: '#3D3A62',
       ChooseColor5: '#F4CA8F',
+      veryLightGray: '#F4F4F4',
     },
     fontFamily: {
       main: ['Roboto'],

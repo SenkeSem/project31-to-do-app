@@ -9,6 +9,7 @@ import {
   QuickPage,
   ProfilePage,
   CreateNotePage,
+  CreateCheckList,
 } from './index';
 
 import { Routes, Route } from 'react-router-dom';
@@ -29,6 +30,7 @@ function App() {
         <Route path="/reset" element={<ResetPasswordPage />} />
         <Route path="/succesful" element={<SuccesfulPage />} />
         <Route path="/note" element={<CreateNotePage />} />
+        <Route path="/checklist" element={<CreateCheckList />} />
       </Routes>
     </>
   );
