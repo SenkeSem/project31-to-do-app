@@ -23,6 +23,10 @@ export default {
       ChooseColor4: '#3D3A62',
       ChooseColor5: '#F4CA8F',
       veryLightGray: '#F4F4F4',
+      descriptionGray: '#9E9E9E',
+      borderGray: '#EAEAEA',
+      notVeryLightGray: '#F8F8F8',
+      buttonGray: '#CCCCCC',
     },
     fontFamily: {
       main: ['Roboto'],

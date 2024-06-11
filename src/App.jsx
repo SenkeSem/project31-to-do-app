@@ -10,6 +10,7 @@ import {
   ProfilePage,
   CreateNotePage,
   CreateCheckList,
+  CreateTaskPage,
 } from './index';
 
 import { Routes, Route } from 'react-router-dom';
@@ -29,6 +30,7 @@ function App() {
         <Route path="/forgot" element={<ForgotPasswordPage />} />
         <Route path="/reset" element={<ResetPasswordPage />} />
         <Route path="/succesful" element={<SuccesfulPage />} />
+        <Route path="/task" element={<CreateTaskPage />} />
         <Route path="/note" element={<CreateNotePage />} />
         <Route path="/checklist" element={<CreateCheckList />} />
       </Routes>

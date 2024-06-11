@@ -52,7 +52,7 @@ const WorkFooter = () => {
       {isCreateMenuOpen && (
         <ModalCreate setActive={setIsCreateMenuOpen}>
           <p className="w-full h-full flex items-center justify-center border-b-lightGray border-b-2 cursor-pointer">
-            Add Task
+            <Link to="/task">Add Task</Link>
           </p>
           <p className="w-full h-full flex items-center justify-center border-b-lightGray border-b-2 cursor-pointer">
             <Link to="/note">Add Quick Note</Link>
