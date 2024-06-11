@@ -1,7 +1,12 @@
+import { useState } from 'react';
 import ArrowLeft from '../components/icons/ArrowLeft';
 import Button from '../components/shared/Button';
+import ModalCalendar from '../components/shared/ModalCalendar';
+import Calendar from '../components/shared/Calendar';
 
 const CreateTaskPage = () => {
+  const [isOpenCalendar, setIsOpenCalendar] = useState(false);
+
   return (
     <div className="flex flex-col">
       <header>
@@ -58,7 +63,9 @@ const CreateTaskPage = () => {
 
           <section className="w-full h-16 bg-lightGray mt-6 flex items-center gap-3">
             <h4 className="ml-7 font-medium text-base text-homeLineBlack">Due Date</h4>
-            <Button type={'smallBlue'}>Anytime</Button>
+            <Button isActive={() => setIsOpenCalendar(!isOpenCalendar)} type={'smallBlue'}>
+              Anytime
+            </Button>
           </section>
 
           <section className="px-6 mt-6">
@@ -74,6 +81,18 @@ const CreateTaskPage = () => {
             <Button type={'primary'}>Add Task</Button>
           </div>
         </div>
+
+        {isOpenCalendar && (
+          <ModalCalendar setActive={setIsOpenCalendar}>
+            <h4 className="text-center mt-7 italic font-thin text-homeLineBlack text-sm uppercase">
+              August 2018
+            </h4>
+            <Calendar />
+            <div className="px-[96px] mt-5">
+              <Button type={'primary'}>Done</Button>
+            </div>
+          </ModalCalendar>
+        )}
       </main>
       <footer className="w-full sticky bottom-0 h-20 bg-workMenuDarkBlue"></footer>
     </div>
