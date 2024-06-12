@@ -69,16 +69,7 @@ const WorkList = () => {
       <footer className="w-full sticky bottom-0">
         <WorkFooter />
       </footer>
-      {isOpenFilter && (
-        <ModalFilter setActive={setIsOpenFilter}>
-          <p className="flex justify-between">
-            Incomplete Tasks
-            <img src="/public/greenCheck.svg" alt="greenCheck" />
-          </p>
-          <p>Completed Tasks</p>
-          <p>All Tasks</p>
-        </ModalFilter>
-      )}
+      {isOpenFilter && <ModalFilter setActive={setIsOpenFilter} />}
     </div>
   );
 };
