@@ -42,7 +42,7 @@ const WorkList = () => {
                   width={14}
                   src="/public/open.svg"
                   alt="open"
-                  className=" rotate-180"
+                  className="rotate-180 cursor-pointer"
                 />
               ) : (
                 <img
@@ -50,6 +50,7 @@ const WorkList = () => {
                   width={14}
                   src="/public/open.svg"
                   alt="open"
+                  className="cursor-pointer"
                 />
               )}
             </div>
