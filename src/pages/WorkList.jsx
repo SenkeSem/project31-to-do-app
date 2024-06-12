@@ -12,7 +12,7 @@ const WorkList = () => {
   const [toDo, setToDo] = useState([]);
   const [isOpenFilter, setIsOpenFilter] = useState(false);
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
-  const [isToday, setIsToday] = useState(false);
+  const [isTodayActive, setIsTodayActive] = useState(false);
 
   const handleFilter = () => {
     setIsOpenFilter(!isOpenFilter);
@@ -25,10 +25,14 @@ const WorkList = () => {
   return (
     <div className="flex flex-col">
       <header>
-        <WorkHeader monthActive={setIsToday} isToday={isToday} handler={handleFilter} />
+        <WorkHeader
+          monthActive={setIsTodayActive}
+          isTodayActive={isTodayActive}
+          handler={handleFilter}
+        />
       </header>
       <main className="w-full">
-        {isToday && (
+        {isTodayActive && (
           <div className="shadow-lg pb-4">
             <div className="flex items-center justify-center mt-4 gap-3 italic font-thin text-homeLineBlack text-sm uppercase">
               <h5>August 2018</h5>
