@@ -11,6 +11,7 @@ import {
   CreateNotePage,
   CreateCheckList,
   CreateTaskPage,
+  ViewTaskPage,
 } from './index';
 
 import { Routes, Route } from 'react-router-dom';
@@ -33,6 +34,7 @@ function App() {
         <Route path="/task" element={<CreateTaskPage />} />
         <Route path="/note" element={<CreateNotePage />} />
         <Route path="/checklist" element={<CreateCheckList />} />
+        <Route path="/view" element={<ViewTaskPage />} />
       </Routes>
     </>
   );

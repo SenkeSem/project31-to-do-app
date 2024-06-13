@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import GreenCheck from '../icons/GreenCheck.jsx';
 
 const ModalFilter = ({ setActive }) => {
   const filterPoint = ['Incomplete Tasks', 'Completed Tasks', 'All Tasks'];
@@ -18,7 +19,7 @@ const ModalFilter = ({ setActive }) => {
             onClick={() => setIsActiveFilter(id)}
             className="flex justify-between cursor-pointer">
             {item}
-            {isActiveFilter === id && <img src="/public/greenCheck.svg" alt="greenCheck" />}
+            {isActiveFilter === id && <GreenCheck />}
           </p>
         ))}
       </div>

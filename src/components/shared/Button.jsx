@@ -6,6 +6,11 @@ const Button = ({ isActive, children, type, disabled, ...props }) => {
     smallBlue: 'w-24 h-8 bg-todoBlue rounded-lg text-signUpWhite text-sm font-medium',
     addedItem: 'text-base italic font-thin mt-6',
     circleGray: 'bg-buttonGray w-8 h-8 rounded-full flex items-center justify-center',
+    circleRed: 'bg-btnRed w-8 h-8 rounded-full text-[#FFFFFF] font-medium text-center',
+    personal:
+      'w-[90px] h-[40px] rounded-lg border-[1px] border-[#E8E8E8] flex items-center justify-center text-[#6074F9] font-thin italic text-base cursor-pointer',
+    bluePrimary: 'bg-todoBlue w-full h-12 italic text-lg font-thin text-signUpWhite rounded',
+    comment: 'w-full italic text-lg font-thin flex items-center justify-center gap-[21px]',
   };
 
   return (

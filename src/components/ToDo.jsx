@@ -8,7 +8,7 @@ const ToDo = ({ title }) => {
   };
 
   return (
-    <div className=" h-16 flex items-center mr-4 ml-4 mb-4 shadow-md shadow-shadowGray">
+    <div className="h-16 flex items-center mr-4 ml-4 mb-4 shadow-md shadow-shadowGray">
       {isReady ? (
         <div
           onClick={handleCompleted}

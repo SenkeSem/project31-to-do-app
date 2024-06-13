@@ -13,6 +13,7 @@ import ProfilePage from './pages/ProfilePage';
 import CreateNotePage from './pages/CreateNotePage';
 import CreateCheckList from './pages/CreateCheckList';
 import CreateTaskPage from './pages/CreateTaskPage';
+import ViewTaskPage from './pages/ViewTaskPage';
 
 export {
   SignUpPage,
@@ -30,4 +31,5 @@ export {
   CreateNotePage,
   CreateCheckList,
   CreateTaskPage,
+  ViewTaskPage,
 };
