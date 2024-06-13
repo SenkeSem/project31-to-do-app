@@ -2,6 +2,11 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 import ModalCreate from './shared/ModalCreate';
+import MyTask from '../components/icons/MyTask';
+import Menu from '../components/icons/Menu';
+import Quick from '../components/icons/Quick';
+import Profile from '../components/icons/Profile';
+import BigPlus from '../components/icons/BigPlus';
 
 const WorkFooter = () => {
   const [isCreateMenuOpen, setIsCreateMenuOpen] = useState(false);
@@ -16,33 +21,32 @@ const WorkFooter = () => {
         <ul className="flex justify-between p-4 text-signUpWhite">
           <Link to="/">
             <li className="h-11 flex flex-col items-center justify-between cursor-pointer">
-              <img width={24} src="/public/myTask.svg" alt="myTask" />
+              <MyTask />
               <p className="text-xs italic font-thin">My Task</p>
             </li>
           </Link>
+
           <Link to="/projects">
             <li className="h-11 flex flex-col items-center justify-between cursor-pointer text-textMenuGray">
-              <img width={24} src="/public/menu.svg" alt="menu" />
+              <Menu />
               <p className="text-xs italic font-thin">Menu</p>
             </li>
           </Link>
-          <li>
-            <img
-              onClick={handleOpenMenu}
-              className="relative -top-7 cursor-pointer"
-              src="/public/bigPlus.svg"
-              alt="bigPlus"
-            />
+
+          <li onClick={handleOpenMenu} className="relative -top-7 cursor-pointer">
+            <BigPlus />
           </li>
+
           <Link to="/quick">
             <li className="h-11 flex flex-col items-center justify-between cursor-pointer text-textMenuGray">
-              <img width={19} src="/public/quick.svg" alt="quick" />
+              <Quick />
               <p className="text-xs italic font-thin">Quick</p>
             </li>
           </Link>
+
           <Link to="/profile">
             <li className="h-11 flex flex-col items-center justify-between cursor-pointer text-textMenuGray">
-              <img width={19} src="/public/profile.svg" alt="profile" />
+              <Profile />
               <p className="text-xs italic font-thin">Profile</p>
             </li>
           </Link>
