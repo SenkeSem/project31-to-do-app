@@ -1,3 +1,5 @@
+import Chesterna from '../icons/Chesterna';
+
 const ProfileInfo = () => {
   return (
     <div className="relative rounded-lg shadow-md shadow-signUpGray">
@@ -18,11 +20,9 @@ const ProfileInfo = () => {
           <p className="text-base font-medium text-textGray">Completed Tasks</p>
         </div>
       </section>
-      <img
-        className="absolute top-3 right-3 cursor-pointer"
-        src="/public/profileMenu.svg"
-        alt="profileMenu"
-      />
+      <div className="absolute top-3 right-3 cursor-pointer">
+        <Chesterna />
+      </div>
     </div>
   );
 };

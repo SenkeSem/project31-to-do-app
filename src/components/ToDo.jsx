@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Complete from '../components/icons/Complete';
 
 const ToDo = ({ title }) => {
   const [isReady, setIsReady] = useState(false);
@@ -13,7 +14,7 @@ const ToDo = ({ title }) => {
         <div
           onClick={handleCompleted}
           className="w-5 h-5 rounded-full bg-btnRed ml-6 mr-6 cursor-pointer flex items-center justify-center">
-          <img src="/public/compete.svg" alt="compete" />
+          <Complete />
         </div>
       ) : (
         <div
