@@ -9,8 +9,13 @@ import DoubleDown from '../components/icons/DoubleDown';
 import { useState } from 'react';
 import ModalViewEdit from '../components/shared/ModalViewEdit';
 
+import Skrepka from '../components/icons/Skrepka';
+import Image from '../components/icons/Image';
+import Comment from '../components/shared/Comment';
+
 const ViewTaskPage = () => {
   const [isEdit, setItEdit] = useState(false);
+  const [isOpenComment, setIsOpenComment] = useState(false);
 
   return (
     <>
@@ -18,8 +23,8 @@ const ViewTaskPage = () => {
         <div className="bg-workMenuDarkBlue w-full h-16 absolute bottom-0"></div>
       </div>
 
-      <div className="w-screen h-screen bg-homeLineBlack bg-opacity-40 fixed left-0 top-0 flex justify-center px-4 pt-6 overflow-auto pb-[35px]">
-        <div className="rounded-lg bg-signUpWhite w-full h-screen relative pt-[56px] pl-[24px] pr-[24px]">
+      <div className="w-screen h-screen bg-homeLineBlack bg-opacity-40 fixed left-0 top-0 flex justify-center px-4 pt-6 pb-6 overflow-scroll">
+        <div className="rounded-lg bg-signUpWhite w-full h-max relative pt-[56px] px-6 pb-10">
           <div className="absolute top-4 left-4 cursor-pointer">
             <BlackCross />
           </div>
@@ -88,14 +93,47 @@ const ViewTaskPage = () => {
                 </div>
               </div>
             </article>
-            <div className="mt-8">
+
+            {isOpenComment && (
+              <>
+                <article className="mt-[33px]">
+                  <div className="w-full h-32 flex flex-col justify-between mt-3">
+                    <textarea
+                      name="description"
+                      id="description"
+                      placeholder="Write a comment"
+                      className="w-full h-full border-[1px] border-borderGray rounded-t-xl pt-[18px] pl-4 resize-none"></textarea>
+                    <div className="bg-notVeryLightGray h-12 flex items-center justify-between py-[14px] pl-4 pr-5 border-b-[1px] border-x-[1px] rounded-b-xl border-borderGray">
+                      <div className="flex gap-5">
+                        <Image />
+                        <Skrepka />
+                      </div>
+                      <Button type={'send'}>Send</Button>
+                    </div>
+                  </div>
+                </article>
+
+                <article className=" mt-9">
+                  <Comment name={'Stephen Chow'} daysAgo={3}>
+                    <p>Lorem ipsum dolor sit amet,consectetur adipiscing. </p>
+                  </Comment>
+                  <Comment name={'Its not Stephen Chow'} daysAgo={15}>
+                    <img src="/public/man.png" alt="man" />
+                  </Comment>
+                </article>
+              </>
+            )}
+
+            <div className="mt-[38px]">
               <Button type={'bluePrimary'}>Complete Task</Button>
             </div>
-            <div className="mt-4">
-              <Button type={'comment'}>
-                Comment <DoubleDown />
-              </Button>
-            </div>
+            {!isOpenComment && (
+              <div className="mt-4">
+                <Button isActive={() => setIsOpenComment(!isOpenComment)} type={'comment'}>
+                  Comment <DoubleDown />
+                </Button>
+              </div>
+            )}
           </section>
 
           {isEdit && (

@@ -11,6 +11,7 @@ const Button = ({ isActive, children, type, disabled, ...props }) => {
       'w-[90px] h-[40px] rounded-lg border-[1px] border-[#E8E8E8] flex items-center justify-center text-[#6074F9] font-thin italic text-base cursor-pointer',
     bluePrimary: 'bg-todoBlue w-full h-12 italic text-lg font-thin text-signUpWhite rounded',
     comment: 'w-full italic text-lg font-thin flex items-center justify-center gap-[21px]',
+    send: 'italic text-[17px] text-todoBlue font-thin',
   };
 
   return (
