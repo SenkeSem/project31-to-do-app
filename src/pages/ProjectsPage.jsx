@@ -4,6 +4,7 @@ import Button from '../components/shared/Button';
 import ModalCreateProject from '../components/shared/ModalCreateProject';
 
 import { useState } from 'react';
+import ChooseColor from '../components/shared/ChooseColor';
 
 const ProjectsPage = () => {
   const [isOpenCreateMenu, setIsOpenCreateMenu] = useState(false);
@@ -35,16 +36,7 @@ const ProjectsPage = () => {
                 id="createProject"></textarea>
             </section>
             <section className="mt-8">
-              <h4 className="text-lg italic font-thin">Choose Color</h4>
-              <div className="flex gap-3 mt-4">
-                <div className="w-12 h-12 bg-todoBlue cursor-pointer rounded-lg flex items-center justify-center">
-                  <img width={18} src="/public/whiteCheck.svg" alt="whiteCheck" />
-                </div>
-                <div className="w-12 h-12 bg-projectRed cursor-pointer rounded-lg"></div>
-                <div className="w-12 h-12 bg-projectGreen cursor-pointer rounded-lg"></div>
-                <div className="w-12 h-12 bg-ChooseColor4 cursor-pointer rounded-lg"></div>
-                <div className="w-12 h-12 bg-ChooseColor5 cursor-pointer rounded-lg"></div>
-              </div>
+              <ChooseColor />
             </section>
           </ModalCreateProject>
         )}
