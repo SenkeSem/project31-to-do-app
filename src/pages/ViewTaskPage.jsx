@@ -6,8 +6,12 @@ import Members from '../components/icons/Members';
 import Button from '../components/shared/Button';
 import Chain from '../components/icons/Chain';
 import DoubleDown from '../components/icons/DoubleDown';
+import { useState } from 'react';
+import ModalViewEdit from '../components/shared/ModalViewEdit';
 
 const ViewTaskPage = () => {
+  const [isEdit, setItEdit] = useState(false);
+
   return (
     <>
       <div className="w-screen h-screen bg-btnRed">
@@ -19,7 +23,7 @@ const ViewTaskPage = () => {
           <div className="absolute top-4 left-4 cursor-pointer">
             <BlackCross />
           </div>
-          <div className="absolute top-3 right-4 cursor-pointer">
+          <div onClick={() => setItEdit(!isEdit)} className="absolute top-3 right-4 cursor-pointer">
             <Chesterna />
           </div>
           <section>
@@ -93,6 +97,14 @@ const ViewTaskPage = () => {
               </Button>
             </div>
           </section>
+
+          {isEdit && (
+            <ModalViewEdit setActive={setItEdit}>
+              <p>Add Member</p>
+              <p>Edit Task</p>
+              <p>Delete Task</p>
+            </ModalViewEdit>
+          )}
         </div>
       </div>
     </>
