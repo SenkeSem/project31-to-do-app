@@ -5,22 +5,26 @@ import ModalFilter from '../components/shared/ModalFilter';
 import Calendar from '../components/shared/Calendar';
 import MiniCalendar from '../components/shared/MiniCalendar';
 
-import { getToDo } from '../axios';
+// import { getToDo } from '../axios';
 import { useEffect, useState } from 'react';
 
+import { useGetPeopleQuery } from '../redux/mokeApi';
+
 const WorkList = () => {
-  const [toDo, setToDo] = useState([]);
+  // const [toDo, setToDo] = useState([]);
   const [isOpenFilter, setIsOpenFilter] = useState(false);
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [isTodayActive, setIsTodayActive] = useState(false);
+
+  const { data, isFetching, error } = useGetPeopleQuery();
 
   const handleFilter = () => {
     setIsOpenFilter(!isOpenFilter);
   };
 
-  useEffect(() => {
-    getToDo().then((value) => setToDo(value));
-  }, []);
+  // useEffect(() => {
+  //   getToDo().then((value) => setToDo(value));
+  // }, []);
 
   return (
     <div className="flex flex-col">
@@ -57,13 +61,16 @@ const WorkList = () => {
             {isCalendarOpen ? <Calendar /> : <MiniCalendar />}
           </div>
         )}
-
         <h4 className="mt-6 ml-5 mb-5 font-thin italic text-sm uppercase text-textGray">
           Today, Aug 4/2018
         </h4>
 
-        {toDo.map((item) => (
+        {/* {toDo.map((item) => (
           <ToDo key={item.id} title={item.title} />
+        ))} */}
+
+        {data.results.map((item) => (
+          <ToDo key={item.name} title={item.name} />
         ))}
       </main>
       <footer className="w-full sticky bottom-0">
