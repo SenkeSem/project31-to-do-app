@@ -6,17 +6,13 @@ import Calendar from '../components/shared/Calendar';
 import MiniCalendar from '../components/shared/MiniCalendar';
 
 // import { getToDo } from '../axios';
-import { useEffect, useState } from 'react';
-
-import { useGetPeopleQuery } from '../redux/mokeApi';
+import { useState } from 'react';
 
 const WorkList = () => {
   // const [toDo, setToDo] = useState([]);
   const [isOpenFilter, setIsOpenFilter] = useState(false);
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [isTodayActive, setIsTodayActive] = useState(false);
-
-  const { data, isFetching, error } = useGetPeopleQuery();
 
   const handleFilter = () => {
     setIsOpenFilter(!isOpenFilter);
@@ -68,10 +64,6 @@ const WorkList = () => {
         {/* {toDo.map((item) => (
           <ToDo key={item.id} title={item.title} />
         ))} */}
-
-        {data.results.map((item) => (
-          <ToDo key={item.name} title={item.name} />
-        ))}
       </main>
       <footer className="w-full sticky bottom-0">
         <WorkFooter />

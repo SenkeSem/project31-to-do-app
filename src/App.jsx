@@ -23,11 +23,12 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<WorkList />} />
+        <Route path="/register" element={<SignUpPage />} />
+        <Route path="/login" element={<SignInPage />} />
+
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/quick" element={<QuickPage />} />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/register" element={<SignUpPage />} />
-        <Route path="/login" element={<SignInPage />} />
         <Route path="/forgot" element={<ForgotPasswordPage />} />
         <Route path="/reset" element={<ResetPasswordPage />} />
         <Route path="/succesful" element={<SuccesfulPage />} />

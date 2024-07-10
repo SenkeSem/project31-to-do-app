@@ -6,14 +6,22 @@ import Button from '../components/shared/Button.jsx';
 import { Link } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
 
+import { useCreateUserMutation } from '../redux/ToDoApi.js';
+
 const SignUpPage = () => {
   const methods = useForm({
     mode: 'onSubmit',
   });
   const { handleSubmit, reset } = methods;
 
-  const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+  const [createUser, { isError }] = useCreateUserMutation();
+
+  const onSubmit = async (data) => {
+    await createUser({
+      email: data.email,
+      password: data.password,
+      username: data.username,
+    });
     reset();
   };
 
@@ -25,8 +33,8 @@ const SignUpPage = () => {
 
       <FormProvider className="flex flex-col mt-7" {...methods}>
         <Input
-          id={'username'}
-          label={'Username'}
+          id={'email'}
+          label={'Email'}
           type={'email'}
           placeholder={'Enter your email'}
           validation={{
@@ -35,6 +43,20 @@ const SignUpPage = () => {
               value:
                 /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
               message: 'Вы ввели некорректный email',
+            },
+          }}
+        />
+
+        <Input
+          id={'username'}
+          label={'Username'}
+          type={'text'}
+          placeholder={'Enter your email'}
+          validation={{
+            required: 'Поле обязательно к заполнению!',
+            minLength: {
+              value: 5,
+              message: 'Минимум 5 символов!',
             },
           }}
         />
@@ -52,9 +74,11 @@ const SignUpPage = () => {
             },
           }}
         />
-        <Button onClick={handleSubmit(onSubmit)} type={'primary'}>
-          Sign Up
-        </Button>
+        <div className="mt-5">
+          <Button onClick={handleSubmit(onSubmit)} type={'primary'}>
+            Sign Up
+          </Button>
+        </div>
         <Link to="/login" className="text-center">
           <Button type={'secondary'}>Sign In</Button>
         </Link>
