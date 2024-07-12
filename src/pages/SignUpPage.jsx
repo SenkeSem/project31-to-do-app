@@ -14,7 +14,7 @@ const SignUpPage = () => {
   });
   const { handleSubmit, reset } = methods;
 
-  const [createUser, { isError }] = useCreateUserMutation();
+  const [createUser] = useCreateUserMutation();
 
   const onSubmit = async (data) => {
     await createUser({

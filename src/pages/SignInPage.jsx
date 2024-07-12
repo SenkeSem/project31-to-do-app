@@ -1,20 +1,28 @@
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
 import HeadingStartPages from '../components/HeadingStartPages';
 import Input from '../components/shared/Input';
 import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 import Button from '../components/shared/Button.jsx';
+import { useLoginUserMutation } from '../redux/ToDoApi.js';
 
 const SignInPage = () => {
   const methods = useForm({
     mode: 'onBlur',
   });
 
-  const { handleSubmit, reset } = methods;
+  const { handleSubmit } = methods;
 
-  const onSubmit = (data) => {
-    alert(data);
-    reset();
+  const [loginUser] = useLoginUserMutation();
+
+  const onSubmit = async (data) => {
+    let user = await loginUser({
+      email: data.email,
+      password: data.password,
+    });
+    localStorage.setItem('token', user.data.auth.sessionToken);
+
+    console.log(user);
   };
 
   return (
@@ -25,8 +33,8 @@ const SignInPage = () => {
 
         <FormProvider {...methods} className="flex flex-col mt-7">
           <Input
-            id={'username'}
-            label={'Username'}
+            id={'email'}
+            label={'Email'}
             type={'email'}
             placeholder={'Enter your email'}
             validation={{
