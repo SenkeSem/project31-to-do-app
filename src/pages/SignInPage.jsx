@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
 import HeadingStartPages from '../components/HeadingStartPages';
 import Input from '../components/shared/Input';
@@ -13,7 +13,7 @@ const SignInPage = () => {
   const { handleSubmit, reset } = methods;
 
   const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+    alert(data);
     reset();
   };
 
@@ -58,9 +58,11 @@ const SignInPage = () => {
             </Button>
           </Link>
 
-          <Button onClick={handleSubmit(onSubmit)} type={'primary'}>
-            Sign In
-          </Button>
+          <div className="mt-8">
+            <Button onClick={handleSubmit(onSubmit)} type={'primary'}>
+              Sign In
+            </Button>
+          </div>
 
           <Link to="/" className="text-center">
             <Button className={'mt-12 text-lg italic font-bold text-btnRed'}>Sign Up</Button>
