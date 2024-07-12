@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
 import HeadingStartPages from '../components/HeadingStartPages';
 import Input from '../components/shared/Input';
@@ -12,8 +12,9 @@ const SignInPage = () => {
   });
 
   const { handleSubmit } = methods;
+  const navigate = useNavigate();
 
-  const [loginUser] = useLoginUserMutation();
+  const [loginUser, { isError }] = useLoginUserMutation();
 
   const onSubmit = async (data) => {
     let user = await loginUser({
@@ -21,6 +22,7 @@ const SignInPage = () => {
       password: data.password,
     });
     localStorage.setItem('token', user.data.auth.sessionToken);
+    navigate('/');
 
     console.log(user);
   };
