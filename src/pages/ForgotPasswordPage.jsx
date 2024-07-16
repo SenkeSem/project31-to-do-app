@@ -45,11 +45,13 @@ const ForgotPasswordPage = () => {
               },
             }}
           />
-          <Button onClick={handleSubmit(onSubmit)} type={'primary'}>
-            <Link to="/reset" className="flex justify-center">
-              Send Request
-            </Link>
-          </Button>
+          <div className="mt-10">
+            <Button onClick={handleSubmit(onSubmit)} type={'primary'}>
+              <Link to="/reset" className="flex justify-center">
+                Send Request
+              </Link>
+            </Button>
+          </div>
         </FormProvider>
       </div>
     </div>

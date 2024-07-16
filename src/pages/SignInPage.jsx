@@ -1,9 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
+
 import HeadingStartPages from '../components/HeadingStartPages';
 import Input from '../components/shared/Input';
 import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 import Button from '../components/shared/Button.jsx';
+
 import { useLoginUserMutation } from '../redux/ToDoApi.js';
 
 const SignInPage = () => {
@@ -74,7 +76,7 @@ const SignInPage = () => {
             </Button>
           </div>
 
-          <Link to="/" className="text-center">
+          <Link to="/register" className="text-center">
             <Button className={'mt-12 text-lg italic font-bold text-btnRed'}>Sign Up</Button>
           </Link>
         </FormProvider>

@@ -25,15 +25,15 @@ function App() {
       <Routes>
         <Route path="/register" element={<SignUpPage />} />
         <Route path="/login" element={<SignInPage />} />
+        <Route path="/forgot" element={<ForgotPasswordPage />} />
+        <Route path="/succesful" element={<SuccesfulPage />} />
+        <Route path="/reset" element={<ResetPasswordPage />} />
 
         <Route element={<PrivateRoute />}>
           <Route path="/" element={<WorkList />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/quick" element={<QuickPage />} />
           <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/forgot" element={<ForgotPasswordPage />} />
-          <Route path="/reset" element={<ResetPasswordPage />} />
-          <Route path="/succesful" element={<SuccesfulPage />} />
           <Route path="/task" element={<CreateTaskPage />} />
           <Route path="/note" element={<CreateNotePage />} />
           <Route path="/checklist" element={<CreateCheckList />} />
