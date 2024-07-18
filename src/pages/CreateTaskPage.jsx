@@ -24,6 +24,7 @@ const CreateTaskPage = () => {
           <section className="flex items-center justify-between px-6">
             <article className="flex items-center gap-4">
               <h4 className="italic font-thin text-xl">For</h4>
+              {/* TODO: use <Input /> from shared */}
               <input
                 type="text"
                 placeholder="Assignee"

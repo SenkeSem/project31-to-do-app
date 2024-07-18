@@ -1,6 +1,9 @@
+// import logo from 'path'
+
 const StartPage2 = () => {
   return (
     <div className="flex flex-col items-center pt-10">
+      {/* TODO: add import of img like on the top */}
       <img width={314} src="/src/assets/GetStartedLogo2.png" alt="GetStartedLogo2" />
       <h2 className="text-2xl italic font-thin mt-12 z-10">Work happens</h2>
       <p className="mt-3 font-medium z-10">Get notified when work happens.</p>

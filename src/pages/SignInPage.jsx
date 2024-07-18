@@ -19,6 +19,8 @@ const SignInPage = () => {
   const [loginUser, { isError }] = useLoginUserMutation();
 
   const onSubmit = async (data) => {
+    // TODO: could you please add try catch for getting error, and add toast (check toast lib ) if you will get an error
+    // TODO: add try/catch everywhere, where you're using requests
     let user = await loginUser({
       email: data.email,
       password: data.password,

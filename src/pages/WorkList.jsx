@@ -118,6 +118,7 @@ const WorkList = () => {
           Today, Aug 4/2018
         </h4>
 
+        {/* TODO: use useMemo for mapping */}
         {toDo.map((item) => (
           <ToDo key={item.id} title={item.title} />
         ))}

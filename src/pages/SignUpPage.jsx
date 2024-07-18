@@ -14,9 +14,11 @@ const SignUpPage = () => {
   });
   const { handleSubmit, reset } = methods;
 
+  // TODO: get loading from here and show loader for button or common loader
   const [createUser] = useCreateUserMutation();
 
   const onSubmit = async (data) => {
+    // TODO: try/catch
     await createUser({
       email: data.email,
       password: data.password,

@@ -5,6 +5,7 @@ import Button from '../components/shared/Button';
 const CreateCheckList = () => {
   return (
     <div className="flex flex-col">
+      {/* TODO: make a special Layout component, and set header and footer inside and then use like <Layout> <CreateCheckList /> </Layout>*/}
       <header>
         <div className="w-full h-28 bg-btnRed flex justify-between pt-4 pr-4">
           <button className="absolute mt-2 ml-5">
@@ -41,11 +42,11 @@ const CreateCheckList = () => {
           <section className="mt-8">
             <h4 className="text-lg italic font-thin">Choose Color</h4>
             <div className="flex gap-3 mt-4">
-              <div className="w-12 h-12 bg-todoBlue cursor-pointer rounded-lg"></div>
-              <div className="w-12 h-12 bg-projectRed cursor-pointer rounded-lg"></div>
-              <div className="w-12 h-12 bg-projectGreen cursor-pointer rounded-lg"></div>
-              <div className="w-12 h-12 bg-ChooseColor4 cursor-pointer rounded-lg"></div>
-              <div className="w-12 h-12 bg-ChooseColor5 cursor-pointer rounded-lg"></div>
+              <div className="w-12 h-12 bg-todoBlue cursor-pointer rounded-lg" />
+              <div className="w-12 h-12 bg-projectRed cursor-pointer rounded-lg" />
+              <div className="w-12 h-12 bg-projectGreen cursor-pointer rounded-lg" />
+              <div className="w-12 h-12 bg-ChooseColor4 cursor-pointer rounded-lg" />
+              <div className="w-12 h-12 bg-ChooseColor5 cursor-pointer rounded-lg" />
             </div>
           </section>
           <Button type={'primary'}>Done</Button>
