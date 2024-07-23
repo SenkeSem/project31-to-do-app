@@ -1,9 +1,9 @@
-// import logo from 'path'
+import GetStartedLogo1 from '../assets/GetStartedLogo1.png';
+
 const StartPage1 = () => {
   return (
     <div className="flex flex-col items-center pt-10">
-      {/* TODO: add import of img like on the top */}
-      <img width={305} src="/src/assets/GetStartedLogo1.png" alt="GetStartedLogo1" />
+      <img width={305} src={GetStartedLogo1} alt="GetStartedLogo1" />
       <h2 className="text-2xl italic font-thin mt-12 z-10">Welcome to todo list</h2>
       <p className="mt-3 font-medium z-10">Whats going to happen tomorrow?</p>
       <div className="z-10">пагинация</div>

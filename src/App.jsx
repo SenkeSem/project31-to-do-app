@@ -12,6 +12,9 @@ import {
   CreateCheckList,
   CreateTaskPage,
   ViewTaskPage,
+  StartPage1,
+  StartPage2,
+  StartPage3,
 } from './index';
 
 import { Routes, Route } from 'react-router-dom';
@@ -28,6 +31,9 @@ function App() {
         <Route path="/forgot" element={<ForgotPasswordPage />} />
         <Route path="/succesful" element={<SuccesfulPage />} />
         <Route path="/reset" element={<ResetPasswordPage />} />
+        <Route path="/start1" element={<StartPage1 />} />
+        <Route path="/start2" element={<StartPage2 />} />
+        <Route path="/start3" element={<StartPage3 />} />
 
         <Route element={<PrivateRoute />}>
           <Route path="/" element={<WorkList />} />
