@@ -34,48 +34,57 @@ const SignUpPage = () => {
       <img className="mx-auto mt-7" width={107} height={104} src="/circle.png" alt="circle" />
 
       <FormProvider className="flex flex-col mt-7" {...methods}>
-        <Input
-          id={'email'}
-          label={'Email'}
-          type={'email'}
-          placeholder={'Enter your email'}
-          validation={{
-            required: 'Поле обязательно к заполнению!',
-            pattern: {
-              value:
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              message: 'Вы ввели некорректный email',
-            },
-          }}
-        />
+        <div className="mt-8">
+          <Input
+            id={'email'}
+            label={'Email'}
+            type={'email'}
+            style={'primary'}
+            placeholder={'Enter your email'}
+            validation={{
+              required: 'Поле обязательно к заполнению!',
+              pattern: {
+                value:
+                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                message: 'Вы ввели некорректный email',
+              },
+            }}
+          />
+        </div>
+        <div className="mt-8">
+          <Input
+            id={'username'}
+            label={'Username'}
+            type={'text'}
+            style={'primary'}
+            placeholder={'Enter your email'}
+            validation={{
+              required: 'Поле обязательно к заполнению!',
+              minLength: {
+                value: 5,
+                message: 'Минимум 5 символов!',
+              },
+            }}
+          />
+        </div>
+        <div className="mt-8">
+          {' '}
+          <Input
+            id={'password'}
+            label={'Password'}
+            type={'password'}
+            style={'primary'}
+            placeholder={'Enter your password'}
+            validation={{
+              required: 'Поле обязательно к заполнению!',
+              minLength: {
+                value: 5,
+                message: 'Минимум 5 символов!',
+              },
+            }}
+          />
+        </div>
 
-        <Input
-          id={'username'}
-          label={'Username'}
-          type={'text'}
-          placeholder={'Enter your email'}
-          validation={{
-            required: 'Поле обязательно к заполнению!',
-            minLength: {
-              value: 5,
-              message: 'Минимум 5 символов!',
-            },
-          }}
-        />
-
-        <Input
-          id={'password'}
-          label={'Password'}
-          type={'password'}
-          placeholder={'Enter your password'}
-          validation={{
-            required: 'Поле обязательно к заполнению!',
-            minLength: {
-              value: 5,
-              message: 'Минимум 5 символов!',
-            },
-          }}
-        />
         <div className="mt-5">
           <Button onClick={handleSubmit(onSubmit)} type={'primary'}>
             Sign Up

@@ -38,33 +38,40 @@ const SignInPage = () => {
         <HeadingStartPages head={'Welcome back'} text={'Sign in to continue'} />
 
         <FormProvider {...methods} className="flex flex-col mt-7">
-          <Input
-            id={'email'}
-            label={'Email'}
-            type={'email'}
-            placeholder={'Enter your email'}
-            validation={{
-              required: 'Поле обязательно к заполнению!',
-              pattern: {
-                value:
-                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: 'Вы ввели некорректный email',
-              },
-            }}
-          />
-          <Input
-            id={'password'}
-            label={'Password'}
-            type={'password'}
-            placeholder={'Enter your password'}
-            validation={{
-              required: 'Поле обязательно к заполнению!',
-              minLength: {
-                value: 5,
-                message: 'Минимум 5 символов!',
-              },
-            }}
-          />
+          <div className="mt-8">
+            <Input
+              id={'email'}
+              label={'Email'}
+              type={'email'}
+              style={'primary'}
+              placeholder={'Enter your email'}
+              validation={{
+                required: 'Поле обязательно к заполнению!',
+                pattern: {
+                  value:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  message: 'Вы ввели некорректный email',
+                },
+              }}
+            />
+          </div>
+
+          <div className="mt-8">
+            <Input
+              id={'password'}
+              label={'Password'}
+              type={'password'}
+              style={'primary'}
+              placeholder={'Enter your password'}
+              validation={{
+                required: 'Поле обязательно к заполнению!',
+                minLength: {
+                  value: 5,
+                  message: 'Минимум 5 символов!',
+                },
+              }}
+            />
+          </div>
 
           <Link to="/forgot" className="text-end">
             <Button className={'text-right mt-3 font-thin italic text-lg'} htmlType="submit">
