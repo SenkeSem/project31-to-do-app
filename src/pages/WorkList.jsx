@@ -5,7 +5,7 @@ import ModalFilter from '../components/shared/ModalFilter';
 import Calendar from '../components/shared/Calendar';
 import MiniCalendar from '../components/shared/MiniCalendar';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
 const WorkList = () => {
   const toDo = [
@@ -118,10 +118,7 @@ const WorkList = () => {
           Today, Aug 4/2018
         </h4>
 
-        {/* TODO: use useMemo for mapping */}
-        {toDo.map((item) => (
-          <ToDo key={item.id} title={item.title} />
-        ))}
+        {useMemo(() => toDo.map((item) => <ToDo key={item.id} title={item.title} />), [toDo])}
       </main>
       <footer className="w-full sticky bottom-0">
         <WorkFooter />
