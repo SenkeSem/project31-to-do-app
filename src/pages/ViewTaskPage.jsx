@@ -8,6 +8,7 @@ import Chain from '../components/icons/Chain';
 import DoubleDown from '../components/icons/DoubleDown';
 import { useState } from 'react';
 import ModalViewEdit from '../components/shared/ModalViewEdit';
+import TextArea from '../components/shared/TextArea';
 
 import Skrepka from '../components/icons/Skrepka';
 import Image from '../components/icons/Image';
@@ -98,11 +99,12 @@ const ViewTaskPage = () => {
               <>
                 <article className="mt-[33px]">
                   <div className="w-full h-32 flex flex-col justify-between mt-3">
-                    <textarea
-                      name="description"
-                      id="description"
-                      placeholder="Write a comment"
-                      className="w-full h-full border-[1px] border-borderGray rounded-t-xl pt-[18px] pl-4 resize-none"></textarea>
+                    <TextArea
+                      placeholder={'Write a comment'}
+                      id={'description'}
+                      name={'description'}
+                      type={'viewTaskPage'}
+                    />
                     <div className="bg-notVeryLightGray h-12 flex items-center justify-between py-[14px] pl-4 pr-5 border-b-[1px] border-x-[1px] rounded-b-xl border-borderGray">
                       <div className="flex gap-5">
                         <Image />
