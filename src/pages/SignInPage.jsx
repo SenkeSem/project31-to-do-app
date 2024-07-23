@@ -8,6 +8,9 @@ import Button from '../components/shared/Button.jsx';
 
 import { useLoginUserMutation } from '../redux/ToDoApi.js';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const SignInPage = () => {
   const methods = useForm({
     mode: 'onBlur',
@@ -16,19 +19,30 @@ const SignInPage = () => {
   const { handleSubmit } = methods;
   const navigate = useNavigate();
 
-  const [loginUser, { isError }] = useLoginUserMutation();
+  const [loginUser] = useLoginUserMutation();
 
   const onSubmit = async (data) => {
-    // TODO: could you please add try catch for getting error, and add toast (check toast lib ) if you will get an error
-    // TODO: add try/catch everywhere, where you're using requests
-    let user = await loginUser({
-      email: data.email,
-      password: data.password,
-    });
-    localStorage.setItem('token', user.data.auth.sessionToken);
-    navigate('/');
+    try {
+      let user = await loginUser({
+        email: data.email,
+        password: data.password,
+      });
+      localStorage.setItem('token', user.data.auth.sessionToken);
+      navigate('/');
 
-    console.log(user);
+      console.log(user);
+    } catch (error) {
+      toast.error('Login error!', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+    }
   };
 
   return (
@@ -90,6 +104,7 @@ const SignInPage = () => {
           </Link>
         </FormProvider>
       </div>
+      <ToastContainer />
     </div>
   );
 };
