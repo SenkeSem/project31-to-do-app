@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
 
 import { useCreateUserMutation } from '../redux/ToDoApi.js';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignUpPage = () => {
   const methods = useForm({
@@ -18,13 +20,25 @@ const SignUpPage = () => {
   const [createUser] = useCreateUserMutation();
 
   const onSubmit = async (data) => {
-    // TODO: try/catch
-    await createUser({
-      email: data.email,
-      password: data.password,
-      username: data.username,
-    });
-    reset();
+    try {
+      await createUser({
+        email: data.email,
+        password: data.password,
+        username: data.username,
+      });
+      reset();
+    } catch (error) {
+      toast.error('Registration error!', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+    }
   };
 
   return (
@@ -94,6 +108,7 @@ const SignUpPage = () => {
           <Button type={'secondary'}>Sign In</Button>
         </Link>
       </FormProvider>
+      <ToastContainer />
     </div>
   );
 };
