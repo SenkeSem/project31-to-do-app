@@ -73,11 +73,10 @@ const ViewTaskPage = () => {
               <div>
                 <h5 className="text-textGray font-medium text-base">Members</h5>
                 <div className="mt-[10px] flex gap-[5px]">
-                  {/* TODO: provide width by classNames */}
-                  <img width={32} src="/public/profilePhoto.png" alt="profilePhoto" />
-                  <img width={32} src="/public/profilePhoto.png" alt="profilePhoto" />
-                  <img width={32} src="/public/profilePhoto.png" alt="profilePhoto" />
-                  <img width={32} src="/public/profilePhoto.png" alt="profilePhoto" />
+                  <img className="w-[32px]" src="/public/profilePhoto.png" alt="profilePhoto" />
+                  <img className="w-[32px]" src="/public/profilePhoto.png" alt="profilePhoto" />
+                  <img className="w-[32px]" src="/public/profilePhoto.png" alt="profilePhoto" />
+                  <img className="w-[32px]" src="/public/profilePhoto.png" alt="profilePhoto" />
                   <Button type={'circleRed'}>···</Button>
                 </div>
               </div>
