@@ -16,29 +16,43 @@ const SignUpPage = () => {
   const methods = useForm({
     mode: 'onSubmit',
   });
-  const { handleSubmit, reset } = methods;
+  const { handleSubmit } = methods;
   const navigation = useNavigate();
 
   const [createUser, { isLoading }] = useCreateUserMutation();
 
   const onSubmit = async (data) => {
     try {
-      await createUser({
+      let responce = await createUser({
         email: data.email,
         password: data.password,
         username: data.username,
       });
-      reset();
-      toast.success('The user is registered!', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      });
+
+      if (responce?.error?.data === 'User is already exist') {
+        toast.error('Choose a different nickname!', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        });
+      }
+
+      if (responce.data) {
+        toast.success('The user is registered!', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        });
+        setTimeout(() => navigation('/login'), 2000);
+      }
     } catch (error) {
       toast.error('Registration error!', {
         position: 'top-right',
@@ -120,8 +134,8 @@ const SignUpPage = () => {
           <Button type={'secondary'}>Sign In</Button>
         </Link>
       </FormProvider>
-      <ToastContainer />
       {isLoading && <Loader />}
+      <ToastContainer />
     </div>
   );
 };
