@@ -3,7 +3,7 @@ import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 import Input from '../components/shared/Input';
 import Button from '../components/shared/Button.jsx';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
 
 import { useCreateUserMutation } from '../redux/ToDoApi.js';
@@ -16,6 +16,7 @@ const SignUpPage = () => {
     mode: 'onSubmit',
   });
   const { handleSubmit, reset } = methods;
+  const navigation = useNavigate();
 
   const [createUser, { isLoading }] = useCreateUserMutation();
 
@@ -27,6 +28,16 @@ const SignUpPage = () => {
         username: data.username,
       });
       reset();
+      toast.success('The user is registered!', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
     } catch (error) {
       toast.error('Registration error!', {
         position: 'top-right',
@@ -43,7 +54,7 @@ const SignUpPage = () => {
 
   return (
     <div className="flex flex-col mt-4 pl-7 pr-5 pb-3">
-      <ArrowLeft />
+      <ArrowLeft onClick={() => navigation(-1)} />
       <HeadingStartPages head={'Welcome'} text={'Sign up to continue'} />
       <img className="mx-auto mt-7" width={107} height={104} src="/circle.png" alt="circle" />
 

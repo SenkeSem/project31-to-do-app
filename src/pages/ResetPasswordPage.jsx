@@ -32,50 +32,61 @@ const ResetPasswordPage = () => {
           />
 
           <FormProvider {...methods} className="flex flex-col mt-7">
-            <Input
-              id={'username'}
-              label={'Reset code'}
-              type={'email'}
-              placeholder={'Enter your email'}
-              validation={{
-                required: 'Поле обязательно к заполнению!',
-                pattern: {
-                  value:
-                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                  message: 'Вы ввели некорректный email',
-                },
-              }}
-            />
-            <Input
-              id={'newPassword'}
-              type={'password'}
-              label={'New password'}
-              placeholder={'Enter your password'}
-              validation={{
-                required: 'Поле обязательно к заполнению!',
-                minLength: {
-                  value: 5,
-                  message: 'Минимум 5 символов!',
-                },
-              }}
-            />
-            <Input
-              id={'password'}
-              type={'password'}
-              label={'Confirm password'}
-              placeholder={'Enter your confirm password'}
-              validation={{
-                required: 'Поле обязательно к заполнению!',
-                minLength: {
-                  value: 5,
-                  message: 'Минимум 5 символов!',
-                },
-              }}
-            />
+            <div className="mt-8">
+              <Input
+                id={'username'}
+                label={'Reset code'}
+                type={'email'}
+                style={'primary'}
+                placeholder={'Enter your email'}
+                validation={{
+                  required: 'Поле обязательно к заполнению!',
+                  pattern: {
+                    value:
+                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    message: 'Вы ввели некорректный email',
+                  },
+                }}
+              />
+            </div>
+            <div className="mt-8">
+              <Input
+                id={'newPassword'}
+                type={'password'}
+                style={'primary'}
+                label={'New password'}
+                placeholder={'Enter your password'}
+                validation={{
+                  required: 'Поле обязательно к заполнению!',
+                  minLength: {
+                    value: 5,
+                    message: 'Минимум 5 символов!',
+                  },
+                }}
+              />
+            </div>
+            <div className="mt-8">
+              <Input
+                id={'password'}
+                type={'password'}
+                style={'primary'}
+                label={'Confirm password'}
+                placeholder={'Enter your confirm password'}
+                validation={{
+                  required: 'Поле обязательно к заполнению!',
+                  minLength: {
+                    value: 5,
+                    message: 'Минимум 5 символов!',
+                  },
+                }}
+              />
+            </div>
 
-            <Button onClick={handleSubmit(onSubmit)} type={'primary'}>
-              Change password
-            </Button>
+            <div className="mt-8">
+              <Button onClick={handleSubmit(onSubmit)} type={'primary'}>
+                Change password
+              </Button>
+            </div>
           </FormProvider>
         </div>
       </div>

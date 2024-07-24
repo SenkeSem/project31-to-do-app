@@ -96,18 +96,16 @@ const WorkList = () => {
               {isCalendarOpen ? (
                 <img
                   onClick={() => setIsCalendarOpen(!isCalendarOpen)}
-                  width={14}
                   src="/public/open.svg"
                   alt="open"
-                  className="rotate-180 cursor-pointer"
+                  className="rotate-180 cursor-pointer w-[14px]"
                 />
               ) : (
                 <img
                   onClick={() => setIsCalendarOpen(!isCalendarOpen)}
-                  width={14}
                   src="/public/open.svg"
                   alt="open"
-                  className="cursor-pointer"
+                  className="cursor-pointer w-[14px]"
                 />
               )}
             </div>

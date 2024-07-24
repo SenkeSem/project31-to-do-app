@@ -5,6 +5,7 @@ import HeadingStartPages from '../components/HeadingStartPages';
 import Input from '../components/shared/Input';
 import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 import Button from '../components/shared/Button.jsx';
+import Loader from '../components/loader/Loader.jsx';
 
 import { useLoginUserMutation } from '../redux/ToDoApi.js';
 
@@ -19,7 +20,7 @@ const SignInPage = () => {
   const { handleSubmit } = methods;
   const navigate = useNavigate();
 
-  const [loginUser] = useLoginUserMutation();
+  const [loginUser, { isLoading }] = useLoginUserMutation();
 
   const onSubmit = async (data) => {
     try {
@@ -28,9 +29,17 @@ const SignInPage = () => {
         password: data.password,
       });
       localStorage.setItem('token', user.data.auth.sessionToken);
-      navigate('/');
-
-      console.log(user);
+      toast.success('The user in the system!', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+      setTimeout(() => navigate('/'), 3000);
     } catch (error) {
       toast.error('Login error!', {
         position: 'top-right',
@@ -48,7 +57,7 @@ const SignInPage = () => {
   return (
     <div>
       <div className="flex flex-col h-full mt-4 pl-7 pr-5 pb-3">
-        <ArrowLeft />
+        <ArrowLeft onClick={() => navigate(-1)} />
         <HeadingStartPages head={'Welcome back'} text={'Sign in to continue'} />
 
         <FormProvider {...methods} className="flex flex-col mt-7">
@@ -105,6 +114,7 @@ const SignInPage = () => {
         </FormProvider>
       </div>
       <ToastContainer />
+      {isLoading && <Loader />}
     </div>
   );
 };

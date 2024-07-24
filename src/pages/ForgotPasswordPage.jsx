@@ -31,20 +31,23 @@ const ForgotPasswordPage = () => {
         />
 
         <FormProvider {...methods} className="flex flex-col mt-7">
-          <Input
-            id={'username'}
-            label={'Username'}
-            type={'email'}
-            placeholder={'Enter your email'}
-            validation={{
-              required: 'Поле обязательно к заполнению!',
-              pattern: {
-                value:
-                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: 'Вы ввели некорректный email',
-              },
-            }}
-          />
+          <div className="mt-8">
+            <Input
+              id={'username'}
+              label={'Username'}
+              type={'email'}
+              style={'primary'}
+              placeholder={'Enter your email'}
+              validation={{
+                required: 'Поле обязательно к заполнению!',
+                pattern: {
+                  value:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  message: 'Вы ввели некорректный email',
+                },
+              }}
+            />
+          </div>
           <div className="mt-10">
             <Button onClick={handleSubmit(onSubmit)} type={'primary'}>
               <Link to="/reset" className="flex justify-center">
