@@ -6,14 +6,36 @@ import Button from '../components/shared/Button.jsx';
 import { Link } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const ResetPasswordPage = () => {
   const methods = useForm({ mode: 'onChange' });
 
-  const { handleSubmit, reset } = methods;
+  const { handleSubmit } = methods;
 
   const onSubmit = (data) => {
-    alert(JSON.stringify(data));
-    reset();
+    data.newPassword === data.password
+      ? toast.success('The password has been changed!', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        })
+      : toast.error("Passwords don't match!", {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        });
   };
 
   return (
@@ -34,17 +56,16 @@ const ResetPasswordPage = () => {
           <FormProvider {...methods} className="flex flex-col mt-7">
             <div className="mt-8">
               <Input
-                id={'username'}
+                id={'code'}
                 label={'Reset code'}
-                type={'email'}
+                type={'number'}
                 style={'primary'}
-                placeholder={'Enter your email'}
+                placeholder={'Enter your code'}
                 validation={{
                   required: 'Поле обязательно к заполнению!',
-                  pattern: {
-                    value:
-                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                    message: 'Вы ввели некорректный email',
+                  minLength: {
+                    value: 4,
+                    message: 'Минимум 4 символов!',
                   },
                 }}
               />
@@ -90,6 +111,7 @@ const ResetPasswordPage = () => {
           </FormProvider>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
