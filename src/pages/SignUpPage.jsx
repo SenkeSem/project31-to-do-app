@@ -9,6 +9,7 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { useCreateUserMutation } from '../redux/ToDoApi.js';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loader from '../components/loader/Loader.jsx';
 
 const SignUpPage = () => {
   const methods = useForm({
@@ -16,8 +17,7 @@ const SignUpPage = () => {
   });
   const { handleSubmit, reset } = methods;
 
-  // TODO: get loading from here and show loader for button or common loader
-  const [createUser] = useCreateUserMutation();
+  const [createUser, { isLoading }] = useCreateUserMutation();
 
   const onSubmit = async (data) => {
     try {
@@ -109,6 +109,7 @@ const SignUpPage = () => {
         </Link>
       </FormProvider>
       <ToastContainer />
+      {isLoading && <Loader />}
     </div>
   );
 };
