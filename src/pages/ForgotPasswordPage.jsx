@@ -3,19 +3,33 @@ import Input from '../components/shared/Input';
 import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 import Button from '../components/shared/Button.jsx';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const ForgotPasswordPage = () => {
+  const navigation = useNavigate();
+
   const methods = useForm({
     mode: 'onChange',
   });
 
-  const { handleSubmit, reset } = methods;
+  const { handleSubmit } = methods;
 
-  const onSubmit = (data) => {
-    alert(JSON.stringify(data));
-    reset();
+  const onSubmit = () => {
+    toast.info('A message with a code has been sent to your email!', {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
+    setTimeout(() => navigation('/reset'), 5000);
   };
 
   return (
@@ -50,12 +64,11 @@ const ForgotPasswordPage = () => {
           </div>
           <div className="mt-10">
             <Button onClick={handleSubmit(onSubmit)} type={'primary'}>
-              <Link to="/reset" className="flex justify-center">
-                Send Request
-              </Link>
+              Send Request
             </Button>
           </div>
         </FormProvider>
+        <ToastContainer />
       </div>
     </div>
   );
