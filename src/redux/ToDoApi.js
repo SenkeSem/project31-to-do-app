@@ -19,52 +19,7 @@ export const toDoApi = createApi({
         body,
       }),
     }),
-
-    getTodos: build.query({
-      query: () => ({
-        url: '/todos',
-        method: 'GET',
-      }),
-    }),
-
-    getTodo: build.query({
-      query: (id) => ({
-        url: `/todo/${id}`,
-        method: 'GET',
-      }),
-    }),
-
-    createTodo: build.mutation({
-      query: (body) => ({
-        url: '/todo',
-        method: 'POST',
-        body,
-      }),
-    }),
-
-    updateTodo: build.mutation({
-      query: (body, id) => ({
-        url: `/todo/${id}`,
-        method: 'PUT',
-        body,
-      }),
-    }),
-
-    deleteTodo: build.mutation({
-      query: (id) => ({
-        url: `/todo/${id}`,
-        method: 'DELETE',
-      }),
-    }),
   }),
 });
 
-export const {
-  useCreateUserMutation,
-  useLoginUserMutation,
-  useGetTodosQuery,
-  useGetTodoQuery,
-  useCreateTodoMutation,
-  useDeleteTodoMutation,
-  useUpdateTodoMutation,
-} = toDoApi;
+export const { useCreateUserMutation, useLoginUserMutation } = toDoApi;
