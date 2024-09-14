@@ -7,7 +7,7 @@ import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 import Button from '../components/shared/Button.jsx';
 import Loader from '../components/loader/Loader.jsx';
 
-import { useLoginUserMutation } from '../redux/ToDoApi.js';
+import { useSignInMutation } from '../redux/ToDoApi.js';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,15 +20,18 @@ const SignInPage = () => {
   const { handleSubmit } = methods;
   const navigate = useNavigate();
 
-  const [loginUser, { isLoading }] = useLoginUserMutation();
+  const [signIn, { isLoading }] = useSignInMutation();
 
   const onSubmit = async (data) => {
     try {
-      let user = await loginUser({
+      let user = await signIn({
         email: data.email,
-        password: data.password,
+        password: window.btoa(data.password),
       });
-      localStorage.setItem('token', user.data.auth.sessionToken);
+
+      localStorage.setItem('user_id', user.data.data.user_id);
+      localStorage.setItem('access_token', user.data.data.access_token);
+      localStorage.setItem('refresh_token', user.data.data.refresh_token);
       toast.success('The user in the system!', {
         position: 'top-right',
         autoClose: 5000,
@@ -41,7 +44,9 @@ const SignInPage = () => {
       });
       setTimeout(() => navigate('/'), 3000);
     } catch (error) {
-      toast.error('Login error!', {
+      console.log(error);
+
+      toast.error('Invalid credentials!', {
         position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,

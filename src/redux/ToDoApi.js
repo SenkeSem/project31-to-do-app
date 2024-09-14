@@ -2,19 +2,19 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const toDoApi = createApi({
   reducerPath: 'mokeApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8080/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://todolist.dev2.cogniteq.com/api/v1/' }),
   endpoints: (build) => ({
-    createUser: build.mutation({
+    signUp: build.mutation({
       query: (body) => ({
-        url: 'auth/register',
+        url: 'sign-up',
         method: 'POST',
         body,
       }),
     }),
 
-    loginUser: build.mutation({
+    signIn: build.mutation({
       query: (body) => ({
-        url: 'auth/login',
+        url: 'sign-in',
         method: 'POST',
         body,
       }),
@@ -22,4 +22,4 @@ export const toDoApi = createApi({
   }),
 });
 
-export const { useCreateUserMutation, useLoginUserMutation } = toDoApi;
+export const { useSignUpMutation, useSignInMutation } = toDoApi;

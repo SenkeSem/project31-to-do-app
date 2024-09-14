@@ -7,7 +7,7 @@ import Loader from '../components/loader/Loader.jsx';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
 
-import { useCreateUserMutation } from '../redux/ToDoApi.js';
+import { useSignUpMutation } from '../redux/ToDoApi.js';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -19,13 +19,13 @@ const SignUpPage = () => {
   const { handleSubmit } = methods;
   const navigation = useNavigate();
 
-  const [createUser, { isLoading }] = useCreateUserMutation();
+  const [signUp, { isLoading }] = useSignUpMutation();
 
   const onSubmit = async (data) => {
     try {
-      let responce = await createUser({
+      let responce = await signUp({
         email: data.email,
-        password: data.password,
+        password: window.btoa(data.password),
         username: data.username,
       });
 
