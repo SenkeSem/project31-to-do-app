@@ -27,7 +27,19 @@ export const toDoApi = createApi({
         body,
       }),
     }),
+
+    createNote: build.mutation({
+      query: (body) => ({
+        url: 'notes',
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useSignUpMutation, useSignInMutation, useSignOutMutation } = toDoApi;
+export const { useSignUpMutation, useSignInMutation, useSignOutMutation, useCreateNoteMutation } =
+  toDoApi;
