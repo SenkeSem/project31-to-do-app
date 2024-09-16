@@ -38,8 +38,23 @@ export const toDoApi = createApi({
         body,
       }),
     }),
+
+    fetchUserNotes: build.query({
+      query: (id) => ({
+        url: `user-notes/${id}`,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      }),
+    }),
   }),
 });
 
-export const { useSignUpMutation, useSignInMutation, useSignOutMutation, useCreateNoteMutation } =
-  toDoApi;
+export const {
+  useSignUpMutation,
+  useSignInMutation,
+  useSignOutMutation,
+  useCreateNoteMutation,
+  useFetchUserNotesQuery,
+} = toDoApi;

@@ -20,6 +20,8 @@ const NotePageContent = () => {
       });
 
       console.log(res);
+      setDescription('');
+      setActiveColor(0);
     } catch (error) {
       console.log(error);
     }

@@ -28,9 +28,7 @@ const CheckListContent = () => {
           </article>
           <Button type={'addedItem'}>+ Add new item</Button>
         </section>
-        <section className="mt-8">
-          <ChooseColor />
-        </section>
+        <section className="mt-8">{/* <ChooseColor /> */}</section>
         <div className="mt-6">
           <Button type={'primary'}>Done</Button>
         </div>
