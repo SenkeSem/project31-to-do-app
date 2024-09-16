@@ -19,7 +19,15 @@ export const toDoApi = createApi({
         body,
       }),
     }),
+
+    signOut: build.mutation({
+      query: (body) => ({
+        url: 'sign-out',
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useSignUpMutation, useSignInMutation } = toDoApi;
+export const { useSignUpMutation, useSignInMutation, useSignOutMutation } = toDoApi;

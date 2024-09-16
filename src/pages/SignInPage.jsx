@@ -32,6 +32,7 @@ const SignInPage = () => {
       localStorage.setItem('user_id', user.data.data.user_id);
       localStorage.setItem('access_token', user.data.data.access_token);
       localStorage.setItem('refresh_token', user.data.data.refresh_token);
+      localStorage.setItem('email', data.email);
       toast.success('The user in the system!', {
         position: 'top-right',
         autoClose: 5000,
