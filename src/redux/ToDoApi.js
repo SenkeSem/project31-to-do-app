@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const toDoApi = createApi({
   reducerPath: 'mokeApi',
+  tagTypes: ['Notes'],
   baseQuery: fetchBaseQuery({ baseUrl: 'https://todolist.dev2.cogniteq.com/api/v1/' }),
   endpoints: (build) => ({
     signUp: build.mutation({
@@ -37,16 +38,29 @@ export const toDoApi = createApi({
         },
         body,
       }),
+      providesTags: ['Notes'],
     }),
 
     fetchUserNotes: build.query({
-      query: (id) => ({
-        url: `user-notes/${id}`,
+      query: (user_id) => ({
+        url: `user-notes/${user_id}`,
         method: 'GET',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,
         },
       }),
+      providesTags: ['Notes'],
+    }),
+
+    deleteNote: build.mutation({
+      query: (note_id) => ({
+        url: `notes/${note_id}`,
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      }),
+      invalidatesTags: ['Notes'],
     }),
   }),
 });
@@ -57,4 +71,5 @@ export const {
   useSignOutMutation,
   useCreateNoteMutation,
   useFetchUserNotesQuery,
+  useDeleteNoteMutation,
 } = toDoApi;
