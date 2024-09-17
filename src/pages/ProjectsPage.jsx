@@ -1,13 +1,34 @@
+import { useState } from 'react';
 import WorkFooter from '../components/WorkFooter';
 import ProjectItem from '../components/shared/ProjectItem';
 import Button from '../components/shared/Button';
 import ModalCreateProject from '../components/shared/ModalCreateProject';
-
-import { useState } from 'react';
 import ChooseColor from '../components/shared/ChooseColor';
+import TextArea from '../components/shared/TextArea';
+import { useCreateProjectMutation } from '../redux/ToDoApi';
 
 const ProjectsPage = () => {
+  const colorArray = ['#6074F9', '#E42B6A', '#5ABB56', '#3D3A62', '#F4CA8F'];
+  const [activeColor, setActiveColor] = useState(0);
   const [isOpenCreateMenu, setIsOpenCreateMenu] = useState(false);
+  const [createProject] = useCreateProjectMutation();
+  const [title, setTitle] = useState('');
+
+  const handleCreateProject = async () => {
+    try {
+      let res = createProject({
+        title: title,
+        color: `${colorArray[activeColor]}`,
+        owner_id: `${localStorage.getItem('user_id')}`,
+      });
+      console.log(res);
+
+      setTitle('');
+      setActiveColor(0);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="flex flex-col bg-backColorMenu">
@@ -29,15 +50,27 @@ const ProjectsPage = () => {
           <ModalCreateProject setActive={setIsOpenCreateMenu}>
             <section>
               <p className="italic font-thin text-xl">Title</p>
-              <textarea
-                className="w-full resize-none font-medium text-base text-homeLineBlack"
-                placeholder="My new awesome project..."
-                name="createProject"
-                id="createProject"></textarea>
+              <TextArea
+                value={title}
+                setValue={setTitle}
+                type={'createProject'}
+                placeholder={'My new awesome project...'}
+                id={'newProject'}
+                name={'newProject'}
+              />
             </section>
             <section className="mt-8">
-              <ChooseColor />
+              <ChooseColor
+                activeColor={activeColor}
+                setColor={setActiveColor}
+                colorArray={colorArray}
+              />
             </section>
+            <div className="mt-6">
+              <Button isActive={() => handleCreateProject()} type={'primary'}>
+                Create
+              </Button>
+            </div>
           </ModalCreateProject>
         )}
       </main>

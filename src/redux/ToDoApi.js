@@ -38,7 +38,7 @@ export const toDoApi = createApi({
         },
         body,
       }),
-      providesTags: ['Notes'],
+      invalidatesTags: ['Notes'],
     }),
 
     fetchUserNotes: build.query({
@@ -82,6 +82,27 @@ export const toDoApi = createApi({
         },
       }),
     }),
+
+    downloadUserAvatar: build.query({
+      query: (user_id) => ({
+        url: `users-avatar/${user_id}`,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      }),
+    }),
+
+    createProject: build.mutation({
+      query: (body) => ({
+        url: 'projects',
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+        body,
+      }),
+    }),
   }),
 });
 
@@ -94,4 +115,6 @@ export const {
   useDeleteNoteMutation,
   useFetchUserQuery,
   useFetchUserStatisticsQuery,
+  useDownloadUserAvatarQuery,
+  useCreateProjectMutation,
 } = toDoApi;

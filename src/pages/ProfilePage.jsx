@@ -12,9 +12,7 @@ const ProfilePage = () => {
   const [signOut] = useSignOutMutation();
   const { data, isLoading } = useFetchUserStatisticsQuery(localStorage.getItem('user_id'));
 
-  console.log(data);
-
-  let statistics = {
+  const statistics = {
     completed_tasks: 0,
     created_tasks: 0,
     events: '0%',

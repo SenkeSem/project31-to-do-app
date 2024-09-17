@@ -5,6 +5,7 @@ const TextArea = ({ value, setValue, type, name, id, placeholder, ...props }) =>
     viewTaskPage:
       'w-full h-full border-[1px] border-borderGray rounded-t-xl pt-[18px] pl-4 resize-none',
     checkListPage: 'w-full h-12 font-medium text-base text-homeLineBlack mt-3',
+    createProject: 'w-full resize-none font-medium text-base text-homeLineBlack',
   };
 
   return (

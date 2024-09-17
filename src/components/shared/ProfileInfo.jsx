@@ -1,5 +1,6 @@
 import Chesterna from '../icons/Chesterna';
 import { useFetchUserQuery } from '../../redux/ToDoApi';
+import ProfilePhoto from './ProfilePhoto';
 
 const ProfileInfo = ({ completed_tasks, created_tasks }) => {
   const { data, isLoading } = useFetchUserQuery(localStorage.getItem('user_id'));
@@ -7,7 +8,7 @@ const ProfileInfo = ({ completed_tasks, created_tasks }) => {
   return (
     <div className="relative rounded-lg shadow-md shadow-signUpGray">
       <section className="mt-6 ml-6 flex items-center gap-3">
-        <img src="/public/profilePhoto.png" alt="profilePhoto" />
+        <ProfilePhoto />
         <div>
           <h5 className="text-lg italic font-thin">
             {isLoading ? 'username' : data.data.username}
