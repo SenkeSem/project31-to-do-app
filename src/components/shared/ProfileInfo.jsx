@@ -1,10 +1,8 @@
 import Chesterna from '../icons/Chesterna';
 import { useFetchUserQuery } from '../../redux/ToDoApi';
 
-const ProfileInfo = () => {
+const ProfileInfo = ({ completed_tasks, created_tasks }) => {
   const { data, isLoading } = useFetchUserQuery(localStorage.getItem('user_id'));
-
-  console.log(data);
 
   return (
     <div className="relative rounded-lg shadow-md shadow-signUpGray">
@@ -21,11 +19,11 @@ const ProfileInfo = () => {
       </section>
       <section className="flex gap-12 mt-8 ml-7 mb-8">
         <div>
-          <h5 className="text-lg italic font-thin">120</h5>
+          <h5 className="text-lg italic font-thin">{created_tasks}</h5>
           <p className="text-base font-medium text-textGray">Created Tasks</p>
         </div>
         <div>
-          <h5 className="text-lg italic font-thin">80</h5>
+          <h5 className="text-lg italic font-thin">{completed_tasks}</h5>
           <p className="text-base font-medium text-textGray">Completed Tasks</p>
         </div>
       </section>

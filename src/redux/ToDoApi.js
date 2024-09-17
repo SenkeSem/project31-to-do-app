@@ -72,6 +72,16 @@ export const toDoApi = createApi({
         },
       }),
     }),
+
+    fetchUserStatistics: build.query({
+      query: (user_id) => ({
+        url: `users-statistics/${user_id}`,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      }),
+    }),
   }),
 });
 
@@ -83,4 +93,5 @@ export const {
   useFetchUserNotesQuery,
   useDeleteNoteMutation,
   useFetchUserQuery,
+  useFetchUserStatisticsQuery,
 } = toDoApi;
