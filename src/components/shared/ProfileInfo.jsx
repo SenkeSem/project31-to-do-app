@@ -1,13 +1,22 @@
 import Chesterna from '../icons/Chesterna';
+import { useFetchUserQuery } from '../../redux/ToDoApi';
 
 const ProfileInfo = () => {
+  const { data, isLoading } = useFetchUserQuery(localStorage.getItem('user_id'));
+
+  console.log(data);
+
   return (
     <div className="relative rounded-lg shadow-md shadow-signUpGray">
       <section className="mt-6 ml-6 flex items-center gap-3">
         <img src="/public/profilePhoto.png" alt="profilePhoto" />
         <div>
-          <h5 className="text-lg italic font-thin">Stephen Chow</h5>
-          <p className="text-base font-medium text-textGray">pangcheo1210@gmail.com</p>
+          <h5 className="text-lg italic font-thin">
+            {isLoading ? 'username' : data.data.username}
+          </h5>
+          <p className="text-base font-medium text-textGray">
+            {isLoading ? 'username' : data.data.email}
+          </p>
         </div>
       </section>
       <section className="flex gap-12 mt-8 ml-7 mb-8">
