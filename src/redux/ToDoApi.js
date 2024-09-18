@@ -5,6 +5,8 @@ export const toDoApi = createApi({
   tagTypes: ['Notes', 'Projects'],
   baseQuery: fetchBaseQuery({ baseUrl: 'https://todolist.dev2.cogniteq.com/api/v1/' }),
   endpoints: (build) => ({
+    // auth
+
     signUp: build.mutation({
       query: (body) => ({
         url: 'sign-up',
@@ -28,6 +30,8 @@ export const toDoApi = createApi({
         body,
       }),
     }),
+
+    //notes
 
     createNote: build.mutation({
       query: (body) => ({
@@ -63,6 +67,8 @@ export const toDoApi = createApi({
       invalidatesTags: ['Notes'],
     }),
 
+    //user
+
     fetchUser: build.query({
       query: (user_id) => ({
         url: `users/${user_id}`,
@@ -92,6 +98,8 @@ export const toDoApi = createApi({
         },
       }),
     }),
+
+    //projects
 
     createProject: build.mutation({
       query: (body) => ({
@@ -126,6 +134,20 @@ export const toDoApi = createApi({
       }),
       invalidatesTags: ['Projects'],
     }),
+
+    //checklists
+
+    createChecklist: build.mutation({
+      query: (body) => ({
+        url: 'checklists',
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+        body,
+      }),
+      // invalidatesTags: ['Projects'],
+    }),
   }),
 });
 
@@ -142,4 +164,5 @@ export const {
   useCreateProjectMutation,
   useFetchAllUserProjectsQuery,
   useDeleteProjectMutation,
+  useCreateChecklistMutation,
 } = toDoApi;
