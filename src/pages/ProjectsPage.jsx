@@ -41,7 +41,13 @@ const ProjectsPage = () => {
         <div className="w-full grid grid-rows-2 grid-cols-2 gap-x-3 gap-y-6">
           {isSuccess &&
             data.data.map((item) => (
-              <ProjectItem key={item.id} title={item.title} tasks={10} color={item.color} />
+              <ProjectItem
+                key={item.id}
+                project_id={item.id}
+                title={item.title}
+                tasks={10}
+                color={item.color}
+              />
             ))}
         </div>
         <div className="mb-20">

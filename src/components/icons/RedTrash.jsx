@@ -1,4 +1,4 @@
-const RedTrash = ({}) => {
+const RedTrash = () => {
   return (
     <svg
       style={{ cursor: 'pointer' }}

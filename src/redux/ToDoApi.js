@@ -115,6 +115,17 @@ export const toDoApi = createApi({
       }),
       providesTags: ['Projects'],
     }),
+
+    deleteProject: build.mutation({
+      query: (project_id) => ({
+        url: `projects/${project_id}`,
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      }),
+      invalidatesTags: ['Projects'],
+    }),
   }),
 });
 
@@ -130,4 +141,5 @@ export const {
   useDownloadUserAvatarQuery,
   useCreateProjectMutation,
   useFetchAllUserProjectsQuery,
+  useDeleteProjectMutation,
 } = toDoApi;
