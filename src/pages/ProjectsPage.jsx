@@ -5,14 +5,16 @@ import Button from '../components/shared/Button';
 import ModalCreateProject from '../components/shared/ModalCreateProject';
 import ChooseColor from '../components/shared/ChooseColor';
 import TextArea from '../components/shared/TextArea';
-import { useCreateProjectMutation } from '../redux/ToDoApi';
+import { useCreateProjectMutation, useFetchAllUserProjectsQuery } from '../redux/ToDoApi';
 
 const ProjectsPage = () => {
   const colorArray = ['#6074F9', '#E42B6A', '#5ABB56', '#3D3A62', '#F4CA8F'];
   const [activeColor, setActiveColor] = useState(0);
   const [isOpenCreateMenu, setIsOpenCreateMenu] = useState(false);
-  const [createProject] = useCreateProjectMutation();
   const [title, setTitle] = useState('');
+
+  const [createProject] = useCreateProjectMutation();
+  const { data, isSuccess } = useFetchAllUserProjectsQuery(localStorage.getItem('user_id'));
 
   const handleCreateProject = async () => {
     try {
@@ -31,20 +33,22 @@ const ProjectsPage = () => {
   };
 
   return (
-    <div className="flex flex-col bg-backColorMenu">
+    <div className="h-full flex flex-col bg-backColorMenu">
       <header className="w-full h-20 flex items-end justify-center pb-3  italic font-thin text-xl bg-signUpWhite">
         Projects
       </header>
-      <main className="px-4 w-full h-screen">
+      <main className="px-4 w-full h-full">
         <div className="w-full grid grid-rows-2 grid-cols-2 gap-x-3 gap-y-6">
-          <ProjectItem title={'Personal'} tasks={10} color={'blue'} />
-          <ProjectItem title={'Teamworks'} tasks={4} color={'red'} />
-          <ProjectItem title={'Home'} tasks={7} color={'green'} />
-          <ProjectItem title={'Meet'} tasks={2} color={'purple'} />
+          {isSuccess &&
+            data.data.map((item) => (
+              <ProjectItem key={item.id} title={item.title} tasks={10} color={item.color} />
+            ))}
         </div>
-        <Button isActive={() => setIsOpenCreateMenu(!isOpenCreateMenu)} type={'bigBlue'}>
-          +
-        </Button>
+        <div className="mb-20">
+          <Button isActive={() => setIsOpenCreateMenu(!isOpenCreateMenu)} type={'bigBlue'}>
+            +
+          </Button>
+        </div>
 
         {isOpenCreateMenu && (
           <ModalCreateProject setActive={setIsOpenCreateMenu}>

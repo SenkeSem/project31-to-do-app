@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const toDoApi = createApi({
   reducerPath: 'mokeApi',
-  tagTypes: ['Notes'],
+  tagTypes: ['Notes', 'Projects'],
   baseQuery: fetchBaseQuery({ baseUrl: 'https://todolist.dev2.cogniteq.com/api/v1/' }),
   endpoints: (build) => ({
     signUp: build.mutation({
@@ -102,6 +102,18 @@ export const toDoApi = createApi({
         },
         body,
       }),
+      invalidatesTags: ['Projects'],
+    }),
+
+    fetchAllUserProjects: build.query({
+      query: (user_id) => ({
+        url: `user-projects/${user_id}`,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      }),
+      providesTags: ['Projects'],
     }),
   }),
 });
@@ -117,4 +129,5 @@ export const {
   useFetchUserStatisticsQuery,
   useDownloadUserAvatarQuery,
   useCreateProjectMutation,
+  useFetchAllUserProjectsQuery,
 } = toDoApi;
