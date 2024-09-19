@@ -15,6 +15,17 @@ export const toDoApi = createApi({
       }),
     }),
 
+    refreshToken: build.mutation({
+      query: (body) => ({
+        url: 'refresh-token',
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+        body,
+      }),
+    }),
+
     signIn: build.mutation({
       query: (body) => ({
         url: 'sign-in',
@@ -199,6 +210,7 @@ export const toDoApi = createApi({
 
 export const {
   useSignUpMutation,
+  useRefreshTokenMutation,
   useSignInMutation,
   useSignOutMutation,
   useCreateNoteMutation,
