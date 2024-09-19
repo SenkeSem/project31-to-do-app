@@ -182,6 +182,18 @@ export const toDoApi = createApi({
       }),
       invalidatesTags: ['CheckLists'],
     }),
+
+    deleteChecklistItems: build.mutation({
+      query: (body) => ({
+        url: `checklists-items`,
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+        body,
+      }),
+      invalidatesTags: ['CheckLists'],
+    }),
   }),
 });
 
@@ -202,4 +214,5 @@ export const {
   useFetchAllUserChecklistsQuery,
   useDeleteChecklistMutation,
   useDeleteChecklistItemMutation,
+  useDeleteChecklistItemsMutation,
 } = toDoApi;
