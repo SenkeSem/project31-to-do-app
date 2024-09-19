@@ -95,6 +95,7 @@ export const toDoApi = createApi({
         method: 'GET',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+          'Content-Type': 'multipart/form-data;',
         },
       }),
     }),
@@ -159,6 +160,17 @@ export const toDoApi = createApi({
       }),
       providesTags: ['CheckLists'],
     }),
+
+    deleteChecklist: build.mutation({
+      query: (checklist_id) => ({
+        url: `checklists/${checklist_id}`,
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      }),
+      invalidatesTags: ['CheckLists'],
+    }),
   }),
 });
 
@@ -177,4 +189,5 @@ export const {
   useDeleteProjectMutation,
   useCreateChecklistMutation,
   useFetchAllUserChecklistsQuery,
+  useDeleteChecklistMutation,
 } = toDoApi;

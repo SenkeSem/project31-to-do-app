@@ -24,7 +24,7 @@ const QuickPage = () => {
       <header className="w-full h-20 flex items-end justify-center pb-3 mb-8 italic font-thin text-xl bg-signUpWhite">
         Quick Notes
       </header>
-      <main className="w-full h-screen mb-10 px-4 flex flex-col gap-4">
+      <main className="w-full h-screen mb-10 px-4 flex flex-col grow-1 gap-4 ">
         {isLoading ? (
           <h1>Loading...</h1>
         ) : (

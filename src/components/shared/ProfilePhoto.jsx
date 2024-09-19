@@ -1,7 +1,9 @@
 import { useDownloadUserAvatarQuery } from '../../redux/ToDoApi';
 
 const ProfilePhoto = () => {
-  // const { data, isLoading } = useDownloadUserAvatarQuery(localStorage.getItem('user_id'));
+  const { data, isLoading } = useDownloadUserAvatarQuery(localStorage.getItem('user_id'));
+
+  console.log(data);
 
   return (
     <svg className="w-[64px] h-[64px]" id="Layer_1" version="1.1" viewBox="0 0 128 128">

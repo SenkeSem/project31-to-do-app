@@ -1,7 +1,8 @@
-const RedTrash = () => {
+const RedTrash = ({ isActive }) => {
   return (
     <svg
       style={{ cursor: 'pointer' }}
+      onClick={isActive}
       width="15"
       height="20"
       viewBox="0 0 15 20"
