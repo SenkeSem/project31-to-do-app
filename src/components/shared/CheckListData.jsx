@@ -1,11 +1,16 @@
 import CheckListItem from './CheckListItem';
 import RedTrash from '../icons/RedTrash';
 
-import { useDeleteChecklistMutation, useFetchAllUserChecklistsQuery } from '../../redux/ToDoApi';
+import {
+  useDeleteChecklistItemMutation,
+  useDeleteChecklistMutation,
+  useFetchAllUserChecklistsQuery,
+} from '../../redux/ToDoApi';
 
 const CheckListData = () => {
   const { data, isSuccess } = useFetchAllUserChecklistsQuery(localStorage.getItem('user_id'));
   const [deleteChecklist] = useDeleteChecklistMutation();
+  const [deleteChecklistItem] = useDeleteChecklistItemMutation();
 
   const handleDeleteChecklist = async (checklist_id) => {
     try {
@@ -14,6 +19,16 @@ const CheckListData = () => {
       console.log(res);
     } catch (error) {
       console.log('delete Checklist error ->>', error);
+    }
+  };
+
+  const handleDeleteChecklistItem = async (checklist_item_id) => {
+    try {
+      let res = await deleteChecklistItem(checklist_item_id);
+
+      console.log(res);
+    } catch (error) {
+      console.log('delete Checklist item error ->>', error);
     }
   };
 
@@ -34,7 +49,7 @@ const CheckListData = () => {
                 />
                 <p className="font-medium text-base shrink-0">{item.content}</p>
                 <div className="flex w-full justify-end opacity-0 hover:opacity-100">
-                  <RedTrash />
+                  <RedTrash isActive={() => handleDeleteChecklistItem(item.id)} />
                 </div>
               </article>
             ))}
