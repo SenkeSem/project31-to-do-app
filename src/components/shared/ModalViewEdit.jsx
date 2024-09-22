@@ -1,4 +1,5 @@
 const ModalViewEdit = ({ children, setActive }) => {
+  // TODO: create one component for Modal and use this Calendar info inside <Modal>{children}</Modal>
   return (
     <div
       onClick={() => setActive(false)}

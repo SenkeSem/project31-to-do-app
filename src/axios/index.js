@@ -13,6 +13,7 @@ export const getToDo = async () => {
   }
 };
 
+// TODO: why you don't use interceptors in queries ?
 instance.interceptors.response.use(
   (res) => {
     console.log(res.status, '<-- статус запроса');

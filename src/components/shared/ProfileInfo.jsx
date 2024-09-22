@@ -3,6 +3,7 @@ import { useFetchUserQuery } from '../../redux/ToDoApi';
 import ProfilePhoto from './ProfilePhoto';
 
 const ProfileInfo = ({ completed_tasks, created_tasks }) => {
+  // TODO: not a shared component
   const { data, isLoading } = useFetchUserQuery(localStorage.getItem('user_id'));
 
   return (

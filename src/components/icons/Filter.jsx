@@ -1,4 +1,5 @@
 const Filter = ({ fill, handler }) => {
+  // TODO: don't provide onClick here
   return (
     <svg
       className="cursor-pointer"

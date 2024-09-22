@@ -1,4 +1,5 @@
 const SuccesfulLogo = () => {
+  // TODO: resolve issue with kebab case, you shouldn't have used kebab case in jsx
   return (
     <svg
       width="164"
@@ -12,8 +13,8 @@ const SuccesfulLogo = () => {
         cy="89"
         r="67"
         stroke="#6074F9"
-        stroke-width="2"
-        stroke-dasharray="12"
+        strokeWidth="2"
+        strokeDasharray="12"
       />
       <circle
         opacity="0.2"

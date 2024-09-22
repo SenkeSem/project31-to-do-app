@@ -1,4 +1,5 @@
 import GetStartedLogo2 from '../assets/GetStartedLogo2.png';
+// import img from '/public/...' everywhere
 
 const StartPage2 = () => {
   return (

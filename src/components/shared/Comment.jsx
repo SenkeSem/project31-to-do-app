@@ -1,4 +1,5 @@
 const Comment = ({ name, daysAgo, children }) => {
+  // TODO: instead of daysAgo use daysInfo="4 march days ago"
   return (
     <div>
       <div className="h-[41px] mt-6 flex items-center gap-[11px]">

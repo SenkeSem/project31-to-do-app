@@ -7,6 +7,7 @@ export const toDoApi = createApi({
   endpoints: (build) => ({
     // auth
 
+    // TODO: move this query to another slice like auth
     signUp: build.mutation({
       query: (body) => ({
         url: 'sign-up',
@@ -14,7 +15,7 @@ export const toDoApi = createApi({
         body,
       }),
     }),
-
+    // TODO: move this query to another slice like auth
     refreshToken: build.mutation({
       query: (body) => ({
         url: 'refresh-token',
@@ -25,7 +26,7 @@ export const toDoApi = createApi({
         body,
       }),
     }),
-
+    // TODO: move this query to another slice like auth
     signIn: build.mutation({
       query: (body) => ({
         url: 'sign-in',
@@ -33,7 +34,7 @@ export const toDoApi = createApi({
         body,
       }),
     }),
-
+    // TODO: move this query to another slice like auth
     signOut: build.mutation({
       query: (body) => ({
         url: 'sign-out',
@@ -42,7 +43,7 @@ export const toDoApi = createApi({
       }),
     }),
 
-    //notes
+    //notes TODO: move this query to another slice like notes
 
     createNote: build.mutation({
       query: (body) => ({
@@ -78,7 +79,7 @@ export const toDoApi = createApi({
       invalidatesTags: ['Notes'],
     }),
 
-    //user
+    //user TODO: move this query to another slice like user
 
     fetchUser: build.query({
       query: (user_id) => ({
@@ -111,7 +112,7 @@ export const toDoApi = createApi({
       }),
     }),
 
-    //projects
+    //projects TODO: move this query to another slice like project
 
     createProject: build.mutation({
       query: (body) => ({
@@ -147,7 +148,7 @@ export const toDoApi = createApi({
       invalidatesTags: ['Projects'],
     }),
 
-    //checklists
+    //checklists TODO: move this query to another slice like checklist
 
     createChecklist: build.mutation({
       query: (body) => ({

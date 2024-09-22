@@ -1,4 +1,5 @@
 const ArrowLeft = ({ fill, onClick }) => {
+  // TODO: don't provide onClick here
   return (
     <svg
       onClick={onClick}

@@ -5,6 +5,7 @@ import { useCreateNoteMutation } from '../../redux/ToDoApi.js';
 import { useState } from 'react';
 
 const NotePageContent = () => {
+  // TODO: not a shared component
   const [description, setDescription] = useState('');
   const colorArray = ['#6074F9', '#E42B6A', '#5ABB56', '#3D3A62', '#F4CA8F'];
   const [activeColor, setActiveColor] = useState(0);

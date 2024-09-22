@@ -3,6 +3,8 @@ import ArrowLeft from '../icons/ArrowLeft';
 import WorkFooter from '../WorkFooter';
 
 const CheckListLayout = ({ children }) => {
+  // TODO: it's not a shared component
+
   const navigation = useNavigate();
 
   return (

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import GreenCheck from '../icons/GreenCheck.jsx';
 
 const ModalFilter = ({ setActive }) => {
+  // TODO: create one component for Modal and use this Calendar info inside <Modal>{children}</Modal>
   const filterPoint = ['Incomplete Tasks', 'Completed Tasks', 'All Tasks'];
 
   const [isActiveFilter, setIsActiveFilter] = useState(0);
