@@ -29,7 +29,7 @@ const ProjectItem = ({ title, tasks, color, project_id }) => {
       <h5 className="mt-11 italic font-thin text-lg">{title}</h5>
       <p className="mt-3 font-medium text-base text-textGray">{tasks} Tasks</p>
       <div
-        {/*onClick={() => onClick(projectId)}*/}
+        // {/*onClick={() => onClick(projectId)}*/}
         onClick={() => handleDeleteProject(project_id)}
         className="absolute top-5 right-5 opacity-0 hover:opacity-100">
         <RedTrash />

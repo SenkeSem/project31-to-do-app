@@ -1,35 +1,35 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { useRefreshTokenMutation } from '../redux/ToDoApi.js';
+// import { useRefreshTokenMutation } from '../redux/ToDoApi.js';
 
 const PrivateRoute = () => {
   // TODO: need to fix issue with 422
   const auth = localStorage.getItem('access_token');
 
-  const [refreshToken] = useRefreshTokenMutation();
+  // const [refreshToken] = useRefreshTokenMutation();
 
-  // TODO: move this logic to interceptors
-  const refresh = async () => {
-    try {
-      let res = await refreshToken({
-        refresh_token: localStorage.getItem('refresh_token'),
-      });
+  // // TODO: move this logic to interceptors
+  // const refresh = async () => {
+  //   try {
+  //     let res = await refreshToken({
+  //       refresh_token: localStorage.getItem('refresh_token'),
+  //     });
 
-      console.log(res);
-      localStorage.setItem('access_token', res.data.access_token);
-      localStorage.setItem('refresh_token', res.data.refresh_token);
-      localStorage.setItem('expires_in', res.data.expires_in);
-    } catch (error) {
-      console.log(error);
-      <Navigate to="/login" />;
-      localStorage.clear();
-    }
-  };
+  //     console.log(res);
+  //     localStorage.setItem('access_token', res.data.access_token);
+  //     localStorage.setItem('refresh_token', res.data.refresh_token);
+  //     localStorage.setItem('expires_in', res.data.expires_in);
+  //   } catch (error) {
+  //     console.log(error);
+  //     <Navigate to="/login" />;
+  //     localStorage.clear();
+  //   }
+  // };
 
-  if (Date.now() >= localStorage.getItem('expires_in')) {
-    refresh();
-  } else {
-    console.log('Token is valid!');
-  }
+  // if (Date.now() >= localStorage.getItem('expires_in')) {
+  //   refresh();
+  // } else {
+  //   console.log('Token is valid!');
+  // }
 
   return auth ? <Outlet /> : <Navigate to="/login" />;
 };

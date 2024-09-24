@@ -1,13 +1,17 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FormProvider, useForm } from 'react-hook-form';
+
 import ArrowLeft from '../components/icons/ArrowLeft';
 import Button from '../components/shared/Button';
 import ModalCalendar from '../components/shared/ModalCalendar';
-import Calendar from '../components/shared/Calendar';
 import Skrepka from '../components/icons/Skrepka';
-import { useNavigate } from 'react-router-dom';
 import Input from '../components/shared/Input';
-import { FormProvider, useForm } from 'react-hook-form';
 import TextArea from '../components/shared/TextArea';
+import DatePicker from 'react-datepicker';
+
+import 'react-datepicker/dist/react-datepicker.css';
+import { useCreateTaskMutation } from '../redux/ToDoApi';
 
 const CreateTaskPage = () => {
   const methods = useForm({
@@ -15,7 +19,36 @@ const CreateTaskPage = () => {
   });
 
   const [isOpenCalendar, setIsOpenCalendar] = useState(false);
+  const [date, setDate] = useState(null);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+
   const navigate = useNavigate();
+  const [createTask] = useCreateTaskMutation();
+
+  const handleCreateTask = async () => {
+    try {
+      let res = await createTask({
+        title: title,
+        due_date: date.toISOString().slice(0, -1),
+        description: description,
+        assigned_to: 'f318aae5-4b37-4926-b1c1-31ef26fa9d33',
+        is_completed: false,
+        project_id: '736ac29a-30b7-41c7-a40c-ebe7d91ed3bd',
+        owner_id: localStorage.getItem('user_id'),
+        members: null,
+        attachments: null,
+      });
+
+      console.log(res);
+
+      setDate(null);
+      setTitle('');
+      setDescription('');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="flex flex-col">
@@ -29,6 +62,7 @@ const CreateTaskPage = () => {
           </section>
         </div>
       </header>
+
       <main className="w-full h-screen px-4">
         <div className="relative -top-10 bg-signUpWhite shadow-2xl pt-8 rounded-lg pb-12 z-10">
           <FormProvider {...methods}>
@@ -55,6 +89,8 @@ const CreateTaskPage = () => {
 
             <section className="mt-9">
               <Input
+                value={title}
+                setValue={setTitle}
                 id={'title'}
                 type={'text'}
                 placeholder={'Title'}
@@ -65,7 +101,13 @@ const CreateTaskPage = () => {
             <section className="px-6 mt-4">
               <p className="text-descriptionGray text-base font-medium">Description</p>
               <div className="w-full h-32 flex flex-col justify-between mt-3">
-                <TextArea name={'description'} id={'description'} type={'taskPage'} />
+                <TextArea
+                  value={description}
+                  setValue={setDescription}
+                  name={'description'}
+                  id={'description'}
+                  type={'taskPage'}
+                />
                 <div className="bg-notVeryLightGray h-12 flex items-center pl-4 border-b-[1px] border-x-[1px] rounded-b-xl border-borderGray">
                   <Skrepka />
                 </div>
@@ -75,7 +117,9 @@ const CreateTaskPage = () => {
             <section className="w-full h-16 bg-lightGray mt-6 flex items-center gap-3">
               <h4 className="ml-7 font-medium text-base text-homeLineBlack">Due Date</h4>
               <Button isActive={() => setIsOpenCalendar(!isOpenCalendar)} type={'smallBlue'}>
-                Anytime
+                {date
+                  ? `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+                  : 'Anytime'}
               </Button>
             </section>
 
@@ -89,19 +133,26 @@ const CreateTaskPage = () => {
               </article>
             </section>
             <div className="px-6 mt-9">
-              <Button type={'primary'}>Add Task</Button>
+              <Button isActive={() => handleCreateTask()} type={'primary'}>
+                Add Task
+              </Button>
             </div>
           </FormProvider>
         </div>
 
         {isOpenCalendar && (
           <ModalCalendar setActive={setIsOpenCalendar}>
-            <h4 className="text-center mt-7 italic font-thin text-homeLineBlack text-sm uppercase">
-              August 2018
-            </h4>
-            <Calendar />
+            <DatePicker
+              placeholderText="select a date"
+              selected={date}
+              onChange={(date) => setDate(new Date(date))}
+              showTimeSelect
+              dateFormat="Pp"
+            />
             <div className="px-[96px] mt-5">
-              <Button type={'primary'}>Done</Button>
+              <Button isActive={() => setIsOpenCalendar(false)} type={'primary'}>
+                Done
+              </Button>
             </div>
           </ModalCalendar>
         )}
