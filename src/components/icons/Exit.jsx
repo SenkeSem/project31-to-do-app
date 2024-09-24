@@ -1,4 +1,5 @@
 const Exit = ({ active }) => {
+  // TODO: don't provide onClick here
   return (
     <svg
       onClick={() => active()}

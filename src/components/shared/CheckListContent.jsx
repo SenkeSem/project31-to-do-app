@@ -5,6 +5,7 @@ import TextArea from './TextArea';
 import { useState } from 'react';
 
 const CheckListContent = () => {
+  // TODO: it's not a shared component
   const colorArray = ['#6074F9', '#E42B6A', '#5ABB56', '#3D3A62', '#F4CA8F'];
   const [title, setTitle] = useState('');
   const [newItemText, setNewItemText] = useState('');

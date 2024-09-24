@@ -3,6 +3,7 @@ import ArrowLeft from '../icons/ArrowLeft';
 import WorkFooter from '../WorkFooter';
 
 const NotePageLayout = ({ children }) => {
+  // TODO: not a shared component
   const navigation = useNavigate();
 
   return (

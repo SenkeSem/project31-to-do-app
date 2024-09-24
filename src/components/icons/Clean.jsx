@@ -1,4 +1,6 @@
 const Clean = ({ isActive }) => {
+  // TODO: don't provide onClick here
+
   return (
     <svg
       onClick={() => isActive()}

@@ -13,7 +13,6 @@ const ResetPasswordPage = () => {
   const methods = useForm({ mode: 'onChange' });
 
   const { handleSubmit } = methods;
-
   const onSubmit = (data) => {
     data.newPassword === data.password
       ? toast.success('The password has been changed!', {

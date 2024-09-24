@@ -1,4 +1,5 @@
 const RedTrash = ({ isActive }) => {
+  // TODO: don't provide onClick here
   return (
     <svg
       style={{ cursor: 'pointer' }}

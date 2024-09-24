@@ -1,7 +1,9 @@
 import { useDeleteProjectMutation } from '../../redux/ToDoApi';
 import RedTrash from '../icons/RedTrash';
 
+// TODO: don't use kebab case
 const ProjectItem = ({ title, tasks, color, project_id }) => {
+  // TODO: provide onClick prop with this fn handleDeleteProject
   const [deleteProject] = useDeleteProjectMutation();
 
   const handleDeleteProject = async (project_id) => {
@@ -27,6 +29,7 @@ const ProjectItem = ({ title, tasks, color, project_id }) => {
       <h5 className="mt-11 italic font-thin text-lg">{title}</h5>
       <p className="mt-3 font-medium text-base text-textGray">{tasks} Tasks</p>
       <div
+        {/*onClick={() => onClick(projectId)}*/}
         onClick={() => handleDeleteProject(project_id)}
         className="absolute top-5 right-5 opacity-0 hover:opacity-100">
         <RedTrash />

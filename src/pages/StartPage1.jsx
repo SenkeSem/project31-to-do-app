@@ -1,4 +1,5 @@
 import GetStartedLogo1 from '../assets/GetStartedLogo1.png';
+// import img from '/public/...'
 
 const StartPage1 = () => {
   return (
@@ -10,6 +11,7 @@ const StartPage1 = () => {
       <button className="absolute bottom-16 w-72 h-12 rounded z-10 bg-signUpWhite italic font-thin text-lg drop-shadow-2xl">
         Get Started
       </button>
+      {/* <img src={img} />*/}
       <img className="absolute h-80 w-screen z-0 bottom-0 left-0" src="/public/red.png" alt="red" />
     </div>
   );

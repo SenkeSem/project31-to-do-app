@@ -10,6 +10,7 @@ import {
 } from '../../redux/ToDoApi';
 
 const CheckListData = () => {
+  // TODO: it's not a shared component
   const { data, isSuccess } = useFetchAllUserChecklistsQuery(localStorage.getItem('user_id'));
   const [deleteChecklist] = useDeleteChecklistMutation();
   const [deleteChecklistItem] = useDeleteChecklistItemMutation();
