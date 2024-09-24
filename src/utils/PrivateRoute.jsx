@@ -19,6 +19,7 @@ const PrivateRoute = () => {
     } catch (error) {
       console.log(error);
       <Navigate to="/login" />;
+      localStorage.clear();
     }
   };
 

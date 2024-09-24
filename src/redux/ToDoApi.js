@@ -106,8 +106,9 @@ export const toDoApi = createApi({
         method: 'GET',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-          'Content-Type': 'multipart/form-data;',
+          'Content-Type': 'image/jpeg',
         },
+        responseHandler: (res) => res.blob(),
       }),
     }),
 
