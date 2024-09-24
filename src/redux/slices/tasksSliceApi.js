@@ -11,10 +11,21 @@ const tasksApi = toDoApi.injectEndpoints({
         },
         body,
       }),
-      // invalidatesTags: ['CheckLists'],
+      providesTags: ['Tasks'],
+    }),
+
+    fetchUserTasks: build.query({
+      query: () => ({
+        url: `user-tasks/${localStorage.getItem('user_id')}`,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      }),
+      invalidatesTags: ['Tasks'],
     }),
   }),
   overrideExisting: false,
 });
 
-export const { useCreateTaskMutation } = tasksApi;
+export const { useCreateTaskMutation, useFetchUserTasksQuery } = tasksApi;
