@@ -3,7 +3,7 @@ import QuickItem from '../components/shared/QuickItem';
 import RedTrash from '../components/icons/RedTrash';
 import CheckListData from '../components/shared/CheckListData';
 
-import { useDeleteNoteMutation, useFetchUserNotesQuery } from '../redux/ToDoApi';
+import { useDeleteNoteMutation, useFetchUserNotesQuery } from '../redux/slices/notesSliceApi';
 
 const QuickPage = () => {
   const { data, isLoading } = useFetchUserNotesQuery(localStorage.getItem('user_id'));

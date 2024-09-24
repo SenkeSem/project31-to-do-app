@@ -1,8 +1,9 @@
+import { useState } from 'react';
+import { useCreateNoteMutation } from '../../redux/slices/notesSliceApi';
+
 import ChooseColor from './ChooseColor';
 import Button from './Button';
 import TextArea from './TextArea';
-import { useCreateNoteMutation } from '../../redux/ToDoApi.js';
-import { useState } from 'react';
 
 const NotePageContent = () => {
   // TODO: not a shared component

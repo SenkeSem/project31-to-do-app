@@ -7,7 +7,7 @@ import Loader from '../components/loader/Loader.jsx';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
 
-import { useSignUpMutation } from '../redux/ToDoApi.js';
+import { useSignUpMutation } from '../redux/slices/authSliceApi.js';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

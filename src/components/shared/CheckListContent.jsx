@@ -1,8 +1,9 @@
-import { useCreateChecklistMutation } from '../../redux/ToDoApi';
+import { useState } from 'react';
+import { useCreateChecklistMutation } from '../../redux/slices/checklistsSliceApi.js';
+
 import Button from '../shared/Button';
 import ChooseColor from './ChooseColor';
 import TextArea from './TextArea';
-import { useState } from 'react';
 
 const CheckListContent = () => {
   // TODO: it's not a shared component

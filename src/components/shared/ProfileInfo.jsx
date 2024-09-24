@@ -1,5 +1,5 @@
+import { useFetchUserQuery } from '../../redux/slices/userSliceApi';
 import Chesterna from '../icons/Chesterna';
-import { useFetchUserQuery } from '../../redux/ToDoApi';
 import ProfilePhoto from './ProfilePhoto';
 
 const ProfileInfo = ({ completed_tasks, created_tasks }) => {

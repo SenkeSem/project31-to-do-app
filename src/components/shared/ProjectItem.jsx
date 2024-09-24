@@ -1,4 +1,4 @@
-import { useDeleteProjectMutation } from '../../redux/ToDoApi';
+import { useDeleteProjectMutation } from '../../redux/slices/projectsSliceApi';
 import RedTrash from '../icons/RedTrash';
 
 // TODO: don't use kebab case

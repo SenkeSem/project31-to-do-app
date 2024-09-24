@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useCreateTaskMutation } from '../redux/slices/tasksSliceApi';
 
 import ArrowLeft from '../components/icons/ArrowLeft';
 import Button from '../components/shared/Button';
@@ -8,10 +9,9 @@ import ModalCalendar from '../components/shared/ModalCalendar';
 import Skrepka from '../components/icons/Skrepka';
 import Input from '../components/shared/Input';
 import TextArea from '../components/shared/TextArea';
-import DatePicker from 'react-datepicker';
 
+import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useCreateTaskMutation } from '../redux/ToDoApi';
 
 const CreateTaskPage = () => {
   const methods = useForm({

@@ -1,13 +1,13 @@
-import CheckListItem from './CheckListItem';
-import RedTrash from '../icons/RedTrash';
-import Clean from '../icons/Clean';
-
 import {
   useDeleteChecklistItemMutation,
   useDeleteChecklistItemsMutation,
   useDeleteChecklistMutation,
   useFetchAllUserChecklistsQuery,
-} from '../../redux/ToDoApi';
+} from '../../redux/slices/checklistsSliceApi.js';
+
+import CheckListItem from './CheckListItem';
+import RedTrash from '../icons/RedTrash';
+import Clean from '../icons/Clean';
 
 const CheckListData = () => {
   // TODO: it's not a shared component

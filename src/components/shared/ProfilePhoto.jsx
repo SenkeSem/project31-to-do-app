@@ -1,4 +1,4 @@
-// import { useDownloadUserAvatarQuery } from '../../redux/ToDoApi';
+// import { useDownloadUserAvatarQuery } from "../../redux/slices/userSliceApi";
 
 const ProfilePhoto = () => {
   // const { data, isSuccess } = useDownloadUserAvatarQuery(localStorage.getItem('user_id'));

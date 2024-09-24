@@ -1,10 +1,12 @@
 import { useNavigate } from 'react-router-dom';
+import { useSignOutMutation } from '../redux/slices/authSliceApi';
+import { useFetchUserStatisticsQuery } from '../redux/slices/userSliceApi';
+
 import WorkFooter from '../components/WorkFooter';
 import Exit from '../components/icons/Exit';
 import ProfileInfo from '../components/shared/ProfileInfo';
 import ProfileSlider from '../components/shared/ProfileSlider';
 import ProfileStatistic from '../components/shared/ProfileStatistic';
-import { useSignOutMutation, useFetchUserStatisticsQuery } from '../redux/ToDoApi';
 
 const ProfilePage = () => {
   const navigation = useNavigate();
