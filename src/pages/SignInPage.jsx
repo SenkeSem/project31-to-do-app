@@ -64,7 +64,9 @@ const SignInPage = () => {
   return (
     <div>
       <div className="flex flex-col h-full mt-4 pl-7 pr-5 pb-3">
-        <ArrowLeft onClick={() => navigate(-1)} />
+        <button onClick={() => navigate(-1)}>
+          <ArrowLeft />
+        </button>
         <HeadingStartPages head={'Welcome back'} text={'Sign in to continue'} />
 
         <FormProvider {...methods} className="flex flex-col mt-7">

@@ -1,5 +1,4 @@
 const SuccesfulLogo = () => {
-  // TODO: resolve issue with kebab case, you shouldn't have used kebab case in jsx
   return (
     <svg
       width="164"
@@ -22,8 +21,8 @@ const SuccesfulLogo = () => {
         cy="89"
         r="81"
         stroke="#6074F9"
-        stroke-width="2"
-        stroke-dasharray="12"
+        strokeWidth="2"
+        strokeDasharray="12"
       />
       <path
         d="M137 114.258C137.002 104.838 129.78 96.9631 120.328 96.0811C110.876 95.1992 102.301 101.6 100.533 110.855L44 109.333L44.6206 118.971C44.6206 118.971 36.5594 137.428 78.9268 142.345V161H127.906V129.984C133.534 126.714 136.995 120.729 137 114.258Z"
@@ -115,9 +114,9 @@ const SuccesfulLogo = () => {
           x2="137.009"
           y2="96.0032"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#808080" stop-opacity="0.25" />
-          <stop offset="0.54" stop-color="#808080" stop-opacity="0.12" />
-          <stop offset="1" stop-color="#808080" stop-opacity="0.1" />
+          <stop stopColor="#808080" stopOpacity="0.25" />
+          <stop offset="0.54" stopColor="#808080" stopOpacity="0.12" />
+          <stop offset="1" stopColor="#808080" stopOpacity="0.1" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_0_2447"
@@ -126,9 +125,9 @@ const SuccesfulLogo = () => {
           x2="22904.4"
           y2="4818.17"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#808080" stop-opacity="0.25" />
-          <stop offset="0.54" stop-color="#808080" stop-opacity="0.12" />
-          <stop offset="1" stop-color="#808080" stop-opacity="0.1" />
+          <stop stopColor="#808080" stopOpacity="0.25" />
+          <stop offset="0.54" stopColor="#808080" stopOpacity="0.12" />
+          <stop offset="1" stopColor="#808080" stopOpacity="0.1" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_0_2447"
@@ -137,9 +136,9 @@ const SuccesfulLogo = () => {
           x2="63584"
           y2="9460.82"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#808080" stop-opacity="0.25" />
-          <stop offset="0.54" stop-color="#808080" stop-opacity="0.12" />
-          <stop offset="1" stop-color="#808080" stop-opacity="0.1" />
+          <stop stopColor="#808080" stopOpacity="0.25" />
+          <stop offset="0.54" stopColor="#808080" stopOpacity="0.12" />
+          <stop offset="1" stopColor="#808080" stopOpacity="0.1" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_0_2447"
@@ -148,9 +147,9 @@ const SuccesfulLogo = () => {
           x2="25600.3"
           y2="20060.3"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#808080" stop-opacity="0.25" />
-          <stop offset="0.54" stop-color="#808080" stop-opacity="0.12" />
-          <stop offset="1" stop-color="#808080" stop-opacity="0.1" />
+          <stop stopColor="#808080" stopOpacity="0.25" />
+          <stop offset="0.54" stopColor="#808080" stopOpacity="0.12" />
+          <stop offset="1" stopColor="#808080" stopOpacity="0.1" />
         </linearGradient>
         <linearGradient
           id="paint4_linear_0_2447"
@@ -159,9 +158,9 @@ const SuccesfulLogo = () => {
           x2="48203.5"
           y2="12287.8"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#808080" stop-opacity="0.25" />
-          <stop offset="0.54" stop-color="#808080" stop-opacity="0.12" />
-          <stop offset="1" stop-color="#808080" stop-opacity="0.1" />
+          <stop stopColor="#808080" stopOpacity="0.25" />
+          <stop offset="0.54" stopColor="#808080" stopOpacity="0.12" />
+          <stop offset="1" stopColor="#808080" stopOpacity="0.1" />
         </linearGradient>
         <linearGradient
           id="paint5_linear_0_2447"
@@ -170,9 +169,9 @@ const SuccesfulLogo = () => {
           x2="16348.8"
           y2="10646.1"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#808080" stop-opacity="0.25" />
-          <stop offset="0.54" stop-color="#808080" stop-opacity="0.12" />
-          <stop offset="1" stop-color="#808080" stop-opacity="0.1" />
+          <stop stopColor="#808080" stopOpacity="0.25" />
+          <stop offset="0.54" stopColor="#808080" stopOpacity="0.12" />
+          <stop offset="1" stopColor="#808080" stopOpacity="0.1" />
         </linearGradient>
         <linearGradient
           id="paint6_linear_0_2447"
@@ -181,9 +180,9 @@ const SuccesfulLogo = () => {
           x2="13065.5"
           y2="11949.8"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#808080" stop-opacity="0.25" />
-          <stop offset="0.54" stop-color="#808080" stop-opacity="0.12" />
-          <stop offset="1" stop-color="#808080" stop-opacity="0.1" />
+          <stop stopColor="#808080" stopOpacity="0.25" />
+          <stop offset="0.54" stopColor="#808080" stopOpacity="0.12" />
+          <stop offset="1" stopColor="#808080" stopOpacity="0.1" />
         </linearGradient>
         <linearGradient
           id="paint7_linear_0_2447"
@@ -192,9 +191,9 @@ const SuccesfulLogo = () => {
           x2="18088.9"
           y2="8082.25"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#808080" stop-opacity="0.25" />
-          <stop offset="0.54" stop-color="#808080" stop-opacity="0.12" />
-          <stop offset="1" stop-color="#808080" stop-opacity="0.1" />
+          <stop stopColor="#808080" stopOpacity="0.25" />
+          <stop offset="0.54" stopColor="#808080" stopOpacity="0.12" />
+          <stop offset="1" stopColor="#808080" stopOpacity="0.1" />
         </linearGradient>
         <linearGradient
           id="paint8_linear_0_2447"
@@ -203,9 +202,9 @@ const SuccesfulLogo = () => {
           x2="19940"
           y2="8184.22"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#808080" stop-opacity="0.25" />
-          <stop offset="0.54" stop-color="#808080" stop-opacity="0.12" />
-          <stop offset="1" stop-color="#808080" stop-opacity="0.1" />
+          <stop stopColor="#808080" stopOpacity="0.25" />
+          <stop offset="0.54" stopColor="#808080" stopOpacity="0.12" />
+          <stop offset="1" stopColor="#808080" stopOpacity="0.1" />
         </linearGradient>
       </defs>
     </svg>

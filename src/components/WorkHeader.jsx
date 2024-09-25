@@ -22,8 +22,8 @@ const WorkHeader = ({ handler, monthActive, isTodayActive }) => {
           </button>
         </div>
       </section>
-      <section>
-        <Filter handler={handler} fill={'#FFFFFF'} />
+      <section onClick={handler}>
+        <Filter fill={'#FFFFFF'} />
       </section>
     </div>
   );

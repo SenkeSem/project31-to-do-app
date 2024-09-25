@@ -48,7 +48,10 @@ const ProfilePage = () => {
   return (
     <div className="flex flex-col bg-backColorMenu">
       <header className="w-full h-20 flex items-end justify-center pb-3 mb-4 italic font-thin text-xl bg-signUpWhite">
-        Profile <Exit active={handleSignOut} />
+        Profile
+        <button onClick={handleSignOut}>
+          <Exit />
+        </button>
       </header>
       <main className="w-full h-screen px-4 flex flex-col gap-4">
         <ProfileInfo

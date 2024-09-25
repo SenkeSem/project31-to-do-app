@@ -69,7 +69,9 @@ const SignUpPage = () => {
 
   return (
     <div className="flex flex-col mt-4 pl-7 pr-5 pb-3">
-      <ArrowLeft onClick={() => navigation(-1)} />
+      <button onClick={() => navigation(-1)}>
+        <ArrowLeft />
+      </button>
       <HeadingStartPages head={'Welcome'} text={'Sign up to continue'} />
       <img className="mx-auto mt-7" width={107} height={104} src="/circle.png" alt="circle" />
 

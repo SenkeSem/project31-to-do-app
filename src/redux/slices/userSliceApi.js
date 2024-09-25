@@ -12,6 +12,19 @@ const userApi = toDoApi.injectEndpoints({
       }),
     }),
 
+    uploadUserAvatar: build.mutation({
+      query: (body) => ({
+        url: `users-avatar`,
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+          'Content-Type': 'multipart/form-data',
+        },
+        body,
+      }),
+      invalidatesTags: ['User'],
+    }),
+
     fetchUserStatistics: build.query({
       query: (user_id) => ({
         url: `users-statistics/${user_id}`,
@@ -32,10 +45,15 @@ const userApi = toDoApi.injectEndpoints({
         },
         responseHandler: (res) => res.blob(),
       }),
+      providesTags: ['User'],
     }),
   }),
   overrideExisting: false,
 });
 
-export const { useFetchUserQuery, useFetchUserStatisticsQuery, useDownloadUserAvatarQuery } =
-  userApi;
+export const {
+  useFetchUserQuery,
+  useFetchUserStatisticsQuery,
+  useDownloadUserAvatarQuery,
+  useUploadUserAvatarMutation,
+} = userApi;

@@ -59,8 +59,12 @@ const CheckListData = () => {
             <p className="italic flex justify-between">
               {item.title}
               <div className="flex gap-3">
-                <Clean isActive={() => handleDeleteChecklistItems(item.items)} />
-                <RedTrash isActive={() => handleDeleteChecklist(item.id)} />
+                <button onClick={() => handleDeleteChecklistItems(item.items)}>
+                  <Clean />
+                </button>
+                <button onClick={() => handleDeleteChecklist(item.id)}>
+                  <RedTrash />
+                </button>
               </div>
             </p>
 
@@ -72,10 +76,14 @@ const CheckListData = () => {
                   <input
                     className="w-3 h-3 bg-signUpWhite rounded border-textMenuGray border-[1px] cursor-pointer"
                     type="checkbox"
+
+                    // {item.is_cois_completed && checked}
                   />
                   <p className="font-medium text-base shrink-0">{item.content}</p>
                   <div className="flex w-full justify-end opacity-0 hover:opacity-100">
-                    <RedTrash isActive={() => handleDeleteChecklistItem(item.id)} />
+                    <button onClick={() => handleDeleteChecklistItem(item.id)}>
+                      <RedTrash />
+                    </button>
                   </div>
                 </article>
               ))

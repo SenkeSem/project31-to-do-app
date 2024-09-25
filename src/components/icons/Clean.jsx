@@ -1,9 +1,6 @@
-const Clean = ({ isActive }) => {
-  // TODO: don't provide onClick here
-
+const Clean = () => {
   return (
     <svg
-      onClick={() => isActive()}
       className="cursor-pointer"
       height="20"
       id="icon"
