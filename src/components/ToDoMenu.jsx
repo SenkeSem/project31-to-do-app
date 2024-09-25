@@ -1,7 +1,7 @@
 import RedPencil from './icons/RedPencil';
 import RedTrash from './icons/RedTrash';
 
-const ToDoMenu = ({ isActiveMenu }) => {
+const ToDoMenu = ({ isActiveMenu, isActive }) => {
   return (
     <div
       className={`z-0 absolute ${
@@ -10,7 +10,9 @@ const ToDoMenu = ({ isActiveMenu }) => {
       <div className="w-[60px] flex items-center justify-center cursor-pointer border-r-[1px] border-r-[rgba(0,0,0,0.1)]">
         <RedPencil />
       </div>
-      <div className="w-[60px] flex items-center justify-center cursor-pointer border-l-[1px] border-l-[rgba(0,0,0,0.1)]">
+      <div
+        onClick={isActive}
+        className="w-[60px] flex items-center justify-center cursor-pointer border-l-[1px] border-l-[rgba(0,0,0,0.1)]">
         <RedTrash />
       </div>
     </div>

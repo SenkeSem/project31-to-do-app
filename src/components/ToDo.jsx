@@ -1,12 +1,26 @@
 import { useState } from 'react';
+import { useDeleteTaskMutation } from '../redux/slices/tasksSliceApi';
+
 import Complete from '../components/icons/Complete';
 import ToDoMenu from './ToDoMenu';
 
-const ToDo = ({ title, completed }) => {
+const ToDo = ({ title, completed, taskId }) => {
   const [isActiveMenu, setIsActiveMenu] = useState(false);
+
+  const [deleteTask] = useDeleteTaskMutation();
 
   const handleCompleted = () => {
     // setIsReady(!isReady);
+  };
+
+  const handleDeleteTask = async (taskId) => {
+    try {
+      let res = deleteTask(taskId);
+
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -39,7 +53,7 @@ const ToDo = ({ title, completed }) => {
       </main>
       <div className={`w-1 h-5 ${completed ? 'bg-btnRed' : 'bg-todoBlue'} ml-auto`}></div>
 
-      <ToDoMenu isActiveMenu={isActiveMenu} />
+      <ToDoMenu isActive={() => handleDeleteTask(taskId)} isActiveMenu={isActiveMenu} />
     </div>
   );
 };

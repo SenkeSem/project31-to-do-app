@@ -11,7 +11,7 @@ const tasksApi = toDoApi.injectEndpoints({
         },
         body,
       }),
-      providesTags: ['Tasks'],
+      invalidatesTags: ['Tasks'],
     }),
 
     fetchUserTasks: build.query({
@@ -22,10 +22,21 @@ const tasksApi = toDoApi.injectEndpoints({
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,
         },
       }),
+      providesTags: ['Tasks'],
+    }),
+
+    deleteTask: build.mutation({
+      query: (taskId) => ({
+        url: `tasks/${taskId}`,
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      }),
       invalidatesTags: ['Tasks'],
     }),
   }),
   overrideExisting: false,
 });
 
-export const { useCreateTaskMutation, useFetchUserTasksQuery } = tasksApi;
+export const { useCreateTaskMutation, useFetchUserTasksQuery, useDeleteTaskMutation } = tasksApi;

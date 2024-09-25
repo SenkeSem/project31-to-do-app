@@ -58,7 +58,7 @@ const WorkList = () => {
 
         {!isLoading ? (
           data.data.map((item) => (
-            <ToDo key={item.id} completed={item.is_completed} title={item.title} />
+            <ToDo key={item.id} taskId={item.id} completed={item.is_completed} title={item.title} />
           ))
         ) : (
           <h1>Loading...</h1>

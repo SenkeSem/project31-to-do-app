@@ -11,7 +11,6 @@ const ProfilePhoto = () => {
     reader.readAsDataURL(data);
 
     reader.onload = function () {
-      console.log(reader.result);
       setImgUrl(reader.result);
     };
 
@@ -30,14 +29,14 @@ const ProfilePhoto = () => {
           </g>
         </svg>
       ) : (
-        <div
+        <img
           style={{
             backgroundImage: `url(${imgUrl})`,
             backgroundPosition: 'center',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
           }}
-          className="w-[64px] h-[64px] rounded-full"></div>
+          className="w-[64px] h-[64px] rounded-full"></img>
       )}
     </>
   );
