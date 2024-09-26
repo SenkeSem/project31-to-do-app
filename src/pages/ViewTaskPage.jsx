@@ -14,7 +14,7 @@ import Skrepka from '../components/icons/Skrepka';
 import Image from '../components/icons/Image';
 import CommentsList from '../components/comments/CommentsList';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useFetchOneTaskQuery } from '../redux/slices/tasksSliceApi';
+import { useCreateTaskCommentMutation, useFetchOneTaskQuery } from '../redux/slices/tasksSliceApi';
 
 const ViewTaskPage = () => {
   const navigate = useNavigate();
@@ -22,8 +22,25 @@ const ViewTaskPage = () => {
 
   const [isEdit, setItEdit] = useState(false);
   const [isOpenComment, setIsOpenComment] = useState(false);
+  const [comment, setComment] = useState('');
 
   const { data } = useFetchOneTaskQuery(taskId);
+  const [createTask] = useCreateTaskCommentMutation();
+
+  const handleCreateTask = async () => {
+    try {
+      let res = createTask({
+        content: comment,
+        task_id: taskId,
+        owner_id: localStorage.getItem('user_id'),
+      });
+
+      console.log(res);
+      setComment('');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -105,6 +122,8 @@ const ViewTaskPage = () => {
                 <article className="mt-[33px]">
                   <div className="w-full h-32 flex flex-col justify-between mt-3">
                     <TextArea
+                      value={comment}
+                      setValue={setComment}
                       placeholder={'Write a comment'}
                       id={'description'}
                       name={'description'}
@@ -115,7 +134,9 @@ const ViewTaskPage = () => {
                         <Image />
                         <Skrepka />
                       </div>
-                      <Button type={'send'}>Send</Button>
+                      <Button isActive={handleCreateTask} type={'send'}>
+                        Send
+                      </Button>
                     </div>
                   </div>
                 </article>

@@ -54,6 +54,19 @@ const tasksApi = toDoApi.injectEndpoints({
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,
         },
       }),
+      providesTags: ['Comments'],
+    }),
+
+    createTaskComment: build.mutation({
+      query: (body) => ({
+        url: `comments`,
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+        body,
+      }),
+      invalidatesTags: ['Comments'],
     }),
   }),
   overrideExisting: false,
@@ -65,4 +78,5 @@ export const {
   useDeleteTaskMutation,
   useFetchOneTaskQuery,
   useFetchTaskCommentsQuery,
+  useCreateTaskCommentMutation,
 } = tasksApi;
