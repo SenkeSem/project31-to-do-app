@@ -14,6 +14,7 @@ const CommentsList = ({ taskId }) => {
         data.data.map((item) => (
           <Comment
             key={item.id}
+            commentId={item.id}
             userId={item.commentator.id}
             userName={item.commentator.username}
             daysAgo={3}>

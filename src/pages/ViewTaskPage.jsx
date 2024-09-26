@@ -25,11 +25,11 @@ const ViewTaskPage = () => {
   const [comment, setComment] = useState('');
 
   const { data } = useFetchOneTaskQuery(taskId);
-  const [createTask] = useCreateTaskCommentMutation();
+  const [createComment] = useCreateTaskCommentMutation();
 
   const handleCreateTask = async () => {
     try {
-      let res = createTask({
+      let res = createComment({
         content: comment,
         task_id: taskId,
         owner_id: localStorage.getItem('user_id'),

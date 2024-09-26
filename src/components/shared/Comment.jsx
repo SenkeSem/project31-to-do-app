@@ -1,12 +1,26 @@
 import { useState } from 'react';
 import { useDownloadUserAvatarQuery } from '../../redux/slices/userSliceApi';
 
-const Comment = ({ userName, userId, daysAgo, children }) => {
+import RedTrash from '../../components/icons/RedTrash';
+import { useDeleteTaskCommentMutation } from '../../redux/slices/tasksSliceApi';
+
+const Comment = ({ userName, userId, commentId, daysAgo, children }) => {
   // TODO: instead of daysAgo use daysInfo="4 march days ago"
 
   const { data, isSuccess } = useDownloadUserAvatarQuery(userId);
+  const [deleteComment] = useDeleteTaskCommentMutation();
 
   const [imgUrl, setImgUrl] = useState('');
+
+  const handleDeleteComment = async () => {
+    try {
+      let res = await deleteComment(commentId);
+
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   if (isSuccess) {
     let reader = new FileReader();
@@ -22,8 +36,8 @@ const Comment = ({ userName, userId, daysAgo, children }) => {
   }
 
   return (
-    <div>
-      <div className="h-[41px] mt-6 flex items-center gap-[11px]">
+    <div className="relative">
+      <div className="h-[41px] mt-6 flex items-center gap-[11px] ">
         <img
           style={{
             backgroundImage: `url(${imgUrl})`,
@@ -39,6 +53,9 @@ const Comment = ({ userName, userId, daysAgo, children }) => {
         </div>
       </div>
       <div className="mt-[9px] font-medium text-base text-homeLineBlack">{children}</div>
+      <div onClick={() => handleDeleteComment(commentId)} className="absolute top-2 right-2">
+        <RedTrash />
+      </div>
     </div>
   );
 };
