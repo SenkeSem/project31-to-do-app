@@ -1,7 +1,7 @@
 import WorkFooter from '../components/WorkFooter';
-import QuickItem from '../components/shared/QuickItem';
+import NoteItem from '../components/note/NoteItem';
 import RedTrash from '../components/icons/RedTrash';
-import CheckListData from '../components/shared/CheckListData';
+import CheckListData from '../components/checklist/CheckListData';
 
 import { useDeleteNoteMutation, useFetchUserNotesQuery } from '../redux/slices/notesSliceApi';
 
@@ -29,12 +29,12 @@ const QuickPage = () => {
           <h1>Loading...</h1>
         ) : (
           data.data.map((item) => (
-            <QuickItem key={item.id} color={item.color}>
+            <NoteItem key={item.id} color={item.color}>
               <p className="italic overflow-hidden">{item.description}</p>
               <div className="cursor-pointer" onClick={() => handleDeleteNote(item)}>
                 <RedTrash />
               </div>
-            </QuickItem>
+            </NoteItem>
           ))
         )}
         <CheckListData />

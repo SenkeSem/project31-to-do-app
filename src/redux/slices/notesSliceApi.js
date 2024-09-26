@@ -15,8 +15,8 @@ const notesApi = toDoApi.injectEndpoints({
     }),
 
     fetchUserNotes: build.query({
-      query: (user_id) => ({
-        url: `user-notes/${user_id}`,
+      query: (userId) => ({
+        url: `user-notes/${userId}`,
         method: 'GET',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,
@@ -26,8 +26,8 @@ const notesApi = toDoApi.injectEndpoints({
     }),
 
     deleteNote: build.mutation({
-      query: (note_id) => ({
-        url: `notes/${note_id}`,
+      query: (noteId) => ({
+        url: `notes/${noteId}`,
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,

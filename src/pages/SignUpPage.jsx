@@ -1,16 +1,13 @@
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm, FormProvider } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import { useSignUpMutation } from '../redux/slices/authSliceApi.js';
+
 import HeadingStartPages from '../components/HeadingStartPages';
 import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 import Input from '../components/shared/Input';
 import Button from '../components/shared/Button.jsx';
 import Loader from '../components/loader/Loader.jsx';
-
-import { Link, useNavigate } from 'react-router-dom';
-import { useForm, FormProvider } from 'react-hook-form';
-
-import { useSignUpMutation } from '../redux/slices/authSliceApi.js';
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const SignUpPage = () => {
   const methods = useForm({
@@ -137,7 +134,6 @@ const SignUpPage = () => {
         </Link>
       </FormProvider>
       {isLoading && <Loader />}
-      <ToastContainer />
     </div>
   );
 };

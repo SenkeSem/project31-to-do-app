@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { useCreateChecklistMutation } from '../../redux/slices/checklistsSliceApi.js';
 
-import Button from '../shared/Button';
-import ChooseColor from './ChooseColor';
-import TextArea from './TextArea';
+import Button from '../shared/Button.jsx';
+import ChooseColor from '../shared/ChooseColor.jsx';
+import TextArea from '../shared/TextArea.jsx';
 
 const CheckListContent = () => {
-  // TODO: it's not a shared component
   const colorArray = ['#6074F9', '#E42B6A', '#5ABB56', '#3D3A62', '#F4CA8F'];
   const [title, setTitle] = useState('');
   const [newItemText, setNewItemText] = useState('');

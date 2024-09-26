@@ -15,8 +15,8 @@ const checklistsApi = toDoApi.injectEndpoints({
     }),
 
     fetchAllUserChecklists: build.query({
-      query: (user_id) => ({
-        url: `user-checklists/${user_id}`,
+      query: (userId) => ({
+        url: `user-checklists/${userId}`,
         method: 'GET',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,
@@ -26,8 +26,8 @@ const checklistsApi = toDoApi.injectEndpoints({
     }),
 
     deleteChecklist: build.mutation({
-      query: (checklist_id) => ({
-        url: `checklists/${checklist_id}`,
+      query: (checklistId) => ({
+        url: `checklists/${checklistId}`,
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,
@@ -37,8 +37,8 @@ const checklistsApi = toDoApi.injectEndpoints({
     }),
 
     deleteChecklistItem: build.mutation({
-      query: (checklist_item_id) => ({
-        url: `checklists-items/${checklist_item_id}`,
+      query: (checklistItemId) => ({
+        url: `checklists-items/${checklistItemId}`,
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,

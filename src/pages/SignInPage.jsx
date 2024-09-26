@@ -1,16 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
+import { useSignInMutation } from '../redux/slices/authSliceApi.js';
+import { toast } from 'react-toastify';
 
-import HeadingStartPages from '../components/HeadingStartPages';
 import Input from '../components/shared/Input';
-import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 import Button from '../components/shared/Button.jsx';
 import Loader from '../components/loader/Loader.jsx';
-
-import { useSignInMutation } from '../redux/slices/authSliceApi.js';
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import HeadingStartPages from '../components/HeadingStartPages';
+import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 
 const SignInPage = () => {
   const methods = useForm({
@@ -36,7 +33,7 @@ const SignInPage = () => {
       localStorage.setItem('email', data.email);
       toast.success('The user in the system!', {
         position: 'top-right',
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -122,7 +119,6 @@ const SignInPage = () => {
           </Link>
         </FormProvider>
       </div>
-      <ToastContainer />
       {isLoading && <Loader />}
     </div>
   );

@@ -1,14 +1,13 @@
 import { useDeleteProjectMutation } from '../../redux/slices/projectsSliceApi';
 import RedTrash from '../icons/RedTrash';
 
-// TODO: don't use kebab case
-const ProjectItem = ({ title, tasks, color, project_id }) => {
+const ProjectItem = ({ title, tasks, color, projectId }) => {
   // TODO: provide onClick prop with this fn handleDeleteProject
   const [deleteProject] = useDeleteProjectMutation();
 
-  const handleDeleteProject = async (project_id) => {
+  const handleDeleteProject = async () => {
     try {
-      let res = await deleteProject(project_id);
+      let res = await deleteProject(projectId);
 
       console.log(res);
     } catch (error) {
@@ -30,7 +29,7 @@ const ProjectItem = ({ title, tasks, color, project_id }) => {
       <p className="mt-3 font-medium text-base text-textGray">{tasks} Tasks</p>
       <div
         // {/*onClick={() => onClick(projectId)}*/}
-        onClick={() => handleDeleteProject(project_id)}
+        onClick={() => handleDeleteProject(projectId)}
         className="absolute top-5 right-5 opacity-0 hover:opacity-100">
         <RedTrash />
       </div>

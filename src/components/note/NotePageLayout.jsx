@@ -2,9 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import ArrowLeft from '../icons/ArrowLeft';
 import WorkFooter from '../WorkFooter';
 
-const CheckListLayout = ({ children }) => {
-  // TODO: it's not a shared component
-
+const NotePageLayout = ({ children }) => {
   const navigation = useNavigate();
 
   return (
@@ -15,7 +13,7 @@ const CheckListLayout = ({ children }) => {
             <ArrowLeft fill={'#FFFFFF'} />
           </button>
           <section className="w-full flex flex-col justify-between items-center">
-            <h1 className="italic font-thin text-xl text-signUpWhite">Add Check List</h1>
+            <h1 className="italic font-thin text-xl text-signUpWhite">Add Note</h1>
           </section>
         </div>
       </header>
@@ -27,4 +25,4 @@ const CheckListLayout = ({ children }) => {
   );
 };
 
-export default CheckListLayout;
+export default NotePageLayout;

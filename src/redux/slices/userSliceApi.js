@@ -26,8 +26,8 @@ const userApi = toDoApi.injectEndpoints({
     }),
 
     fetchUserStatistics: build.query({
-      query: (user_id) => ({
-        url: `users-statistics/${user_id}`,
+      query: (userId) => ({
+        url: `users-statistics/${userId}`,
         method: 'GET',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,

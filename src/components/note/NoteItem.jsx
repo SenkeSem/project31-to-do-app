@@ -1,4 +1,4 @@
-const QuickItem = ({ children, color }) => {
+const NoteItem = ({ children, color }) => {
   return (
     <div className="pt-4 pl-8 pr-5 pb-5 rounded-md shadow-xl shadow-shadowGray relative font-thin text-base flex justify-between ">
       <div
@@ -9,4 +9,4 @@ const QuickItem = ({ children, color }) => {
   );
 };
 
-export default QuickItem;
+export default NoteItem;

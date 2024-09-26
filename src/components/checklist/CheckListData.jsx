@@ -5,12 +5,11 @@ import {
   useFetchAllUserChecklistsQuery,
 } from '../../redux/slices/checklistsSliceApi.js';
 
-import CheckListItem from './CheckListItem';
-import RedTrash from '../icons/RedTrash';
-import Clean from '../icons/Clean';
+import CheckListItem from '../checklist/CheckListItem.jsx';
+import RedTrash from '../icons/RedTrash.jsx';
+import Clean from '../icons/Clean.jsx';
 
 const CheckListData = () => {
-  // TODO: it's not a shared component
   const { data, isSuccess } = useFetchAllUserChecklistsQuery(localStorage.getItem('user_id'));
   const [deleteChecklist] = useDeleteChecklistMutation();
   const [deleteChecklistItem] = useDeleteChecklistItemMutation();

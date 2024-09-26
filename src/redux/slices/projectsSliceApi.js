@@ -15,8 +15,8 @@ const projectsApi = toDoApi.injectEndpoints({
     }),
 
     fetchAllUserProjects: build.query({
-      query: (user_id) => ({
-        url: `user-projects/${user_id}`,
+      query: (userId) => ({
+        url: `user-projects/${userId}`,
         method: 'GET',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,
@@ -26,8 +26,8 @@ const projectsApi = toDoApi.injectEndpoints({
     }),
 
     deleteProject: build.mutation({
-      query: (project_id) => ({
-        url: `projects/${project_id}`,
+      query: (projectId) => ({
+        url: `projects/${projectId}`,
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,

@@ -1,12 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import { useSignOutMutation } from '../redux/slices/authSliceApi';
 import { useFetchUserStatisticsQuery } from '../redux/slices/userSliceApi';
+import { toast } from 'react-toastify';
 
 import WorkFooter from '../components/WorkFooter';
 import Exit from '../components/icons/Exit';
-import ProfileInfo from '../components/shared/ProfileInfo';
-import ProfileSlider from '../components/shared/ProfileSlider';
-import ProfileStatistic from '../components/shared/ProfileStatistic';
+import ProfileInfo from '../components/profile/ProfileInfo';
+import ProfileSlider from '../components/profile/ProfileSlider';
+import ProfileStatistic from '../components/profile/ProfileStatistic';
 
 const ProfilePage = () => {
   const navigation = useNavigate();
@@ -38,6 +39,11 @@ const ProfilePage = () => {
 
       localStorage.clear();
       console.log(res);
+      toast.success('You have logged out of your account!', {
+        position: 'top-right',
+        autoClose: 1500,
+        theme: 'light',
+      });
 
       setTimeout(() => navigation('/login'), 2000);
     } catch (error) {

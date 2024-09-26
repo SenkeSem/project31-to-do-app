@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useCreateNoteMutation } from '../../redux/slices/notesSliceApi';
+import { toast } from 'react-toastify';
 
-import ChooseColor from './ChooseColor';
-import Button from './Button';
-import TextArea from './TextArea';
+import ChooseColor from '../shared/ChooseColor';
+import Button from '../shared/Button';
+import TextArea from '../shared/TextArea';
 
 const NotePageContent = () => {
-  // TODO: not a shared component
   const [description, setDescription] = useState('');
   const colorArray = ['#6074F9', '#E42B6A', '#5ABB56', '#3D3A62', '#F4CA8F'];
   const [activeColor, setActiveColor] = useState(0);
@@ -22,10 +22,24 @@ const NotePageContent = () => {
       });
 
       console.log(res);
+
       setDescription('');
       setActiveColor(0);
+      toast.success('Note is created!', {
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        theme: 'light',
+      });
     } catch (error) {
       console.log(error);
+      toast.error('The note has not been created!', {
+        position: 'top-right',
+        autoClose: 2000,
+        theme: 'light',
+      });
     }
   };
 

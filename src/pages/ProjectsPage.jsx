@@ -47,7 +47,7 @@ const ProjectsPage = () => {
             data.data.map((item) => (
               <ProjectItem
                 key={item.id}
-                project_id={item.id}
+                projectId={item.id}
                 title={item.title}
                 tasks={10}
                 color={item.color}

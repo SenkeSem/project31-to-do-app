@@ -5,15 +5,13 @@ import { FormProvider, useForm } from 'react-hook-form';
 import Chesterna from '../icons/Chesterna';
 import ProfilePhoto from './ProfilePhoto';
 import Modal from '../shared/Modal';
-import Input from '../shared/Input';
-import Button from './Button';
+import Button from '../shared/Button';
 
 const ProfileInfo = ({ completed_tasks, created_tasks }) => {
   const methods = useForm({
     mode: 'onBlur',
   });
 
-  // TODO: not a shared component
   const { data, isLoading } = useFetchUserQuery(localStorage.getItem('user_id'));
   const [uploadAvatar] = useUploadUserAvatarMutation();
 
