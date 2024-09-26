@@ -35,8 +35,34 @@ const tasksApi = toDoApi.injectEndpoints({
       }),
       invalidatesTags: ['Tasks'],
     }),
+
+    fetchOneTask: build.query({
+      query: (taskId) => ({
+        url: `tasks/${taskId}`,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      }),
+    }),
+
+    fetchTaskComments: build.query({
+      query: (taskId) => ({
+        url: `tasks-comments/${taskId}`,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      }),
+    }),
   }),
   overrideExisting: false,
 });
 
-export const { useCreateTaskMutation, useFetchUserTasksQuery, useDeleteTaskMutation } = tasksApi;
+export const {
+  useCreateTaskMutation,
+  useFetchUserTasksQuery,
+  useDeleteTaskMutation,
+  useFetchOneTaskQuery,
+  useFetchTaskCommentsQuery,
+} = tasksApi;

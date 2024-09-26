@@ -41,9 +41,9 @@ function App() {
           <Route path="/quick" element={<QuickPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/task" element={<CreateTaskPage />} />
+          <Route path="/task/:taskId" element={<ViewTaskPage />} />
           <Route path="/note" element={<CreateNotePage />} />
           <Route path="/checklist" element={<CreateCheckList />} />
-          <Route path="/view" element={<ViewTaskPage />} />
         </Route>
       </Routes>
     </>

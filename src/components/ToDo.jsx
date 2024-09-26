@@ -53,7 +53,11 @@ const ToDo = ({ title, completed, taskId }) => {
       </main>
       <div className={`w-1 h-5 ${completed ? 'bg-btnRed' : 'bg-todoBlue'} ml-auto`}></div>
 
-      <ToDoMenu isActive={() => handleDeleteTask(taskId)} isActiveMenu={isActiveMenu} />
+      <ToDoMenu
+        taskId={taskId}
+        isActive={() => handleDeleteTask(taskId)}
+        isActiveMenu={isActiveMenu}
+      />
     </div>
   );
 };

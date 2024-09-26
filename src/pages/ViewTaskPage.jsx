@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import BlackCross from '../components/icons/BlackCross';
 import Chesterna from '../components/icons/Chesterna';
 import Calendar from '../components/icons/Calendar';
@@ -6,17 +8,22 @@ import Members from '../components/icons/Members';
 import Button from '../components/shared/Button';
 import Chain from '../components/icons/Chain';
 import DoubleDown from '../components/icons/DoubleDown';
-import { useState } from 'react';
 import ModalViewEdit from '../components/shared/ModalViewEdit';
 import TextArea from '../components/shared/TextArea';
-
 import Skrepka from '../components/icons/Skrepka';
 import Image from '../components/icons/Image';
-import Comment from '../components/shared/Comment';
+import CommentsList from '../components/comments/CommentsList';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useFetchOneTaskQuery } from '../redux/slices/tasksSliceApi';
 
 const ViewTaskPage = () => {
+  const navigate = useNavigate();
+  const { taskId } = useParams();
+
   const [isEdit, setItEdit] = useState(false);
   const [isOpenComment, setIsOpenComment] = useState(false);
+
+  const { data } = useFetchOneTaskQuery(taskId);
 
   return (
     <>
@@ -26,16 +33,14 @@ const ViewTaskPage = () => {
 
       <div className="w-screen h-screen bg-homeLineBlack bg-opacity-40 fixed left-0 top-0 flex justify-center px-4 pt-6 pb-6 overflow-scroll">
         <div className="rounded-lg bg-signUpWhite w-full h-max relative pt-[56px] px-6 pb-10">
-          <div className="absolute top-4 left-4 cursor-pointer">
+          <div onClick={() => navigate('/')} className="absolute top-4 left-4 cursor-pointer">
             <BlackCross />
           </div>
           <div onClick={() => setItEdit(!isEdit)} className="absolute top-3 right-4 cursor-pointer">
             <Chesterna />
           </div>
           <section>
-            <h1 className="text-lg italic font-thin text-homeLineBlack">
-              Meeting according with design team in Central Park
-            </h1>
+            <h1 className="text-lg italic font-thin text-homeLineBlack">{data?.data.title}</h1>
 
             <article className="flex items-center gap-[10px] mt-6 pb-4 border-b-[1px] border-[#E4E4E4]">
               <img width={44} src="/public/profilePhoto.png" alt="profilePhoto" />
@@ -51,7 +56,9 @@ const ViewTaskPage = () => {
               </div>
               <div>
                 <h5 className="text-textGray font-medium text-base">Due Date</h5>
-                <p className="italic font-thin text-homeLineBlack text-base">Aug 5,2018</p>
+                <p className="italic font-thin text-homeLineBlack text-base">
+                  {data?.data.due_date}
+                </p>
               </div>
             </article>
 
@@ -61,9 +68,7 @@ const ViewTaskPage = () => {
               </div>
               <div>
                 <h5 className="text-textGray font-medium text-base">Decription</h5>
-                <p className="font-medium text-homeLineBlack text-base">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing.
-                </p>
+                <p className="font-medium text-homeLineBlack text-base">{data?.data.description}</p>
               </div>
             </article>
 
@@ -116,12 +121,7 @@ const ViewTaskPage = () => {
                 </article>
 
                 <article className=" mt-9">
-                  <Comment name={'Stephen Chow'} daysAgo={3}>
-                    <p>Lorem ipsum dolor sit amet,consectetur adipiscing. </p>
-                  </Comment>
-                  <Comment name={'Its not Stephen Chow'} daysAgo={15}>
-                    <img src="/public/man.png" alt="man" />
-                  </Comment>
+                  <CommentsList taskId={taskId} />
                 </article>
               </>
             )}
