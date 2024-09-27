@@ -25,6 +25,17 @@ const tasksApi = toDoApi.injectEndpoints({
       providesTags: ['Tasks'],
     }),
 
+    fetchAssignedToTasks: build.query({
+      query: () => ({
+        url: `user-tasks/${localStorage.getItem('user_id')}`,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+        // TODO: ПОДУМАТЬ КУДА ЗАСУНУТЬ ЭТОТ ЗАПРОС!!!
+      }),
+    }),
+
     deleteTask: build.mutation({
       query: (taskId) => ({
         url: `tasks/${taskId}`,
@@ -39,6 +50,16 @@ const tasksApi = toDoApi.injectEndpoints({
     fetchOneTask: build.query({
       query: (taskId) => ({
         url: `tasks/${taskId}`,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      }),
+    }),
+
+    fetchProjectTasks: build.query({
+      query: (projectId) => ({
+        url: `project-tasks/${projectId}`,
         method: 'GET',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,
@@ -88,7 +109,9 @@ export const {
   useFetchUserTasksQuery,
   useDeleteTaskMutation,
   useFetchOneTaskQuery,
+  useFetchProjectTasksQuery,
   useFetchTaskCommentsQuery,
   useCreateTaskCommentMutation,
   useDeleteTaskCommentMutation,
+  useFetchAssignedToTasksQuery,
 } = tasksApi;

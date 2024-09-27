@@ -50,7 +50,7 @@ const ViewTaskPage = () => {
 
       <div className="w-screen h-screen bg-homeLineBlack bg-opacity-40 fixed left-0 top-0 flex justify-center px-4 pt-6 pb-6 overflow-scroll">
         <div className="rounded-lg bg-signUpWhite w-full h-max relative pt-[56px] px-6 pb-10">
-          <div onClick={() => navigate('/')} className="absolute top-4 left-4 cursor-pointer">
+          <div onClick={() => navigate(-1)} className="absolute top-4 left-4 cursor-pointer">
             <BlackCross />
           </div>
           <div onClick={() => setItEdit(!isEdit)} className="absolute top-3 right-4 cursor-pointer">

@@ -7,6 +7,7 @@ import WorkFooter from '../components/WorkFooter';
 import ModalFilter from '../components/shared/ModalFilter';
 import Calendar from '../components/shared/Calendar';
 import MiniCalendar from '../components/shared/MiniCalendar';
+import ProjectTasksList from '../components/project/ProjectTasksList';
 
 const ViewProjectsPage = () => {
   const { projectId } = useParams();
@@ -61,13 +62,7 @@ const ViewProjectsPage = () => {
           Today, Aug 4/2018
         </h4>
 
-        {/* {!isLoading ? (
-          data.data.map((item) => (
-            <ToDo key={item.id} taskId={item.id} completed={item.is_completed} title={item.title} />
-          ))
-        ) : (
-          <h1>Loading...</h1>
-        )} */}
+        <ProjectTasksList projectId={projectId} />
       </main>
       <footer className="w-full sticky bottom-0">
         <WorkFooter />
