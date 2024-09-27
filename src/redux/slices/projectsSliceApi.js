@@ -25,6 +25,16 @@ const projectsApi = toDoApi.injectEndpoints({
       providesTags: ['Projects'],
     }),
 
+    fetchOneProject: build.query({
+      query: (projectId) => ({
+        url: `projects/${projectId}`,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      }),
+    }),
+
     deleteProject: build.mutation({
       query: (projectId) => ({
         url: `projects/${projectId}`,
@@ -39,5 +49,9 @@ const projectsApi = toDoApi.injectEndpoints({
   overrideExisting: false,
 });
 
-export const { useCreateProjectMutation, useFetchAllUserProjectsQuery, useDeleteProjectMutation } =
-  projectsApi;
+export const {
+  useCreateProjectMutation,
+  useFetchAllUserProjectsQuery,
+  useDeleteProjectMutation,
+  useFetchOneProjectQuery,
+} = projectsApi;

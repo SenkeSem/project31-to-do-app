@@ -1,19 +1,22 @@
 import { useState } from 'react';
-import { useFetchUserTasksQuery } from '../redux/slices/tasksSliceApi';
+import { useFetchOneProjectQuery } from '../redux/slices/projectsSliceApi';
+import { useParams } from 'react-router-dom';
 
 import WorkHeader from '../components/WorkHeader';
 import WorkFooter from '../components/WorkFooter';
-import ToDo from '../components/ToDo';
 import ModalFilter from '../components/shared/ModalFilter';
 import Calendar from '../components/shared/Calendar';
 import MiniCalendar from '../components/shared/MiniCalendar';
 
-const WorkList = () => {
+const ViewProjectsPage = () => {
+  const { projectId } = useParams();
+  const { data } = useFetchOneProjectQuery(projectId);
+
+  console.log(data);
+
   const [isOpenFilter, setIsOpenFilter] = useState(false);
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [isTodayActive, setIsTodayActive] = useState(false);
-
-  const { data, isLoading } = useFetchUserTasksQuery();
 
   const handleFilter = () => {
     setIsOpenFilter(!isOpenFilter);
@@ -23,8 +26,8 @@ const WorkList = () => {
     <div className="h-screen flex flex-col relative">
       <header>
         <WorkHeader
-          color={'#F96060'}
-          title={'Work List'}
+          title={data?.data.title}
+          color={data?.data.color}
           monthActive={setIsTodayActive}
           isTodayActive={isTodayActive}
           handler={handleFilter}
@@ -58,13 +61,13 @@ const WorkList = () => {
           Today, Aug 4/2018
         </h4>
 
-        {!isLoading ? (
+        {/* {!isLoading ? (
           data.data.map((item) => (
             <ToDo key={item.id} taskId={item.id} completed={item.is_completed} title={item.title} />
           ))
         ) : (
           <h1>Loading...</h1>
-        )}
+        )} */}
       </main>
       <footer className="w-full sticky bottom-0">
         <WorkFooter />
@@ -74,4 +77,4 @@ const WorkList = () => {
   );
 };
 
-export default WorkList;
+export default ViewProjectsPage;

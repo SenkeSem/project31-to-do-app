@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   useCreateProjectMutation,
   useFetchAllUserProjectsQuery,
@@ -45,13 +46,9 @@ const ProjectsPage = () => {
         <div className="w-full grid grid-rows-2 grid-cols-2 gap-x-3 gap-y-6">
           {isSuccess &&
             data.data.map((item) => (
-              <ProjectItem
-                key={item.id}
-                projectId={item.id}
-                title={item.title}
-                tasks={10}
-                color={item.color}
-              />
+              <Link key={item.id} to={`/projects/${item.id}`}>
+                <ProjectItem projectId={item.id} title={item.title} tasks={10} color={item.color} />
+              </Link>
             ))}
         </div>
         <div className="mb-20">

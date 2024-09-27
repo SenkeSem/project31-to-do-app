@@ -1,10 +1,12 @@
 import Filter from '../components/icons/Filter';
 
-const WorkHeader = ({ handler, monthActive, isTodayActive }) => {
+const WorkHeader = ({ title, color, handler, monthActive, isTodayActive }) => {
   return (
-    <div className="w-full h-28 bg-btnRed flex justify-between pt-4 pr-4">
+    <div
+      style={{ backgroundColor: `${color}` }}
+      className="w-full h-28 flex justify-between pt-4 pr-4">
       <section className="w-full flex flex-col justify-between items-center">
-        <h1 className="italic font-thin text-xl text-signUpWhite">Work List</h1>
+        <h1 className="italic font-thin text-xl text-signUpWhite">{title}</h1>
         <div className="text-signUpWhite flex justify-between w-full pl-12 pr-12 font-medium text-lg">
           <button
             onClick={() => monthActive(false)}

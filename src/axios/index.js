@@ -1,22 +1,18 @@
 import axios from 'axios';
 
-const instance = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com',
-});
+const TODO_API_BASE_URL = 'https://todolist.dev2.cogniteq.com/api/v1/';
 
-export const getToDo = async () => {
-  try {
-    let { data } = await instance.get('/todos');
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
+export const instance = axios.create({
+  baseUrl: TODO_API_BASE_URL,
+});
 
 // TODO: why you don't use interceptors in queries ?
 instance.interceptors.response.use(
   (res) => {
     console.log(res.status, '<-- статус запроса');
+    console.log(res);
+    console.log(res.config.url);
+
     return res;
   },
   (error) => {
