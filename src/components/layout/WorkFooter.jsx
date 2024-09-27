@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-import ModalCreate from './shared/ModalCreate';
-import MyTask from '../components/icons/MyTask';
-import Menu from '../components/icons/Menu';
-import Quick from '../components/icons/Quick';
-import Profile from '../components/icons/Profile';
-import BigPlus from '../components/icons/BigPlus';
+import ModalCreate from '../shared/ModalCreate';
+import MyTask from '../icons/MyTask';
+import Menu from '../icons/Menu';
+import Quick from '../icons/Quick';
+import Profile from '../icons/Profile';
+import BigPlus from '../icons/BigPlus';
 
 const WorkFooter = () => {
   const [isCreateMenuOpen, setIsCreateMenuOpen] = useState(false);

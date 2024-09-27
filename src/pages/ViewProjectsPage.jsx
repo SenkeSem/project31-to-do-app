@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useFetchOneProjectQuery } from '../redux/slices/projectsSliceApi';
 import { useParams } from 'react-router-dom';
 
-import WorkHeader from '../components/WorkHeader';
-import WorkFooter from '../components/WorkFooter';
+import WorkFooter from '../components/layout/WorkFooter';
+import WorkHeader from '../components/layout/WorkHeader';
 import ModalFilter from '../components/shared/ModalFilter';
 import Calendar from '../components/shared/Calendar';
 import MiniCalendar from '../components/shared/MiniCalendar';
@@ -12,8 +12,6 @@ import ProjectTasksList from '../components/project/ProjectTasksList';
 const ViewProjectsPage = () => {
   const { projectId } = useParams();
   const { data } = useFetchOneProjectQuery(projectId);
-
-  console.log(data);
 
   const [isOpenFilter, setIsOpenFilter] = useState(false);
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);

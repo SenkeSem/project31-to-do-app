@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useFetchUserTasksQuery } from '../redux/slices/tasksSliceApi';
 
-import WorkHeader from '../components/WorkHeader';
-import WorkFooter from '../components/WorkFooter';
+import WorkHeader from '../components/layout/WorkHeader';
+import WorkFooter from '../components/layout/WorkFooter';
 import ToDo from '../components/ToDo';
 import ModalFilter from '../components/shared/ModalFilter';
 import Calendar from '../components/shared/Calendar';

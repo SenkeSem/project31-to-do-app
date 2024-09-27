@@ -3,7 +3,7 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { useSignUpMutation } from '../redux/slices/authSliceApi.js';
 
-import HeadingStartPages from '../components/HeadingStartPages';
+import HeadingStartPages from '../components/layout/HeadingStartPages';
 import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 import Input from '../components/shared/Input';
 import Button from '../components/shared/Button.jsx';

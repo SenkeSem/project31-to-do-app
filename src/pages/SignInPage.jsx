@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import Input from '../components/shared/Input';
 import Button from '../components/shared/Button.jsx';
 import Loader from '../components/loader/Loader.jsx';
-import HeadingStartPages from '../components/HeadingStartPages';
+import HeadingStartPages from '../components/layout/HeadingStartPages';
 import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 
 const SignInPage = () => {

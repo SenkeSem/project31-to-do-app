@@ -3,7 +3,7 @@ import { useSignOutMutation } from '../redux/slices/authSliceApi';
 import { useFetchUserStatisticsQuery } from '../redux/slices/userSliceApi';
 import { toast } from 'react-toastify';
 
-import WorkFooter from '../components/WorkFooter';
+import WorkFooter from '../components/layout/WorkFooter';
 import Exit from '../components/icons/Exit';
 import ProfileInfo from '../components/profile/ProfileInfo';
 import ProfileSlider from '../components/profile/ProfileSlider';

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import ArrowLeft from '../icons/ArrowLeft';
-import WorkFooter from '../WorkFooter';
+import WorkFooter from '../layout/WorkFooter';
 
 const NotePageLayout = ({ children }) => {
   const navigation = useNavigate();

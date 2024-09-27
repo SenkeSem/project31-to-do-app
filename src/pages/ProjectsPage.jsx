@@ -5,8 +5,8 @@ import {
   useFetchAllUserProjectsQuery,
 } from '../redux/slices/projectsSliceApi';
 
-import WorkFooter from '../components/WorkFooter';
-import ProjectItem from '../components/shared/ProjectItem';
+import WorkFooter from '../components/layout/WorkFooter';
+import ProjectItem from '../components/project/ProjectItem';
 import Button from '../components/shared/Button';
 import ModalCreateProject from '../components/shared/ModalCreateProject';
 import ChooseColor from '../components/shared/ChooseColor';

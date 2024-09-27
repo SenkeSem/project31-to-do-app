@@ -1,4 +1,4 @@
-import Filter from '../components/icons/Filter';
+import Filter from '../icons/Filter';
 
 const WorkHeader = ({ title, color, handler, monthActive, isTodayActive }) => {
   return (

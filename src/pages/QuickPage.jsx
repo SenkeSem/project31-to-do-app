@@ -1,4 +1,4 @@
-import WorkFooter from '../components/WorkFooter';
+import WorkFooter from '../components/layout/WorkFooter';
 import NoteItem from '../components/note/NoteItem';
 import RedTrash from '../components/icons/RedTrash';
 import CheckListData from '../components/checklist/CheckListData';
