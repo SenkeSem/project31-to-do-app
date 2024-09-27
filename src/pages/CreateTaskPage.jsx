@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useCreateTaskMutation } from '../redux/slices/tasksSliceApi';
-import { useProjectSearchQuery } from '../redux/slices/projectsSliceApi';
+import { toast } from 'react-toastify';
 
 import ArrowLeft from '../components/icons/ArrowLeft';
 import Button from '../components/shared/Button';
@@ -13,6 +13,7 @@ import TextArea from '../components/shared/TextArea';
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import ProjectSearchList from '../components/project/ProjectSearchList';
 
 const CreateTaskPage = () => {
   const navigate = useNavigate();
@@ -21,13 +22,14 @@ const CreateTaskPage = () => {
   });
 
   const [isOpenCalendar, setIsOpenCalendar] = useState(false);
+  const [isOpenProjectList, setIsOpenProjectList] = useState(false);
   const [date, setDate] = useState(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [projectTitle, setProjectTitle] = useState('');
+  const [projectId, setProjectId] = useState('');
 
   const [createTask] = useCreateTaskMutation();
-  const { data } = useProjectSearchQuery(projectTitle);
 
   const handleCreateTask = async () => {
     try {
@@ -37,7 +39,7 @@ const CreateTaskPage = () => {
         description: description,
         assigned_to: 'f318aae5-4b37-4926-b1c1-31ef26fa9d33',
         is_completed: false,
-        project_id: '736ac29a-30b7-41c7-a40c-ebe7d91ed3bd',
+        project_id: projectId,
         owner_id: localStorage.getItem('user_id'),
         members: null,
         attachments: null,
@@ -48,6 +50,19 @@ const CreateTaskPage = () => {
       setDate(null);
       setTitle('');
       setDescription('');
+      setProjectId('');
+      setProjectTitle('');
+
+      toast.success('The task has been successfully created!', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
     } catch (error) {
       console.log(error);
     }
@@ -82,6 +97,7 @@ const CreateTaskPage = () => {
               <article className="flex items-center gap-4">
                 <h4 className="italic font-thin text-xl">In</h4>
                 <Input
+                  onFocus={() => setIsOpenProjectList(true)}
                   value={projectTitle}
                   setValue={setProjectTitle}
                   id={'project'}
@@ -91,6 +107,15 @@ const CreateTaskPage = () => {
                 />
               </article>
             </section>
+
+            {isOpenProjectList && (
+              <ProjectSearchList
+                projectTitle={projectTitle}
+                setProjectTitle={setProjectTitle}
+                setIsOpenProjectList={setIsOpenProjectList}
+                setProjectId={setProjectId}
+              />
+            )}
 
             <section className="mt-9">
               <Input

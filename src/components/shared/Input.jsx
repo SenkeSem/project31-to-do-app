@@ -1,6 +1,17 @@
 import { useFormContext } from 'react-hook-form';
 
-const Input = ({ value, setValue, label, type, style, placeholder, id, validation }) => {
+const Input = ({
+  value,
+  setValue,
+  onFocus,
+  onBlur,
+  label,
+  type,
+  style,
+  placeholder,
+  id,
+  validation,
+}) => {
   const {
     register,
     formState: { errors },
@@ -25,6 +36,8 @@ const Input = ({ value, setValue, label, type, style, placeholder, id, validatio
           className={inputTypes[style]}
           placeholder={placeholder}
           value={value}
+          onFocus={onFocus}
+          onBlur={onBlur}
           onChange={(e) => setValue(e.target.value)}
         />
 
