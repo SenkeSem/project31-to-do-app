@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useCreateTaskMutation } from '../redux/slices/tasksSliceApi';
+import { useProjectSearchQuery } from '../redux/slices/projectsSliceApi';
 
 import ArrowLeft from '../components/icons/ArrowLeft';
 import Button from '../components/shared/Button';
@@ -14,6 +15,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const CreateTaskPage = () => {
+  const navigate = useNavigate();
   const methods = useForm({
     mode: 'onBlur',
   });
@@ -22,9 +24,10 @@ const CreateTaskPage = () => {
   const [date, setDate] = useState(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [projectTitle, setProjectTitle] = useState('');
 
-  const navigate = useNavigate();
   const [createTask] = useCreateTaskMutation();
+  const { data } = useProjectSearchQuery(projectTitle);
 
   const handleCreateTask = async () => {
     try {
@@ -79,6 +82,8 @@ const CreateTaskPage = () => {
               <article className="flex items-center gap-4">
                 <h4 className="italic font-thin text-xl">In</h4>
                 <Input
+                  value={projectTitle}
+                  setValue={setProjectTitle}
                   id={'project'}
                   type={'text'}
                   placeholder={'Project'}

@@ -45,6 +45,16 @@ const projectsApi = toDoApi.injectEndpoints({
       }),
       invalidatesTags: ['Projects'],
     }),
+
+    projectSearch: build.query({
+      query: (projectTitle) => ({
+        url: `projects-search?query=${projectTitle}`,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      }),
+    }),
   }),
   overrideExisting: false,
 });
@@ -54,4 +64,5 @@ export const {
   useFetchAllUserProjectsQuery,
   useDeleteProjectMutation,
   useFetchOneProjectQuery,
+  useProjectSearchQuery,
 } = projectsApi;
