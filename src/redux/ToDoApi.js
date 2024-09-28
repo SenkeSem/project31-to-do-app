@@ -3,7 +3,7 @@ import { instance } from '../axios';
 
 export const toDoApi = createApi({
   reducerPath: 'mokeApi',
-  tagTypes: ['Notes', 'Projects', 'CheckLists', 'Tasks', 'User', 'Comments'],
+  tagTypes: ['Notes', 'Projects', 'ProjectStatistics', 'CheckLists', 'Tasks', 'User', 'Comments'],
   baseQuery: fetchBaseQuery({ baseUrl: 'https://todolist.dev2.cogniteq.com/api/v1/' }),
   endpoints: () => ({}),
 });

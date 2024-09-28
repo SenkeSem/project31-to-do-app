@@ -47,7 +47,7 @@ const ProjectsPage = () => {
           {isSuccess &&
             data.data.map((item) => (
               <Link key={item.id} to={`/projects/${item.id}`}>
-                <ProjectItem projectId={item.id} title={item.title} tasks={10} color={item.color} />
+                <ProjectItem projectId={item.id} title={item.title} color={item.color} />
               </Link>
             ))}
         </div>

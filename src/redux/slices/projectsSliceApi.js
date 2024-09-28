@@ -55,6 +55,17 @@ const projectsApi = toDoApi.injectEndpoints({
         },
       }),
     }),
+
+    fetchProjectStatistics: build.query({
+      query: (userId) => ({
+        url: `projects-statistics/${userId}`,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      }),
+      providesTags: ['ProjectStatistics'],
+    }),
   }),
   overrideExisting: false,
 });
@@ -65,4 +76,5 @@ export const {
   useDeleteProjectMutation,
   useFetchOneProjectQuery,
   useProjectSearchQuery,
+  useFetchProjectStatisticsQuery,
 } = projectsApi;

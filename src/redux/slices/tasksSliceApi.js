@@ -11,7 +11,7 @@ const tasksApi = toDoApi.injectEndpoints({
         },
         body,
       }),
-      invalidatesTags: ['Tasks'],
+      invalidatesTags: ['Tasks', 'ProjectStatistics'],
     }),
 
     fetchUserTasks: build.query({
