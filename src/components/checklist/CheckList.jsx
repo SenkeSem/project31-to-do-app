@@ -42,22 +42,22 @@ const CheckList = ({ title, color, oneChecklist }) => {
   };
 
   const handleUpdateCheckList = async (id) => {
+    let newItemsArray = checklist.items.map((item) =>
+      item.id === id ? { ...item, is_completed: !item.is_completed } : item,
+    );
+
+    setChecklist({
+      ...checklist,
+      items: newItemsArray,
+    });
+
     try {
-      setChecklist({
-        ...checklist,
-        items: checklist.items.map((item) =>
-          item.id === id ? { ...item, is_completed: !item.is_completed } : item,
-        ),
-      });
-
-      console.log(checklist);
-
       let res = await updateCheckList({
         id: checklist.id,
         title: checklist.title,
         color: checklist.color,
         owner_id: localStorage.getItem('user_id'),
-        items: checklist.items,
+        items: newItemsArray,
         created_at: checklist.created_at,
       });
 
