@@ -13,10 +13,9 @@ const SignInPage = () => {
   const methods = useForm({
     mode: 'onBlur',
   });
-
   const { handleSubmit } = methods;
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const [signIn, { isLoading }] = useSignInMutation();
 
   const onSubmit = async (data) => {

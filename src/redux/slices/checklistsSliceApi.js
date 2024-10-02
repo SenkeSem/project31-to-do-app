@@ -14,6 +14,18 @@ const checklistsApi = toDoApi.injectEndpoints({
       invalidatesTags: ['CheckLists'],
     }),
 
+    updateChecklist: build.mutation({
+      query: (body) => ({
+        url: `checklists/${body.id}`,
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+        body,
+      }),
+      invalidatesTags: ['CheckLists'],
+    }),
+
     fetchAllUserChecklists: build.query({
       query: (userId) => ({
         url: `user-checklists/${userId}`,
@@ -64,6 +76,7 @@ const checklistsApi = toDoApi.injectEndpoints({
 
 export const {
   useCreateChecklistMutation,
+  useUpdateChecklistMutation,
   useFetchAllUserChecklistsQuery,
   useDeleteChecklistMutation,
   useDeleteChecklistItemMutation,

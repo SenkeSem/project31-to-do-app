@@ -96,6 +96,7 @@ const CreateTaskPage = () => {
               </article>
               <article className="flex items-center gap-4">
                 <h4 className="italic font-thin text-xl">In</h4>
+
                 <Input
                   onFocus={() => setIsOpenProjectList(true)}
                   value={projectTitle}
@@ -118,6 +119,9 @@ const CreateTaskPage = () => {
             )}
 
             <section className="mt-9">
+              {
+                // TODO: убрать value и setValue. Пользоваться data, как на SingInPage
+              }
               <Input
                 value={title}
                 setValue={setTitle}

@@ -36,9 +36,9 @@ const Input = ({
           className={inputTypes[style]}
           placeholder={placeholder}
           value={value}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          onChange={(e) => setValue(e.target.value)}
+          // onFocus={onFocus}
+          // onBlur={onBlur}
+          // onChange={(e) => setValue(e.target.value)}
         />
 
         {errors?.[id] && (
