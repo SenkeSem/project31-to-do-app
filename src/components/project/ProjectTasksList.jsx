@@ -1,5 +1,6 @@
 import { useFetchProjectTasksQuery } from '../../redux/slices/tasksSliceApi';
-import ToDo from '../ToDo';
+
+import ToDo from '../task/ToDo';
 
 const ProjectTasksList = ({ projectId }) => {
   const { data, isLoading } = useFetchProjectTasksQuery(projectId);

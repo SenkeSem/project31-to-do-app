@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
-import RedPencil from './icons/RedPencil';
-import RedTrash from './icons/RedTrash';
+import RedPencil from '../icons/RedPencil';
+import RedTrash from '../icons/RedTrash';
 
 const ToDoMenu = ({ isActiveMenu, isActive, taskId }) => {
   return (

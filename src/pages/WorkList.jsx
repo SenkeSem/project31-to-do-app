@@ -3,12 +3,16 @@ import { useFetchUserTasksQuery } from '../redux/slices/tasksSliceApi';
 
 import WorkHeader from '../components/layout/WorkHeader';
 import WorkFooter from '../components/layout/WorkFooter';
-import ToDo from '../components/ToDo';
-import ModalFilter from '../components/shared/ModalFilter';
+import Modal from '../components/shared/Modal';
+import ToDo from '../components/task/ToDo';
 import Calendar from '../components/shared/Calendar';
 import MiniCalendar from '../components/shared/MiniCalendar';
+import GreenCheck from '../components/icons/GreenCheck';
 
 const WorkList = () => {
+  const filterPoint = ['Incomplete Tasks', 'Completed Tasks', 'All Tasks'];
+
+  const [isActiveFilter, setIsActiveFilter] = useState(0);
   const [isOpenFilter, setIsOpenFilter] = useState(false);
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [isTodayActive, setIsTodayActive] = useState(false);
@@ -69,7 +73,21 @@ const WorkList = () => {
       <footer className="w-full sticky bottom-0">
         <WorkFooter />
       </footer>
-      {isOpenFilter && <ModalFilter setActive={setIsOpenFilter} />}
+      {isOpenFilter && (
+        <Modal setActive={setIsOpenFilter}>
+          <div className="p-4 rounded-lg bg-signUpWhite w-56 h-32 fixed top-24 right-5 text-base font-thin italic flex flex-col gap-3">
+            {filterPoint.map((item, id) => (
+              <p
+                key={item}
+                onClick={() => setIsActiveFilter(id)}
+                className="flex justify-between cursor-pointer">
+                {item}
+                {isActiveFilter === id && <GreenCheck />}
+              </p>
+            ))}
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };

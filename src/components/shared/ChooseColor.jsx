@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import WhiteCheck from '../icons/WhiteCheck';
 
 const ChooseColor = ({ colorArray, activeColor, setColor }) => {

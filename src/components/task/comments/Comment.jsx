@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useDownloadUserAvatarQuery } from '../../redux/slices/userSliceApi';
+import { useDownloadUserAvatarQuery } from '../../../redux/slices/userSliceApi';
+import { useDeleteTaskCommentMutation } from '../../../redux/slices/tasksSliceApi';
 
-import RedTrash from '../../components/icons/RedTrash';
-import { useDeleteTaskCommentMutation } from '../../redux/slices/tasksSliceApi';
+import RedTrash from '../../icons/RedTrash';
 
 const Comment = ({ userName, userId, commentId, daysAgo, children }) => {
   // TODO: instead of daysAgo use daysInfo="4 march days ago"

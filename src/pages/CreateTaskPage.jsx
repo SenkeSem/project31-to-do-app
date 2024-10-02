@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 import ArrowLeft from '../components/icons/ArrowLeft';
 import Button from '../components/shared/Button';
-import ModalCalendar from '../components/shared/ModalCalendar';
+import Modal from '../components/shared/Modal';
 import Skrepka from '../components/icons/Skrepka';
 import Input from '../components/shared/Input';
 import TextArea from '../components/shared/TextArea';
@@ -175,20 +175,22 @@ const CreateTaskPage = () => {
         </div>
 
         {isOpenCalendar && (
-          <ModalCalendar setActive={setIsOpenCalendar}>
-            <DatePicker
-              placeholderText="select a date"
-              selected={date}
-              onChange={(date) => setDate(new Date(date))}
-              showTimeSelect
-              dateFormat="Pp"
-            />
-            <div className="px-[96px] mt-5">
-              <Button isActive={() => setIsOpenCalendar(false)} type={'primary'}>
-                Done
-              </Button>
+          <Modal setActive={setIsOpenCalendar}>
+            <div className="rounded-lg bg-signUpWhite w-[250px] h-[150px] flex flex-col justify-center">
+              <DatePicker
+                placeholderText="select a date"
+                selected={date}
+                onChange={(date) => setDate(new Date(date))}
+                showTimeSelect
+                dateFormat="Pp"
+              />
+              <div className="px-[15px] mt-6">
+                <Button isActive={() => setIsOpenCalendar(false)} type={'primary'}>
+                  Done
+                </Button>
+              </div>
             </div>
-          </ModalCalendar>
+          </Modal>
         )}
       </main>
       <footer className="w-full sticky bottom-0 h-20 bg-workMenuDarkBlue"></footer>

@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useDeleteTaskMutation } from '../redux/slices/tasksSliceApi';
+import { useDeleteTaskMutation } from '../../redux/slices/tasksSliceApi';
 
-import Complete from '../components/icons/Complete';
 import ToDoMenu from './ToDoMenu';
+import Complete from '../icons/Complete';
 
 const ToDo = ({ title, completed, taskId }) => {
   const [isActiveMenu, setIsActiveMenu] = useState(false);

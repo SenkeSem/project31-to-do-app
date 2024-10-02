@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-import ModalCreate from '../shared/ModalCreate';
+import Modal from '../shared/Modal';
 import MyTask from '../icons/MyTask';
 import Menu from '../icons/Menu';
 import Quick from '../icons/Quick';
@@ -54,17 +54,19 @@ const WorkFooter = () => {
       </nav>
 
       {isCreateMenuOpen && (
-        <ModalCreate setActive={setIsCreateMenuOpen}>
-          <p className="w-full h-full flex items-center justify-center border-b-lightGray border-b-2 cursor-pointer">
-            <Link to="/task">Add Task</Link>
-          </p>
-          <p className="w-full h-full flex items-center justify-center border-b-lightGray border-b-2 cursor-pointer">
-            <Link to="/note">Add Quick Note</Link>
-          </p>
-          <p className="w-full h-full flex items-center justify-center cursor-pointer">
-            <Link to="/checklist">Add Check List</Link>
-          </p>
-        </ModalCreate>
+        <Modal setActive={setIsCreateMenuOpen}>
+          <div className="rounded-lg bg-signUpWhite w-64 h-48 text-lg font-thin italic flex flex-col items-center justify-between">
+            <p className="w-full h-full flex items-center justify-center border-b-lightGray border-b-2 cursor-pointer">
+              <Link to="/task">Add Task</Link>
+            </p>
+            <p className="w-full h-full flex items-center justify-center border-b-lightGray border-b-2 cursor-pointer">
+              <Link to="/note">Add Quick Note</Link>
+            </p>
+            <p className="w-full h-full flex items-center justify-center cursor-pointer">
+              <Link to="/checklist">Add Check List</Link>
+            </p>
+          </div>
+        </Modal>
       )}
     </div>
   );

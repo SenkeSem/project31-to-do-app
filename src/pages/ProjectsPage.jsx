@@ -8,7 +8,7 @@ import {
 import WorkFooter from '../components/layout/WorkFooter';
 import ProjectItem from '../components/project/ProjectItem';
 import Button from '../components/shared/Button';
-import ModalCreateProject from '../components/shared/ModalCreateProject';
+import Modal from '../components/shared/Modal';
 import ChooseColor from '../components/shared/ChooseColor';
 import TextArea from '../components/shared/TextArea';
 
@@ -58,31 +58,33 @@ const ProjectsPage = () => {
         </div>
 
         {isOpenCreateMenu && (
-          <ModalCreateProject setActive={setIsOpenCreateMenu}>
-            <section>
-              <p className="italic font-thin text-xl">Title</p>
-              <TextArea
-                value={title}
-                setValue={setTitle}
-                type={'createProject'}
-                placeholder={'My new awesome project...'}
-                id={'newProject'}
-                name={'newProject'}
-              />
-            </section>
-            <section className="mt-8">
-              <ChooseColor
-                activeColor={activeColor}
-                setColor={setActiveColor}
-                colorArray={colorArray}
-              />
-            </section>
-            <div className="mt-6">
-              <Button isActive={() => handleCreateProject()} type={'primary'}>
-                Create
-              </Button>
+          <Modal setActive={setIsOpenCreateMenu}>
+            <div className="rounded-lg bg-signUpWhite w-80 h-80 p-6">
+              <section>
+                <p className="italic font-thin text-xl">Title</p>
+                <TextArea
+                  value={title}
+                  setValue={setTitle}
+                  type={'createProject'}
+                  placeholder={'My new awesome project...'}
+                  id={'newProject'}
+                  name={'newProject'}
+                />
+              </section>
+              <section className="mt-8">
+                <ChooseColor
+                  activeColor={activeColor}
+                  setColor={setActiveColor}
+                  colorArray={colorArray}
+                />
+              </section>
+              <div className="mt-6">
+                <Button isActive={() => handleCreateProject()} type={'primary'}>
+                  Create
+                </Button>
+              </div>
             </div>
-          </ModalCreateProject>
+          </Modal>
         )}
       </main>
       <footer className="w-full sticky bottom-0">

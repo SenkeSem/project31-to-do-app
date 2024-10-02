@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useCreateTaskCommentMutation, useFetchOneTaskQuery } from '../redux/slices/tasksSliceApi';
 
 import BlackCross from '../components/icons/BlackCross';
 import Chesterna from '../components/icons/Chesterna';
@@ -8,13 +10,11 @@ import Members from '../components/icons/Members';
 import Button from '../components/shared/Button';
 import Chain from '../components/icons/Chain';
 import DoubleDown from '../components/icons/DoubleDown';
-import ModalViewEdit from '../components/shared/ModalViewEdit';
+import Modal from '../components/shared/Modal';
 import TextArea from '../components/shared/TextArea';
 import Skrepka from '../components/icons/Skrepka';
 import Image from '../components/icons/Image';
-import CommentsList from '../components/comments/CommentsList';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useCreateTaskCommentMutation, useFetchOneTaskQuery } from '../redux/slices/tasksSliceApi';
+import CommentsList from '../components/task/comments/CommentsList';
 
 const ViewTaskPage = () => {
   const navigate = useNavigate();
@@ -160,11 +160,13 @@ const ViewTaskPage = () => {
           </section>
 
           {isEdit && (
-            <ModalViewEdit setActive={setItEdit}>
-              <p>Add Member</p>
-              <p>Edit Task</p>
-              <p>Delete Task</p>
-            </ModalViewEdit>
+            <Modal setActive={setItEdit}>
+              <div className="rounded-lg bg-signUpWhite w-[228px] h-[130px] text-[17px] font-thin italic absolute top-16 right-16 pb-[22px] pt-[14px] px-4 flex flex-col justify-between cursor-pointer">
+                <p>Add Member</p>
+                <p>Edit Task</p>
+                <p>Delete Task</p>
+              </div>
+            </Modal>
           )}
         </div>
       </div>

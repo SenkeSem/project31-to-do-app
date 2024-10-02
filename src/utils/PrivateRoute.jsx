@@ -1,8 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
-// import { useRefreshTokenMutation } from '../redux/ToDoApi.js';
 
 const PrivateRoute = () => {
-  // TODO: need to fix issue with 422
   const auth = localStorage.getItem('access_token');
 
   // const [refreshToken] = useRefreshTokenMutation();

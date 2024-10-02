@@ -84,7 +84,7 @@ const CheckList = ({ title, color, oneChecklist }) => {
         </div>
       </p>
 
-      {checklist.length === 0 ? (
+      {checklist.items.length === 0 ? (
         <p className="mt-2 font-semibold">the checklist items have not been added</p>
       ) : (
         checklist.items.map((item) => (

@@ -1,5 +1,6 @@
-import { useFetchTaskCommentsQuery } from '../../redux/slices/tasksSliceApi';
-import Comment from '../shared/Comment';
+import { useFetchTaskCommentsQuery } from '../../../redux/slices/tasksSliceApi';
+
+import Comment from '../comments/Comment';
 
 const CommentsList = ({ taskId }) => {
   const { data, isLoading } = useFetchTaskCommentsQuery(taskId);

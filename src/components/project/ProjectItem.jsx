@@ -35,7 +35,7 @@ const ProjectItem = ({ title, color, projectId }) => {
       </div>
       <h5 className="mt-11 italic font-thin text-lg">{title}</h5>
       <p className="mt-3 font-medium text-base text-textGray">
-        {isSuccess && projectStatistics[0].tasks_number} Tasks
+        {projectStatistics && projectStatistics[0].tasks_number} Tasks
       </p>
       <div
         // {/*onClick={() => onClick(projectId)}*/}
