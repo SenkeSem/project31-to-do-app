@@ -47,8 +47,8 @@ const CreateTaskPage = () => {
 
       console.log(res);
 
-      setDate(null);
       setTitle('');
+      setDate(null);
       setDescription('');
       setProjectId('');
       setProjectTitle('');
@@ -100,7 +100,7 @@ const CreateTaskPage = () => {
                 <Input
                   onFocus={() => setIsOpenProjectList(true)}
                   value={projectTitle}
-                  setValue={setProjectTitle}
+                  onChange={(e) => setProjectTitle(e.target.value)}
                   id={'project'}
                   type={'text'}
                   placeholder={'Project'}
@@ -119,12 +119,9 @@ const CreateTaskPage = () => {
             )}
 
             <section className="mt-9">
-              {
-                // TODO: убрать value и setValue. Пользоваться data, как на SingInPage
-              }
               <Input
                 value={title}
-                setValue={setTitle}
+                onChange={(e) => setTitle(e.target.value)}
                 id={'title'}
                 type={'text'}
                 placeholder={'Title'}
@@ -167,7 +164,7 @@ const CreateTaskPage = () => {
               </article>
             </section>
             <div className="px-6 mt-9">
-              <Button isActive={() => handleCreateTask()} type={'primary'}>
+              <Button isActive={handleCreateTask} type={'primary'}>
                 Add Task
               </Button>
             </div>
