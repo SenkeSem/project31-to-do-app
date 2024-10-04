@@ -6,6 +6,7 @@ const PrivateRoute = () => {
   // const [refreshToken] = useRefreshTokenMutation();
 
   // // TODO: move this logic to interceptors
+
   // const refresh = async () => {
   //   try {
   //     let res = await refreshToken({

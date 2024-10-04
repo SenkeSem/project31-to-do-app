@@ -18,7 +18,7 @@ const CommentsList = ({ taskId }) => {
             commentId={item.id}
             userId={item.commentator.id}
             userName={item.commentator.username}
-            daysAgo={3}>
+            date={item.created_at}>
             <p>{item.content}</p>
           </Comment>
         ))

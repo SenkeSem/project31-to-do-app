@@ -4,9 +4,7 @@ import { useDeleteTaskCommentMutation } from '../../../redux/slices/tasksSliceAp
 
 import RedTrash from '../../icons/RedTrash';
 
-const Comment = ({ userName, userId, commentId, daysAgo, children }) => {
-  // TODO: instead of daysAgo use daysInfo="4 march days ago"
-
+const Comment = ({ userName, userId, commentId, date, children }) => {
   const { data, isSuccess } = useDownloadUserAvatarQuery(userId);
   const [deleteComment] = useDeleteTaskCommentMutation();
 
@@ -35,6 +33,13 @@ const Comment = ({ userName, userId, commentId, daysAgo, children }) => {
     };
   }
 
+  let fullDate = new Date(date);
+  let day = fullDate.getDate();
+  let month = fullDate.getMonth();
+  let year = fullDate.getFullYear();
+  let hours = fullDate.getHours();
+  let minutes = fullDate.getMinutes();
+
   return (
     <div className="relative">
       <div className="h-[41px] mt-6 flex items-center gap-[11px] ">
@@ -49,7 +54,9 @@ const Comment = ({ userName, userId, commentId, daysAgo, children }) => {
         />
         <div>
           <h4 className="text-lg italic font-thin">{userName}</h4>
-          <p className="text-textGray text-sm font-medium">{daysAgo} days ago</p>
+          <p className="text-textGray text-sm font-medium">{`${day}/${month + 1}/${year} ${
+            hours + 3
+          }:${minutes}`}</p>
         </div>
       </div>
       <div className="mt-[9px] font-medium text-base text-homeLineBlack">{children}</div>
