@@ -18,9 +18,10 @@ const userApi = toDoApi.injectEndpoints({
         method: 'POST',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': `multipart/form-data; boundary=${undefined}`,
         },
         body,
+        formData: true,
       }),
       invalidatesTags: ['User'],
     }),

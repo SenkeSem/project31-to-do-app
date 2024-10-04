@@ -18,11 +18,6 @@ const ProfileInfo = ({ completed_tasks, created_tasks }) => {
   const [avatarFormOpen, setAvatarFormOpen] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
 
-  const handleChange = (event) => {
-    console.log(event.target.files);
-    setSelectedFile(event.target.files[0]);
-  };
-
   const handleUploadUserAvatar = async () => {
     if (!selectedFile) {
       alert('please select a file');
@@ -33,8 +28,16 @@ const ProfileInfo = ({ completed_tasks, created_tasks }) => {
     formData.append('file', selectedFile);
     formData.append('user_id', localStorage.getItem('user_id'));
 
+    // for (let key of formData.keys()) {
+    //   console.log(key);
+    // }
+
+    // for (var value of formData.values()) {
+    //   console.log(value);
+    // }
+
     try {
-      let res = await uploadAvatar(formData);
+      let res = await uploadAvatar({ formData });
 
       console.log(res);
     } catch (error) {
@@ -75,15 +78,12 @@ const ProfileInfo = ({ completed_tasks, created_tasks }) => {
         <Modal setActive={setAvatarFormOpen}>
           <FormProvider {...methods}>
             <div className="mt-4 mx-4">
-              {/* <Input
-                value={avatarFile}
-                setValue={setAvatarFile}
-                id={'file'}
-                type={'file'}
-                style={'uploadUserAvatar'}
-                placeholder={'select a file'}
-              /> */}
-              <input onChange={handleChange} type="file" name="imageAvatar" id="imageAvatar" />
+              <input
+                onChange={(e) => setSelectedFile(e.target.files[0])}
+                type="file"
+                name="imageAvatar"
+                id="imageAvatar"
+              />
             </div>
             <div className="px-6 mt-9 flex mb-4">
               <Button isActive={handleUploadUserAvatar} type={'primary'}>
