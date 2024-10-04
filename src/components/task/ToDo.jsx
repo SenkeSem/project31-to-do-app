@@ -1,21 +1,41 @@
 import { useState } from 'react';
-import { useDeleteTaskMutation } from '../../redux/slices/tasksSliceApi';
+import { useDeleteTaskMutation, useUpdateTaskMutation } from '../../redux/slices/tasksSliceApi';
 
 import ToDoMenu from './ToDoMenu';
 import Complete from '../icons/Complete';
 
-const ToDo = ({ title, completed, taskId }) => {
+const ToDo = ({ title, completed, taskId, item }) => {
   const [isActiveMenu, setIsActiveMenu] = useState(false);
 
   const [deleteTask] = useDeleteTaskMutation();
+  const [updateTask] = useUpdateTaskMutation();
 
-  const handleCompleted = () => {
-    // setIsReady(!isReady);
+  const handleUpdateTask = async () => {
+    try {
+      let res = await updateTask({
+        body: {
+          title: item.title,
+          due_date: item.due_date,
+          description: item.description,
+          assigned_to: item.assigned_to,
+          is_completed: !item.is_completed,
+          project_id: item.project_id,
+          owner_id: item.owner_id,
+          members: [],
+          attachments: item.attachments,
+        },
+        taskId,
+      });
+
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const handleDeleteTask = async (taskId) => {
+  const handleDeleteTask = async (item) => {
     try {
-      let res = deleteTask(taskId);
+      let res = deleteTask(item);
 
       console.log(res);
     } catch (error) {
@@ -30,13 +50,13 @@ const ToDo = ({ title, completed, taskId }) => {
       }`}>
       {completed ? (
         <div
-          onClick={handleCompleted}
+          onClick={handleUpdateTask}
           className="w-5 h-5 rounded-full bg-btnRed ml-6 mr-6 cursor-pointer flex items-center justify-center">
           <Complete />
         </div>
       ) : (
         <div
-          onClick={handleCompleted}
+          onClick={handleUpdateTask}
           className="w-5 h-5 rounded-full border-4 border-todoBlue ml-6 mr-6 cursor-pointer"></div>
       )}
 
