@@ -13,6 +13,7 @@ const ProfileInfo = ({ completed_tasks, created_tasks }) => {
   });
 
   const { data, isLoading } = useFetchUserQuery(localStorage.getItem('user_id'));
+
   const [uploadAvatar] = useUploadUserAvatarMutation();
 
   const [avatarFormOpen, setAvatarFormOpen] = useState(false);
@@ -27,14 +28,6 @@ const ProfileInfo = ({ completed_tasks, created_tasks }) => {
     let formData = new FormData();
     formData.append('file', selectedFile);
     formData.append('user_id', localStorage.getItem('user_id'));
-
-    // for (let key of formData.keys()) {
-    //   console.log(key);
-    // }
-
-    // for (var value of formData.values()) {
-    //   console.log(value);
-    // }
 
     try {
       let res = await uploadAvatar({ formData });

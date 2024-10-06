@@ -19,6 +19,8 @@ const SignInPage = () => {
   const [signIn, { isLoading }] = useSignInMutation();
 
   const onSubmit = async (data) => {
+    console.log(data);
+
     try {
       let user = await signIn({
         email: data.email,

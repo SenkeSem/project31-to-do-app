@@ -13,14 +13,14 @@ const userApi = toDoApi.injectEndpoints({
     }),
 
     uploadUserAvatar: build.mutation({
-      query: (body) => ({
+      query: (data) => ({
         url: `users-avatar`,
         method: 'POST',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,
           'Content-Type': `multipart/form-data; boundary=${undefined}`,
         },
-        body,
+        body: data,
         formData: true,
       }),
       invalidatesTags: ['User'],
