@@ -15,6 +15,7 @@ import TextArea from '../components/shared/TextArea';
 import Skrepka from '../components/icons/Skrepka';
 import Image from '../components/icons/Image';
 import CommentsList from '../components/task/comments/CommentsList';
+import MiniAvatar from '../components/task/MiniAvatar';
 
 const ViewTaskPage = () => {
   const navigate = useNavigate();
@@ -26,6 +27,8 @@ const ViewTaskPage = () => {
 
   const { data } = useFetchOneTaskQuery(taskId);
   const [createComment] = useCreateTaskCommentMutation();
+
+  console.log(data);
 
   const handleCreateTask = async () => {
     try {
@@ -96,10 +99,13 @@ const ViewTaskPage = () => {
               <div>
                 <h5 className="text-textGray font-medium text-base">Members</h5>
                 <div className="mt-[10px] flex gap-[5px]">
-                  <img className="w-[32px]" src="/public/profilePhoto.png" alt="profilePhoto" />
-                  <img className="w-[32px]" src="/public/profilePhoto.png" alt="profilePhoto" />
-                  <img className="w-[32px]" src="/public/profilePhoto.png" alt="profilePhoto" />
-                  <img className="w-[32px]" src="/public/profilePhoto.png" alt="profilePhoto" />
+                  {data?.data.members &&
+                    data?.data.members.map((item) => (
+                      <div key={item.id} className="w-[32px] h-[32px] rounded-full">
+                        <MiniAvatar userId={item.id} />
+                      </div>
+                    ))}
+
                   <Button type={'circleRed'}>···</Button>
                 </div>
               </div>

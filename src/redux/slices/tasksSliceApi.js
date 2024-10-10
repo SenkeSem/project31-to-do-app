@@ -112,6 +112,16 @@ const tasksApi = toDoApi.injectEndpoints({
       }),
       invalidatesTags: ['Comments'],
     }),
+
+    taskMembersSearch: build.query({
+      query: (str) => ({
+        url: `task-members-search?query=${str}`,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      }),
+    }),
   }),
   overrideExisting: false,
 });
@@ -127,4 +137,5 @@ export const {
   useCreateTaskCommentMutation,
   useDeleteTaskCommentMutation,
   useFetchAssignedToTasksQuery,
+  useTaskMembersSearchQuery,
 } = tasksApi;

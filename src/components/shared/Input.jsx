@@ -12,6 +12,8 @@ const Input = ({ value, onChange, onFocus, label, type, style, placeholder, id, 
       'bg-lightGray text-sm placeholder-homeLineBlack font-medium w-24 h-12 text-center rounded-full',
     createTaskPageTitle:
       'w-full bg-lightGray h-16 pl-7 italic font-thin text-xl placeholder-homeLineBlack',
+    addedMembersSearch:
+      'w-full bg-lightGray h-16 pl-7 italic font-thin text-xl placeholder-homeLineBlack pr-6',
     uploadUserAvatar: 'cursor-pointer text-lg file:border-none file:text-sm',
   };
 

@@ -10,10 +10,12 @@ import Modal from '../components/shared/Modal';
 import Skrepka from '../components/icons/Skrepka';
 import Input from '../components/shared/Input';
 import TextArea from '../components/shared/TextArea';
+import MembersSearchList from '../components/task/MembersSearchList';
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import ProjectSearchList from '../components/project/ProjectSearchList';
+import MiniAvatar from '../components/task/MiniAvatar';
 
 const CreateTaskPage = () => {
   const navigate = useNavigate();
@@ -23,11 +25,14 @@ const CreateTaskPage = () => {
 
   const [isOpenCalendar, setIsOpenCalendar] = useState(false);
   const [isOpenProjectList, setIsOpenProjectList] = useState(false);
+  const [isOpenMembersSearch, setIsOpenMembersSearch] = useState(false);
   const [date, setDate] = useState(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [projectTitle, setProjectTitle] = useState('');
   const [projectId, setProjectId] = useState('');
+  const [searchParam, setSearchParam] = useState('');
+  const [members, setMembers] = useState([]);
 
   const [createTask] = useCreateTaskMutation();
 
@@ -41,7 +46,7 @@ const CreateTaskPage = () => {
         is_completed: false,
         project_id: projectId,
         owner_id: localStorage.getItem('user_id'),
-        members: null,
+        members: members,
         attachments: null,
       });
 
@@ -52,6 +57,8 @@ const CreateTaskPage = () => {
       setDescription('');
       setProjectId('');
       setProjectTitle('');
+      setSearchParam('');
+      setMembers([]);
 
       toast.success('The task has been successfully created!', {
         position: 'top-right',
@@ -157,12 +164,46 @@ const CreateTaskPage = () => {
             <section className="px-6 mt-6">
               <h4 className="font-medium text-base text-homeLineBlack">Add Member</h4>
               <article className="flex items-center gap-3 mt-2">
-                <div className="font-medium text-sm text-homeLineBlack w-24 h-12 bg-veryLightGray rounded-full flex items-center justify-center">
-                  Anyone
-                </div>
-                <Button type={'circleGray'}>+</Button>
+                {members.length === 0 ? (
+                  <div className="font-medium text-sm text-homeLineBlack w-24 h-12 bg-veryLightGray rounded-full flex items-center justify-center">
+                    Anyone
+                  </div>
+                ) : (
+                  members.map((item) => (
+                    <div key={item} className="text-sm w-12 h-12 rounded-full">
+                      <MiniAvatar userId={item} />
+                    </div>
+                  ))
+                )}
+
+                <Button onClick={() => setIsOpenMembersSearch(true)} type={'circleGray'}>
+                  +
+                </Button>
               </article>
             </section>
+
+            {isOpenMembersSearch && (
+              <Modal setActive={setIsOpenMembersSearch}>
+                <div className="rounded-lg bg-signUpWhite flex flex-col justify-center gap-2 p-4">
+                  <div className="w-[400px]">
+                    <Input
+                      value={searchParam}
+                      onChange={(e) => setSearchParam(e.target.value)}
+                      id={'search'}
+                      type={'search'}
+                      placeholder={'search members please...'}
+                      style={'addedMembersSearch'}
+                    />
+                  </div>
+                  <MembersSearchList
+                    members={members}
+                    setMembers={setMembers}
+                    searchParam={searchParam}
+                  />
+                </div>
+              </Modal>
+            )}
+
             <div className="px-6 mt-9">
               <Button isActive={handleCreateTask} type={'primary'}>
                 Add Task
