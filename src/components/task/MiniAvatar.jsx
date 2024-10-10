@@ -3,10 +3,7 @@ import { useDownloadUserAvatarQuery } from '../../redux/slices/userSliceApi';
 
 const MiniAvatar = ({ userId }) => {
   const { data, isSuccess } = useDownloadUserAvatarQuery(userId);
-
   const [imgUrl, setImgUrl] = useState('');
-
-  console.log(data);
 
   if (isSuccess) {
     let reader = new FileReader();

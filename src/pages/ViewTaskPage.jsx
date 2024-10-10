@@ -28,8 +28,6 @@ const ViewTaskPage = () => {
   const { data } = useFetchOneTaskQuery(taskId);
   const [createComment] = useCreateTaskCommentMutation();
 
-  console.log(data);
-
   const handleCreateTask = async () => {
     try {
       let res = createComment({

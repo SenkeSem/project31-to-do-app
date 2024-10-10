@@ -122,6 +122,17 @@ const tasksApi = toDoApi.injectEndpoints({
         },
       }),
     }),
+
+    // TODO: придумать куда применить этот запрос!
+    fetchParticipateInTasks: build.query({
+      query: (userId) => ({
+        url: `participate-in-tasks/${userId}`,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      }),
+    }),
   }),
   overrideExisting: false,
 });
@@ -138,4 +149,5 @@ export const {
   useDeleteTaskCommentMutation,
   useFetchAssignedToTasksQuery,
   useTaskMembersSearchQuery,
+  useFetchParticipateInTasksQuery,
 } = tasksApi;

@@ -12,20 +12,6 @@ const userApi = toDoApi.injectEndpoints({
       }),
     }),
 
-    uploadUserAvatar: build.mutation({
-      query: (data) => ({
-        url: `users-avatar`,
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-          'Content-Type': `multipart/form-data; boundary=${undefined}`,
-        },
-        body: data,
-        formData: true,
-      }),
-      invalidatesTags: ['User'],
-    }),
-
     fetchUserStatistics: build.query({
       query: (userId) => ({
         url: `users-statistics/${userId}`,

@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useFetchUserQuery, useUploadUserAvatarMutation } from '../../redux/slices/userSliceApi';
-import { FormProvider, useForm } from 'react-hook-form';
+import { useFetchUserQuery } from '../../redux/slices/userSliceApi';
+import { axiosInstance } from '../../axios';
+import { toast } from 'react-toastify';
 
 import Chesterna from '../icons/Chesterna';
 import ProfilePhoto from './ProfilePhoto';
@@ -8,13 +9,7 @@ import Modal from '../shared/Modal';
 import Button from '../shared/Button';
 
 const ProfileInfo = ({ completed_tasks, created_tasks }) => {
-  const methods = useForm({
-    mode: 'onBlur',
-  });
-
   const { data, isLoading } = useFetchUserQuery(localStorage.getItem('user_id'));
-
-  const [uploadAvatar] = useUploadUserAvatarMutation();
 
   const [avatarFormOpen, setAvatarFormOpen] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -30,11 +25,28 @@ const ProfileInfo = ({ completed_tasks, created_tasks }) => {
     formData.append('user_id', localStorage.getItem('user_id'));
 
     try {
-      let res = await uploadAvatar({ formData });
+      await axiosInstance.post('users-avatar', formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+          'Content-Type': `multipart/form-data; boundary=${undefined}`,
+        },
+      });
 
-      console.log(res);
+      setAvatarFormOpen(false);
+      setSelectedFile(null);
+
+      toast.success('The avatar has been successfully changed!', {
+        position: 'top-right',
+        autoClose: 2000,
+        draggable: true,
+        theme: 'light',
+      });
     } catch (error) {
-      console.log(error);
+      toast.error('Error!!!', {
+        position: 'top-right',
+        autoClose: 2000,
+        theme: 'light',
+      });
     }
   };
 
@@ -69,21 +81,19 @@ const ProfileInfo = ({ completed_tasks, created_tasks }) => {
 
       {avatarFormOpen && (
         <Modal setActive={setAvatarFormOpen}>
-          <FormProvider {...methods}>
-            <div className="mt-4 mx-4">
-              <input
-                onChange={(e) => setSelectedFile(e.target.files[0])}
-                type="file"
-                name="imageAvatar"
-                id="imageAvatar"
-              />
-            </div>
-            <div className="px-6 mt-9 flex mb-4">
-              <Button isActive={handleUploadUserAvatar} type={'primary'}>
-                Update avatar
-              </Button>
-            </div>
-          </FormProvider>
+          <div className="mt-4 mx-4">
+            <input
+              onChange={(e) => setSelectedFile(e.target.files[0])}
+              type="file"
+              name="imageAvatar"
+              id="imageAvatar"
+            />
+          </div>
+          <div className="px-6 mt-9 flex mb-4">
+            <Button isActive={handleUploadUserAvatar} type={'primary'}>
+              Update avatar
+            </Button>
+          </div>
         </Modal>
       )}
     </div>
