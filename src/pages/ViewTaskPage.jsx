@@ -16,6 +16,8 @@ import Skrepka from '../components/icons/Skrepka';
 import Image from '../components/icons/Image';
 import CommentsList from '../components/task/comments/CommentsList';
 import MiniAvatar from '../components/task/MiniAvatar';
+import ProfilePhoto from '../components/icons/ProfilePhoto';
+import AssignedToBlock from '../components/task/AssignedToBlock';
 
 const ViewTaskPage = () => {
   const navigate = useNavigate();
@@ -25,7 +27,7 @@ const ViewTaskPage = () => {
   const [isOpenComment, setIsOpenComment] = useState(false);
   const [comment, setComment] = useState('');
 
-  const { data } = useFetchOneTaskQuery(taskId);
+  const { data, isSuccess } = useFetchOneTaskQuery(taskId);
   const [createComment] = useCreateTaskCommentMutation();
 
   const handleCreateTask = async () => {
@@ -61,11 +63,16 @@ const ViewTaskPage = () => {
             <h1 className="text-lg italic font-thin text-homeLineBlack">{data?.data.title}</h1>
 
             <article className="flex items-center gap-[10px] mt-6 pb-4 border-b-[1px] border-[#E4E4E4]">
-              <img width={44} src="/public/profilePhoto.png" alt="profilePhoto" />
-              <div>
-                <h5 className="text-textGray font-medium text-base">Assigned to</h5>
-                <p className="italic font-thin text-homeLineBlack text-base">Stephen Chow</p>
-              </div>
+              {isSuccess ? (
+                <div className="w-[44px] h-[44px] rounded-full">
+                  <MiniAvatar userId={data?.data.assigned_to} />
+                </div>
+              ) : (
+                <div className="w-[44px] h-[44px] rounded-full">
+                  <ProfilePhoto />
+                </div>
+              )}
+              <AssignedToBlock userId={data?.data.assigned_to} />
             </article>
 
             <article className="flex items-top gap-[25px] mt-4 pb-4 pl-[15px] border-b-[1px] border-[#E4E4E4]">
