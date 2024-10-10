@@ -1,7 +1,6 @@
-const ArrowLeft = ({ fill, onClick }) => {
+const ArrowLeft = ({ fill }) => {
   return (
     <svg
-      onClick={onClick}
       width="26"
       className="cursor-pointer"
       height="18"

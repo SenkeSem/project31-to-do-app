@@ -12,6 +12,7 @@ import {
   CreateCheckList,
   CreateTaskPage,
   ViewTaskPage,
+  ViewProjectsPage,
   StartPage1,
   StartPage2,
   StartPage3,
@@ -38,12 +39,13 @@ function App() {
         <Route element={<PrivateRoute />}>
           <Route path="/" element={<WorkList />} />
           <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/projects/:projectId" element={<ViewProjectsPage />} />
           <Route path="/quick" element={<QuickPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/task" element={<CreateTaskPage />} />
+          <Route path="/task/:taskId" element={<ViewTaskPage />} />
           <Route path="/note" element={<CreateNotePage />} />
           <Route path="/checklist" element={<CreateCheckList />} />
-          <Route path="/view" element={<ViewTaskPage />} />
         </Route>
       </Routes>
     </>

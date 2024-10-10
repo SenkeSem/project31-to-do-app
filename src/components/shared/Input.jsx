@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 
-const Input = ({ label, type, style, placeholder, id, validation }) => {
+const Input = ({ value, onChange, onFocus, label, type, style, placeholder, id, validation }) => {
   const {
     register,
     formState: { errors },
@@ -12,6 +12,9 @@ const Input = ({ label, type, style, placeholder, id, validation }) => {
       'bg-lightGray text-sm placeholder-homeLineBlack font-medium w-24 h-12 text-center rounded-full',
     createTaskPageTitle:
       'w-full bg-lightGray h-16 pl-7 italic font-thin text-xl placeholder-homeLineBlack',
+    addedMembersSearch:
+      'w-full bg-lightGray h-16 pl-7 italic font-thin text-xl placeholder-homeLineBlack pr-6',
+    uploadUserAvatar: 'cursor-pointer text-lg file:border-none file:text-sm',
   };
 
   return (
@@ -23,6 +26,9 @@ const Input = ({ label, type, style, placeholder, id, validation }) => {
           type={type}
           className={inputTypes[style]}
           placeholder={placeholder}
+          value={value}
+          onFocus={onFocus}
+          onChange={onChange}
         />
 
         {errors?.[id] && (

@@ -1,37 +1,40 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm, FormProvider } from 'react-hook-form';
+import { useSignInMutation } from '../redux/slices/authSliceApi.js';
+import { toast } from 'react-toastify';
 
-import HeadingStartPages from '../components/HeadingStartPages';
 import Input from '../components/shared/Input';
-import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 import Button from '../components/shared/Button.jsx';
 import Loader from '../components/loader/Loader.jsx';
-
-import { useLoginUserMutation } from '../redux/ToDoApi.js';
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import HeadingStartPages from '../components/layout/HeadingStartPages';
+import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 
 const SignInPage = () => {
   const methods = useForm({
     mode: 'onBlur',
   });
-
   const { handleSubmit } = methods;
-  const navigate = useNavigate();
 
-  const [loginUser, { isLoading }] = useLoginUserMutation();
+  const navigate = useNavigate();
+  const [signIn, { isLoading }] = useSignInMutation();
 
   const onSubmit = async (data) => {
+    console.log(data);
+
     try {
-      let user = await loginUser({
+      let user = await signIn({
         email: data.email,
-        password: data.password,
+        password: window.btoa(data.password),
       });
-      localStorage.setItem('token', user.data.auth.sessionToken);
+
+      localStorage.setItem('user_id', user.data.data.user_id);
+      localStorage.setItem('access_token', user.data.data.access_token);
+      localStorage.setItem('refresh_token', user.data.data.refresh_token);
+      localStorage.setItem('expires_in', user.data.data.expires_in);
+      localStorage.setItem('email', data.email);
       toast.success('The user in the system!', {
         position: 'top-right',
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -41,7 +44,9 @@ const SignInPage = () => {
       });
       setTimeout(() => navigate('/'), 3000);
     } catch (error) {
-      toast.error('Login error!', {
+      console.log(error);
+
+      toast.error('Invalid credentials!', {
         position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
@@ -57,7 +62,9 @@ const SignInPage = () => {
   return (
     <div>
       <div className="flex flex-col h-full mt-4 pl-7 pr-5 pb-3">
-        <ArrowLeft onClick={() => navigate(-1)} />
+        <button onClick={() => navigate(-1)}>
+          <ArrowLeft />
+        </button>
         <HeadingStartPages head={'Welcome back'} text={'Sign in to continue'} />
 
         <FormProvider {...methods} className="flex flex-col mt-7">
@@ -113,7 +120,6 @@ const SignInPage = () => {
           </Link>
         </FormProvider>
       </div>
-      <ToastContainer />
       {isLoading && <Loader />}
     </div>
   );
