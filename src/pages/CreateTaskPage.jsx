@@ -42,7 +42,7 @@ const CreateTaskPage = () => {
         title: title,
         due_date: date.toISOString().slice(0, -1),
         description: description,
-        assigned_to: 'f318aae5-4b37-4926-b1c1-31ef26fa9d33',
+        assigned_to: localStorage.getItem('user_id'),
         is_completed: false,
         project_id: projectId,
         owner_id: localStorage.getItem('user_id'),

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useCreateTaskCommentMutation, useFetchOneTaskQuery } from '../redux/slices/tasksSliceApi';
+import { toast } from 'react-toastify';
+import { axiosInstance } from '../axios';
 
 import BlackCross from '../components/icons/BlackCross';
 import Chesterna from '../components/icons/Chesterna';
@@ -26,6 +28,8 @@ const ViewTaskPage = () => {
   const [isEdit, setItEdit] = useState(false);
   const [isOpenComment, setIsOpenComment] = useState(false);
   const [comment, setComment] = useState('');
+  const [attachmentFormOpen, setAttachmentFormOpen] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const { data, isSuccess } = useFetchOneTaskQuery(taskId);
   const [createComment] = useCreateTaskCommentMutation();
@@ -42,6 +46,43 @@ const ViewTaskPage = () => {
       setComment('');
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const handleUploadImageAttachment = async () => {
+    if (!selectedFile) {
+      alert('please select a file');
+      return;
+    }
+
+    let formData = new FormData();
+    formData.append('file', selectedFile);
+    formData.append('type', 'image');
+    formData.append('task_id', taskId);
+
+    try {
+      await axiosInstance.post('tasks-attachments', formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+          'Content-Type': `multipart/form-data; boundary=${undefined}`,
+        },
+      });
+
+      setAttachmentFormOpen(false);
+      setSelectedFile(null);
+
+      toast.success('The image has been uploaded successfully!!', {
+        position: 'top-right',
+        autoClose: 2000,
+        draggable: true,
+        theme: 'light',
+      });
+    } catch (error) {
+      toast.error('Error!!!', {
+        position: 'top-right',
+        autoClose: 2000,
+        theme: 'light',
+      });
     }
   };
 
@@ -142,7 +183,9 @@ const ViewTaskPage = () => {
                     />
                     <div className="bg-notVeryLightGray h-12 flex items-center justify-between py-[14px] pl-4 pr-5 border-b-[1px] border-x-[1px] rounded-b-xl border-borderGray">
                       <div className="flex gap-5">
-                        <Image />
+                        <div onClick={() => setAttachmentFormOpen(true)}>
+                          <Image />
+                        </div>
                         <Skrepka />
                       </div>
                       <Button isActive={handleCreateTask} type={'send'}>
@@ -176,6 +219,24 @@ const ViewTaskPage = () => {
                 <p>Add Member</p>
                 <p>Edit Task</p>
                 <p>Delete Task</p>
+              </div>
+            </Modal>
+          )}
+
+          {attachmentFormOpen && (
+            <Modal setActive={setAttachmentFormOpen}>
+              <div className="mt-4 mx-4">
+                <input
+                  onChange={(e) => setSelectedFile(e.target.files[0])}
+                  type="file"
+                  name="imageAttachment"
+                  id="imageAttachment"
+                />
+              </div>
+              <div className="px-6 mt-9 flex mb-4">
+                <Button isActive={handleUploadImageAttachment} type={'primary'}>
+                  Upload image
+                </Button>
               </div>
             </Modal>
           )}

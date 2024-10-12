@@ -3,8 +3,6 @@ import { useFetchUserQuery } from '../../redux/slices/userSliceApi';
 const AssignedToBlock = ({ userId }) => {
   const { data, isSuccess } = useFetchUserQuery(userId);
 
-  console.log(data);
-
   return (
     <div>
       <h5 className="text-textGray font-medium text-base">Assigned to</h5>

@@ -19,8 +19,6 @@ const WorkList = () => {
 
   const { data, isLoading } = useFetchUserTasksQuery();
 
-  console.log(data);
-
   const handleFilter = () => {
     setIsOpenFilter(!isOpenFilter);
   };
