@@ -20,6 +20,7 @@ import CommentsList from '../components/task/comments/CommentsList';
 import MiniAvatar from '../components/task/MiniAvatar';
 import ProfilePhoto from '../components/icons/ProfilePhoto';
 import AssignedToBlock from '../components/task/AssignedToBlock';
+import AttachmentsList from '../components/task/AttachmentsList';
 
 const ViewTaskPage = () => {
   const navigate = useNavigate();
@@ -33,6 +34,8 @@ const ViewTaskPage = () => {
 
   const { data, isSuccess } = useFetchOneTaskQuery(taskId);
   const [createComment] = useCreateTaskCommentMutation();
+
+  console.log(data);
 
   const handleCreateTask = async () => {
     try {
@@ -195,8 +198,12 @@ const ViewTaskPage = () => {
                   </div>
                 </article>
 
-                <article className=" mt-9">
-                  <CommentsList taskId={taskId} />
+                <article className="mt-9 flex flex-col gap-2">
+                  {data?.data.attachments && (
+                    <AttachmentsList attachments={data?.data.attachments} />
+                  )}
+
+                  <CommentsList />
                 </article>
               </>
             )}

@@ -1,8 +1,10 @@
+import { useParams } from 'react-router-dom';
 import { useFetchTaskCommentsQuery } from '../../../redux/slices/tasksSliceApi';
 
 import Comment from '../comments/Comment';
 
-const CommentsList = ({ taskId }) => {
+const CommentsList = () => {
+  const { taskId } = useParams();
   const { data, isLoading } = useFetchTaskCommentsQuery(taskId);
 
   console.log(data);

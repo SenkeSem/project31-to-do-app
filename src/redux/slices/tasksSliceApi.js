@@ -133,6 +133,17 @@ const tasksApi = toDoApi.injectEndpoints({
         },
       }),
     }),
+
+    downloadTaskAttachment: build.query({
+      query: (attachmentId) => ({
+        url: `tasks-attachments/${attachmentId}`,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+        responseHandler: (res) => res.blob(),
+      }),
+    }),
   }),
   overrideExisting: false,
 });
@@ -150,4 +161,5 @@ export const {
   useFetchAssignedToTasksQuery,
   useTaskMembersSearchQuery,
   useFetchParticipateInTasksQuery,
+  useDownloadTaskAttachmentQuery,
 } = tasksApi;
