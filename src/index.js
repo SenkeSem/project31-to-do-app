@@ -14,6 +14,7 @@ import CreateNotePage from './pages/CreateNotePage';
 import CreateCheckList from './pages/CreateCheckList';
 import CreateTaskPage from './pages/CreateTaskPage';
 import ViewTaskPage from './pages/ViewTaskPage';
+import ViewProjectsPage from './pages/ViewProjectsPage';
 
 export {
   SignUpPage,
@@ -32,4 +33,5 @@ export {
   CreateCheckList,
   CreateTaskPage,
   ViewTaskPage,
+  ViewProjectsPage,
 };

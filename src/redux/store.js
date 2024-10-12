@@ -5,5 +5,8 @@ export const store = configureStore({
   reducer: {
     [toDoApi.reducerPath]: toDoApi.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(toDoApi.middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }).concat(toDoApi.middleware),
 });

@@ -1,4 +1,5 @@
 const Calendar = () => {
+  // TODO: use react-datepicker lib instead of it
   return (
     <table className="grid grid-row-7 gap-2 mt-5">
       <tr className="grid grid-cols-7 text-center h-[31px] items-center italic font-thin text-homeLineBlack text-sm">

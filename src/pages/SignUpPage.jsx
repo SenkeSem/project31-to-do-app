@@ -1,16 +1,13 @@
-import HeadingStartPages from '../components/HeadingStartPages';
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm, FormProvider } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import { useSignUpMutation } from '../redux/slices/authSliceApi.js';
+
+import HeadingStartPages from '../components/layout/HeadingStartPages';
 import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 import Input from '../components/shared/Input';
 import Button from '../components/shared/Button.jsx';
 import Loader from '../components/loader/Loader.jsx';
-
-import { Link, useNavigate } from 'react-router-dom';
-import { useForm, FormProvider } from 'react-hook-form';
-
-import { useCreateUserMutation } from '../redux/ToDoApi.js';
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const SignUpPage = () => {
   const methods = useForm({
@@ -19,13 +16,13 @@ const SignUpPage = () => {
   const { handleSubmit } = methods;
   const navigation = useNavigate();
 
-  const [createUser, { isLoading }] = useCreateUserMutation();
+  const [signUp, { isLoading }] = useSignUpMutation();
 
   const onSubmit = async (data) => {
     try {
-      let responce = await createUser({
+      let responce = await signUp({
         email: data.email,
-        password: data.password,
+        password: window.btoa(data.password),
         username: data.username,
       });
 
@@ -69,7 +66,9 @@ const SignUpPage = () => {
 
   return (
     <div className="flex flex-col mt-4 pl-7 pr-5 pb-3">
-      <ArrowLeft onClick={() => navigation(-1)} />
+      <button onClick={() => navigation(-1)}>
+        <ArrowLeft />
+      </button>
       <HeadingStartPages head={'Welcome'} text={'Sign up to continue'} />
       <img className="mx-auto mt-7" width={107} height={104} src="/circle.png" alt="circle" />
 
@@ -135,7 +134,6 @@ const SignUpPage = () => {
         </Link>
       </FormProvider>
       {isLoading && <Loader />}
-      <ToastContainer />
     </div>
   );
 };
