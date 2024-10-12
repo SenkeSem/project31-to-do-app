@@ -9,8 +9,6 @@ const ProjectItem = ({ title, color, projectId }) => {
   const [deleteProject] = useDeleteProjectMutation();
   const { data, isSuccess } = useFetchProjectStatisticsQuery(localStorage.getItem('user_id'));
 
-  console.log(data);
-
   let projectStatistics = isSuccess && data.data.filter((item) => item.project_id === projectId);
 
   const handleDeleteProject = async () => {

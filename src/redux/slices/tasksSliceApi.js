@@ -144,6 +144,17 @@ const tasksApi = toDoApi.injectEndpoints({
         responseHandler: (res) => res.blob(),
       }),
     }),
+
+    downloadCommentAttachment: build.query({
+      query: (attachmentId) => ({
+        url: `comments-attachments/${attachmentId}`,
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+        responseHandler: (res) => res.blob(),
+      }),
+    }),
   }),
   overrideExisting: false,
 });
@@ -162,4 +173,5 @@ export const {
   useTaskMembersSearchQuery,
   useFetchParticipateInTasksQuery,
   useDownloadTaskAttachmentQuery,
+  useDownloadCommentAttachmentQuery,
 } = tasksApi;

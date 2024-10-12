@@ -35,8 +35,6 @@ const ViewTaskPage = () => {
   const { data, isSuccess } = useFetchOneTaskQuery(taskId);
   const [createComment] = useCreateTaskCommentMutation();
 
-  console.log(data);
-
   const handleCreateTask = async () => {
     try {
       let res = createComment({
@@ -202,7 +200,6 @@ const ViewTaskPage = () => {
                   {data?.data.attachments && (
                     <AttachmentsList attachments={data?.data.attachments} />
                   )}
-
                   <CommentsList />
                 </article>
               </>

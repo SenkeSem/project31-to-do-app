@@ -75,12 +75,12 @@ const CheckList = ({ title, color, oneChecklist }) => {
       <p className="italic flex justify-between">
         {title}
         <div className="flex gap-3">
-          <button onClick={() => handleDeleteChecklistItems(oneChecklist.items)}>
+          <div onClick={() => handleDeleteChecklistItems(oneChecklist.items)}>
             <Clean />
-          </button>
-          <button onClick={() => handleDeleteChecklist(oneChecklist.id)}>
+          </div>
+          <div onClick={() => handleDeleteChecklist(oneChecklist.id)}>
             <RedTrash />
-          </button>
+          </div>
         </div>
       </p>
 

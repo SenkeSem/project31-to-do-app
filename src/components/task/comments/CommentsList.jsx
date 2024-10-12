@@ -7,8 +7,6 @@ const CommentsList = () => {
   const { taskId } = useParams();
   const { data, isLoading } = useFetchTaskCommentsQuery(taskId);
 
-  console.log(data);
-
   return (
     <div>
       {isLoading ? (
@@ -20,9 +18,10 @@ const CommentsList = () => {
             commentId={item.id}
             userId={item.commentator.id}
             userName={item.commentator.username}
-            date={item.created_at}>
-            <p>{item.content}</p>
-          </Comment>
+            content={item.content}
+            date={item.created_at}
+            attachments={item.attachments}
+          />
         ))
       )}
     </div>
