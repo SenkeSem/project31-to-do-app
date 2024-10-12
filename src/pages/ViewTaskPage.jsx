@@ -21,6 +21,7 @@ import MiniAvatar from '../components/task/MiniAvatar';
 import ProfilePhoto from '../components/icons/ProfilePhoto';
 import AssignedToBlock from '../components/task/AssignedToBlock';
 import AttachmentsList from '../components/task/AttachmentsList';
+import TagBlock from '../components/task/TagBlock';
 
 const ViewTaskPage = () => {
   const navigate = useNavigate();
@@ -34,6 +35,8 @@ const ViewTaskPage = () => {
 
   const { data, isSuccess } = useFetchOneTaskQuery(taskId);
   const [createComment] = useCreateTaskCommentMutation();
+
+  console.log(data);
 
   const handleCreateTask = async () => {
     try {
@@ -87,6 +90,11 @@ const ViewTaskPage = () => {
     }
   };
 
+  let fullDate = new Date(data?.data.due_date);
+  let day = fullDate.getDate();
+  let monthName = fullDate.toLocaleString('en-US', { month: 'short' });
+  let year = fullDate.getFullYear();
+
   return (
     <>
       <div className="w-screen h-screen bg-btnRed">
@@ -124,7 +132,7 @@ const ViewTaskPage = () => {
               <div>
                 <h5 className="text-textGray font-medium text-base">Due Date</h5>
                 <p className="italic font-thin text-homeLineBlack text-base">
-                  {data?.data.due_date}
+                  {data?.data.due_date && `${monthName} ${day},${year}`}
                 </p>
               </div>
             </article>
@@ -165,7 +173,7 @@ const ViewTaskPage = () => {
               <div>
                 <h5 className="text-textGray font-medium text-base">Tag</h5>
                 <div className="mt-[9px]">
-                  <Button type={'personal'}>Personal</Button>
+                  <TagBlock projectId={data?.data.project_id} />
                 </div>
               </div>
             </article>
