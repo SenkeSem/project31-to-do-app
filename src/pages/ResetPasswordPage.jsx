@@ -1,4 +1,4 @@
-import HeadingStartPages from '../components/HeadingStartPages';
+import HeadingStartPages from '../components/layout/HeadingStartPages';
 import Input from '../components/shared/Input';
 import ArrowLeft from '../components/icons/ArrowLeft.jsx';
 import Button from '../components/shared/Button.jsx';
@@ -13,7 +13,6 @@ const ResetPasswordPage = () => {
   const methods = useForm({ mode: 'onChange' });
 
   const { handleSubmit } = methods;
-
   const onSubmit = (data) => {
     data.newPassword === data.password
       ? toast.success('The password has been changed!', {
