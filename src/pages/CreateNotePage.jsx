@@ -1,5 +1,5 @@
-import NotePageLayout from '../components/shared/NotePageLayout';
-import NotePageContent from '../components/shared/NotePageContent';
+import NotePageLayout from '../components/note/NotePageLayout';
+import NotePageContent from '../components/note/NotePageContent';
 
 const CreateNotePage = () => {
   return (

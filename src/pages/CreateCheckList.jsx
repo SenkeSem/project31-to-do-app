@@ -1,5 +1,5 @@
-import CheckListContent from '../components/shared/CheckListContent';
-import CheckListLayout from '../components/shared/CheckListLayout';
+import CheckListContent from '../components/checklist/CheckListContent';
+import CheckListLayout from '../components/checklist/CheckListLayout';
 
 const CreateCheckList = () => {
   return (
